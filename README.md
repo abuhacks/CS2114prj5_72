@@ -1,6 +1,8 @@
 #  CS2114prj5_72
  
- Means of communication: discord, phone, & in-person.
+ Means of communication: Discord and phone calls 
+ 
+ We will have weekly meetings over Discord to discuss project deadlines and work on developing the code. 
  
  TEAM PLEDGE:
  
