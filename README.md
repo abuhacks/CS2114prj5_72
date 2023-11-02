@@ -4,10 +4,10 @@
  
  TEAM PLEDGE:
  
- Naren - 804-928-9058
- Joey - 804-665-8607
- Abiel - 703-989-9032
- Adam - 434-282-7166
+ Naren - narend 804-928-9058
+ Joey - jchen9896 804-665-8607
+ Abiel - abielm 703-989-9032
+ Adam - adamschantz 434-282-7166
  
  ALL TEAM MEMBERS AGREE TO:
  
