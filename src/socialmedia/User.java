@@ -6,7 +6,7 @@ package socialmedia;
  *  @author naren
  *  @version Nov 12, 2023
  */
-public class User
+public class User implements Comparable<User>
 {
     //~ Fields ................................................................
     private String username;
@@ -137,5 +137,24 @@ public class User
      */
     public String getMonth() {
         return month;
+    }
+
+    // ----------------------------------------------------------
+    /**
+     * Compares the names of two channels.
+     * @param o other user
+     * @return the numerical representation of the string difference.
+     */
+    public int compareTo(User o)
+    {
+        return channelName.compareTo(o.channelName);
+    }
+    
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        s.append("" + month + " " + username + " " + channelName + " " + 
+        country + " " + mainTopic + " " + likes + " " + posts + 
+        " " + comments + " " + views);
+        return s.toString();
     }
 }
