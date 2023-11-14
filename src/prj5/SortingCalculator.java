@@ -1,4 +1,4 @@
-package socialmedia;
+package prj5;
 // -------------------------------------------------------------------------
 /**
  *  Used for sorting the information based off certain values.

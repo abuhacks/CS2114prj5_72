@@ -1,4 +1,4 @@
-package socialmedia;
+package prj5;
 // -------------------------------------------------------------------------
 /**
  *  Represents a user that will be broken down into many parts.
