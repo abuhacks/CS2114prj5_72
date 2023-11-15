@@ -115,57 +115,82 @@ public class DoublyLinkedList<T>
             return data;
         }
     }
+
     // ~ Fields ................................................................
+    private Node<T> firstNode;
+    private Node<T> lastNode;
+    private int size;
 
     // ~ Constructors ..........................................................
+    // ----------------------------------------------------------
+    /**
+     * Create a new DoublyLinkedList object.
+     */
 
+    public DoublyLinkedList()
+    {
+        firstNode = null;
+        firstNode.next = lastNode;
+        lastNode = null;
+        lastNode.prev = firstNode;
+        size = 0;
+    }
     // ~Public Methods ........................................................
 
+
     // ----------------------------------------------------------
     /**
-     * {@inheritDoc}
+     * This method adds a new entry to the end of the list.
+     * 
+     * @param entry
+     *            the data of the node being added to the end of the list
      */
     @Override
-    public int compareTo(T o)
+    public void add(T entry)
     {
-        // TODO Auto-generated method stub
-        return 0;
+        Node<T> toAdd = new Node<T>(entry);
+        if (firstNode == null)
+        {
+            firstNode = toAdd;
+            lastNode = toAdd;
+        }
+        else
+        {
+            lastNode.next = toAdd;
+            toAdd = lastNode;
+        }
+        size++;
     }
 
 
     // ----------------------------------------------------------
     /**
-     * {@inheritDoc}
+     * This method adds a new entry at the index specified by the int parameter.
+     * 
+     * @param index
+     *            the index a new entry will be added to a list
+     * @param entry
+     *            the data of the node being added to a list
      */
     @Override
-    public void add(T arg0)
+    public void add(int index, T entry)
     {
-        // TODO Auto-generated method stub
 
     }
 
 
     // ----------------------------------------------------------
     /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void add(int arg0, T arg1)
-    {
-        // TODO Auto-generated method stub
-
-    }
-
-
-    // ----------------------------------------------------------
-    /**
-     * {@inheritDoc}
+     * This method clears a DoublyLinkedList object and removes all entries.
      */
     @Override
     public void clear()
     {
-        // TODO Auto-generated method stub
-
+        firstNode = null;
+        firstNode.next = lastNode;
+        lastNode = null;
+        lastNode.prev = firstNode;
+        size = 0;
     }
 
 
@@ -174,9 +199,17 @@ public class DoublyLinkedList<T>
      * {@inheritDoc}
      */
     @Override
-    public boolean contains(T arg0)
+    public boolean contains(T entry)
     {
-        // TODO Auto-generated method stub
+        Node<T> current = firstNode;
+        while (current != null)
+        {
+            if (current.getData().equals(entry))
+            {
+                return true;
+            }
+            current = current.getNext();
+        }
         return false;
     }
 
@@ -186,22 +219,31 @@ public class DoublyLinkedList<T>
      * {@inheritDoc}
      */
     @Override
-    public T getEntry(int arg0)
+    public T getEntry(int index)
     {
-        // TODO Auto-generated method stub
-        return null;
+        int current = 0;
+        Node<T> entry = firstNode;
+        if (size > 0 && index < size && index > 0)
+        {
+            while (current < index)
+            {
+                entry = entry.getNext();
+                current++;
+            }
+            return entry.getData();
+        }
+        throw new IndexOutOfBoundsException();
     }
 
 
     // ----------------------------------------------------------
     /**
-     * {@inheritDoc}
+     * This method returns the length of a DoublyLinkedList.
      */
     @Override
     public int getLength()
     {
-        // TODO Auto-generated method stub
-        return 0;
+        return size;
     }
 
 
@@ -212,8 +254,7 @@ public class DoublyLinkedList<T>
     @Override
     public boolean isEmpty()
     {
-        // TODO Auto-generated method stub
-        return false;
+        return size == 0;
     }
 
 
@@ -222,7 +263,7 @@ public class DoublyLinkedList<T>
      * {@inheritDoc}
      */
     @Override
-    public T remove(int arg0)
+    public T remove(int entry)
     {
         // TODO Auto-generated method stub
         return null;
@@ -234,7 +275,7 @@ public class DoublyLinkedList<T>
      * {@inheritDoc}
      */
     @Override
-    public T replace(int arg0, T arg1)
+    public T replace(int index, T entry)
     {
         // TODO Auto-generated method stub
         return null;
@@ -250,6 +291,43 @@ public class DoublyLinkedList<T>
     {
         // TODO Auto-generated method stub
         return null;
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * {@inheritDoc}
+     */
+    public String toString()
+    {
+
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * This method checks if two DoublyLinkedList have the same contents in the
+     * same order.
+     * 
+     * @return true if same contents same order, false otherwise
+     * @param object
+     *            the object the current DoublyLinkedList is being compared to
+     */
+    public boolean equals(Object object)
+    {
+
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int compareTo(T o)
+    {
+        // TODO Auto-generated method stub
+        return 0;
     }
 
 }
