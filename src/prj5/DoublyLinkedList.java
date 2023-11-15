@@ -135,6 +135,32 @@ public class DoublyLinkedList<T>
         lastNode.prev = firstNode;
         size = 0;
     }
+
+
+    // ~Private Methods ........................................................
+    // ----------------------------------------------------------
+    /**
+     * This is a private helper method that gets the node at a specified index.
+     * 
+     * @param index
+     *            the index in a DoublyLinkedList where a Node will be located
+     * @return Node at specified index
+     */
+    private Node<T> getNode(int index)
+    {
+        int current = 0;
+        Node<T> entry = firstNode;
+        if (size > 0 && index < size && index > 0)
+        {
+            while (current < index)
+            {
+                entry = entry.getNext();
+                current++;
+            }
+            return entry;
+        }
+        throw new IndexOutOfBoundsException();
+    }
     // ~Public Methods ........................................................
 
 
@@ -171,11 +197,18 @@ public class DoublyLinkedList<T>
      *            the index a new entry will be added to a list
      * @param entry
      *            the data of the node being added to a list
+     * @throws IndexOutOfBoundsException
+     *             when index is below 0 or above the current size of the
+     *             DoublyLinkedList
      */
     @Override
     public void add(int index, T entry)
     {
-
+        if(index >= 0 && index < this.getLength()) {
+            Node<T> nextEntry = getNode(index);
+            
+        }
+        throw new IndexOutOfBoundsException();
     }
 
 
@@ -221,18 +254,7 @@ public class DoublyLinkedList<T>
     @Override
     public T getEntry(int index)
     {
-        int current = 0;
-        Node<T> entry = firstNode;
-        if (size > 0 && index < size && index > 0)
-        {
-            while (current < index)
-            {
-                entry = entry.getNext();
-                current++;
-            }
-            return entry.getData();
-        }
-        throw new IndexOutOfBoundsException();
+        return getNode(index).getData();
     }
 
 
@@ -263,10 +285,18 @@ public class DoublyLinkedList<T>
      * {@inheritDoc}
      */
     @Override
-    public T remove(int entry)
+    public T remove(int index)
     {
-        // TODO Auto-generated method stub
-        return null;
+        Node<T> placeholder = getNode(index);
+        if (!this.isEmpty() && index < this.getLength())
+        {
+            placeholder.getPrevious().setNext(placeholder.getNext());
+            placeholder.getNext().setPrevious(placeholder.getPrevious());
+            size--;
+            return placeholder.getData();
+        }
+        throw new IndexOutOfBoundsException();
+
     }
 
 
@@ -277,8 +307,11 @@ public class DoublyLinkedList<T>
     @Override
     public T replace(int index, T entry)
     {
-        // TODO Auto-generated method stub
-        return null;
+        Node<T> placeholder = getNode(index);
+        Node<T> replacement = new Node<T>(entry);
+        placeholder.getPrevious().setNext(replacement);
+        placeholder.getNext().setPrevious(replacement);
+        return placeholder.getData();
     }
 
 
@@ -289,8 +322,14 @@ public class DoublyLinkedList<T>
     @Override
     public Object[] toArray()
     {
-        // TODO Auto-generated method stub
-        return null;
+        Object[] entries = new Object[getLength()];
+        Node<T> current = firstNode;
+        for (int i = 0; i < this.getLength(); i++)
+        {
+            entries[i] = current.getData();
+            current = current.getNext();
+        }
+        return entries;
     }
 
 
@@ -300,7 +339,20 @@ public class DoublyLinkedList<T>
      */
     public String toString()
     {
-
+        StringBuilder entries = new StringBuilder();
+        entries.append("{");
+        Node<T> current = firstNode;
+        while (current != null)
+        {
+            entries.append(current.getData());
+            if (current != lastNode)
+            {
+                entries.append(", ");
+            }
+            current = current.getNext();
+        }
+        entries.append("}");
+        return entries.toString();
     }
 
 
@@ -313,18 +365,37 @@ public class DoublyLinkedList<T>
      * @param object
      *            the object the current DoublyLinkedList is being compared to
      */
+    @SuppressWarnings("unchecked")
     public boolean equals(Object object)
     {
-
+        if (this.getClass() == object.getClass() && object != null)
+        {
+            DoublyLinkedList<T> obj = (DoublyLinkedList<T>)object;
+            if (this.getLength() == obj.getLength())
+            {
+                Node<T> thisCurrent = this.firstNode;
+                Node<T> objectCurrent = obj.firstNode;
+                while (thisCurrent != null)
+                {
+                    if (!thisCurrent.getData().equals(objectCurrent.getData()))
+                    {
+                        return false;
+                    }
+                    thisCurrent = thisCurrent.getNext();
+                    objectCurrent = objectCurrent.getNext();
+                }
+                return true;
+            }
+        }
+        return false;
     }
-
 
     // ----------------------------------------------------------
     /**
      * {@inheritDoc}
      */
     @Override
-    public int compareTo(T o)
+    public int compareTo(T obj)
     {
         // TODO Auto-generated method stub
         return 0;
