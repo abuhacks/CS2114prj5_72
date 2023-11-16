@@ -138,6 +138,30 @@ public class User implements Comparable<User>
     public String getMonth() {
         return month;
     }
+    /**
+     * Changes the amount of likes.
+     */
+    public void setLikes(int likes3) {
+        likes = likes3;
+    }
+    /**
+     * Changes the amount of followers.
+     */
+    public void setFollowers(int followers3) {
+        followers = followers3;
+    }
+    /**
+     * Changes the amount of comments.
+     */
+    public void setComments(int comments3) {
+        comments = comments3;
+    }
+    /**
+     * Changes the amount of views.
+     */
+    public void getViews(int views3) {
+        views = views3;
+    }
 
     // ----------------------------------------------------------
     /**
