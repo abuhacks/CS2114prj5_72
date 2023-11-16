@@ -96,7 +96,7 @@ public class SortingCalculator
     }
     
     public DoublyLinkedList<User> sortByReachRate() {
-        
+        return null;
     }
     
 }
