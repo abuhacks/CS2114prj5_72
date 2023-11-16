@@ -12,6 +12,11 @@ public class SortingCalculator
     //~ Fields ................................................................
     private DoublyLinkedList<User> users;
     //~ Constructors ..........................................................
+    // ----------------------------------------------------------
+    /**
+     * Create a new SortingCalculator object.
+     * @param users2 for the user to be;
+     */
     public SortingCalculator(DoublyLinkedList<User> users2) {
         users = users2;
     }
@@ -23,7 +28,7 @@ public class SortingCalculator
      * @return the reach by engagement rate
      */
     public double getReachEngagementRate(User user) {
-        return (((user.getComments() + user.getLikes())/ user.getViews()) * 100)/100;
+        return (((user.getComments() + user.getLikes())/ user.getViews())) * .1;
     }
     
     // ----------------------------------------------------------
