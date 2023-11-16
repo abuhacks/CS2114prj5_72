@@ -129,9 +129,9 @@ public class DoublyLinkedList<T>
 
     public DoublyLinkedList()
     {
-        firstNode = null;
+        firstNode = new Node<T>(null);
+        lastNode = new Node<T>(null);
         firstNode.next = lastNode;
-        lastNode = null;
         lastNode.prev = firstNode;
         size = 0;
     }
@@ -145,12 +145,14 @@ public class DoublyLinkedList<T>
      * @param index
      *            the index in a DoublyLinkedList where a Node will be located
      * @return Node at specified index
+     * @throw IndexOutOfBoundsException if size is greater than 0, index is
+     *            greater than size, or index is less than 0.
      */
     private Node<T> getNode(int index)
     {
         int current = 0;
         Node<T> entry = firstNode;
-        if (size > 0 && index < size && index > 0)
+        if (size > 0 && index < size && index >= 0)
         {
             while (current < index)
             {
@@ -175,15 +177,16 @@ public class DoublyLinkedList<T>
     public void add(T entry)
     {
         Node<T> toAdd = new Node<T>(entry);
-        if (firstNode == null)
+        if (isEmpty())
         {
             firstNode = toAdd;
             lastNode = toAdd;
         }
         else
         {
-            lastNode.next = toAdd;
-            toAdd = lastNode;
+            lastNode.setNext(toAdd);
+            toAdd.setPrevious(lastNode);
+            lastNode = toAdd;
         }
         size++;
     }
@@ -204,10 +207,18 @@ public class DoublyLinkedList<T>
     @Override
     public void add(int index, T entry)
     {
-        if(index >= 0 && index < this.getLength()) {
-            Node<T> nextEntry = getNode(index);
-            
+        if ((index == 0) || (index == size - 1))
+        {
+            this.add(entry);
+            size++;
         }
+        else
+        {
+            Node<T> nextEntry = getNode(index);
+            size++;
+        }
+
+        
         throw new IndexOutOfBoundsException();
     }
 
@@ -229,7 +240,9 @@ public class DoublyLinkedList<T>
 
     // ----------------------------------------------------------
     /**
-     * {@inheritDoc}
+     * This method checks if an object is stored in the DoublyLinkedList.
+     * 
+     * @return true if the list contains the entry/object, false otherwise.
      */
     @Override
     public boolean contains(T entry)
@@ -249,7 +262,10 @@ public class DoublyLinkedList<T>
 
     // ----------------------------------------------------------
     /**
-     * {@inheritDoc}
+     * This method gets the Node's data for a specificed index.
+     * 
+     * @return Object stored in a specific Node, which is determined through the
+     *             index parameter.
      */
     @Override
     public T getEntry(int index)
@@ -271,7 +287,9 @@ public class DoublyLinkedList<T>
 
     // ----------------------------------------------------------
     /**
-     * {@inheritDoc}
+     * This method checks if a DoublyLinkedList is empty or not.
+     * 
+     * @return true if empty, false otherwise
      */
     @Override
     public boolean isEmpty()
@@ -282,7 +300,14 @@ public class DoublyLinkedList<T>
 
     // ----------------------------------------------------------
     /**
-     * {@inheritDoc}
+     * This method removes a Node at a specified index.
+     * 
+     * @return the data of the Node being removed, or IndexOutOfBoundsException
+     * @param index
+     *            the location of the Node being removed
+     * @throws IndexOutOfBoundsException
+     *             when the list is empty or index is greater than the length of
+     *             list.
      */
     @Override
     public T remove(int index)
@@ -302,7 +327,10 @@ public class DoublyLinkedList<T>
 
     // ----------------------------------------------------------
     /**
-     * {@inheritDoc}
+     * This method replaces a Node with a different Node that stores a different
+     * object.
+     * 
+     * @return the object that will be replaced by the entry in the parameter.
      */
     @Override
     public T replace(int index, T entry)
@@ -317,7 +345,9 @@ public class DoublyLinkedList<T>
 
     // ----------------------------------------------------------
     /**
-     * {@inheritDoc}
+     * This method turns a DoublyLinkedList into an array.
+     * 
+     * @return an array that holds all entries in a DoublyLinked List
      */
     @Override
     public Object[] toArray()
@@ -335,7 +365,9 @@ public class DoublyLinkedList<T>
 
     // ----------------------------------------------------------
     /**
-     * {@inheritDoc}
+     * This method returns the string representation of a DoublyLinkedList.
+     * 
+     * @return String representation of DoublyLinkedList
      */
     public String toString()
     {
@@ -390,9 +422,11 @@ public class DoublyLinkedList<T>
         return false;
     }
 
+
     // ----------------------------------------------------------
     /**
-     * {@inheritDoc}
+     * This method compares two DoublyLinkedLists and it will rank a
+     * DoublyLinkedList higher or lower based on size.
      */
     @Override
     public int compareTo(T obj)
