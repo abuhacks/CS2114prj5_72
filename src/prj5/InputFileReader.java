@@ -16,6 +16,7 @@ import student.IOHelper;
 public class InputFileReader
 {
     //~ Fields ................................................................
+    @SuppressWarnings("unused")
     private DoublyLinkedList<User> dLList;
     //~ Constructors ..........................................................
     /**
@@ -57,7 +58,8 @@ public class InputFileReader
             
             User newUser = new User(month, username, channel, country, 
                 mainTopic, likes, posts, followers, comments, views);
-            if (isAMonth(month))
+            if (isAMonth(month) && validNumberValues(followers, likes,
+                comments, posts, views))
             {
                 list.add(newUser);
             }
@@ -94,6 +96,23 @@ public class InputFileReader
             return true;
         }
         return false;
+    }
+    /**
+     * helper method for readUserFile method
+     * @param f follower count
+     * @param l like count
+     * @param c comments
+     * @param p posts
+     * @param v views
+     * @return whether they are valid values
+     */
+    private boolean validNumberValues(int f, int l, int c, int p, int v)
+    {
+        if (f < 0 || l < 0 || c < 0 || p < 0 || v < 0)
+        {
+            return false;
+        }
+        return true;
     }
    
 }
