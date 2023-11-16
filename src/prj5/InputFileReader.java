@@ -15,7 +15,6 @@ public class InputFileReader
 {
     //~ Fields ................................................................
     private DoublyLinkedList<User> dLList;
-    private DoublyLinkedList<User> dLList2;
     //~ Constructors ..........................................................
     /**
      * creates a new InputFileReader object
