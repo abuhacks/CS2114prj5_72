@@ -65,7 +65,7 @@ public class SortingCalculator
      * @return the sorted list.
      */
     public DoublyLinkedList<User> sortByName() {
-        
+        return null;
     }
     
     
