@@ -86,17 +86,65 @@ public class SortingCalculator
     // ----------------------------------------------------------
     /**
      * Sorts the list by traditional rate.
+     * @param user3 user to be checked
      * @return the sorted list.
      */
-    public DoublyLinkedList<User> sortByTraditionalRate() {
+    public double getTraditionalRate(User user3) {
         for(int i = 0; i < users.getLength(); i++) {
-            
+            if(users.getEntry(i).getUsername().equals(user3.getUsername())) {
+                user3.setComments(user3.getComments() + users.getEntry(i).getComments());
+                user3.setLikes(user3.getLikes() + users.getEntry(i).getLikes());
+                user3.setFollowers(user3.getFollowers() + users.getEntry(i).getFollowers());
+            }
         }
-        return users;
+        return ( (user3.getComments() + user3.getLikes())/ user3.getFollowers()) * 100;
     }
     
+    // ----------------------------------------------------------
+    /**
+     * Gets the reach rate of a user.
+     * @param user3
+     * @return the reach rate.
+     */
+    public double getReachRate(User user3) {
+        for(int i = 0; i < users.getLength(); i++) {
+            if(users.getEntry(i).getUsername().equals(user3.getUsername())) {
+                user3.setComments(user3.getComments() + users.getEntry(i).getComments());
+                user3.setLikes(user3.getLikes() + users.getEntry(i).getLikes());
+                user3.setFollowers(user3.getFollowers() + users.getEntry(i).getFollowers());
+            }
+        }
+        return ( (user3.getComments() + user3.getLikes())/ user3.getFollowers()) * .1;
+    }
+    
+    // ----------------------------------------------------------
+    /**
+     * Returns a sorted linked list of the users.
+     * @return a sorted linked list.
+     */
     public DoublyLinkedList<User> sortByReachRate() {
-        return null;
+        DoublyLinkedList<User> testVals = new DoublyLinkedList<User>();
+        DoublyLinkedList<String> names = new DoublyLinkedList<String>();
+        int index = 0;
+        for(int i = 0; i < users.getLength(); i++) {
+            for(int j = 0; j < names.getLength(); j++) {
+                if(names.getEntry(j).equals(users.getEntry(i).getUsername())) {
+                    continue;
+                }
+                else if(!names.getEntry(j).equals(users.getEntry(i).getUsername()) && 
+                    !names.contains(users.getEntry(i).getUsername()))
+                names.add(index, users.getEntry(i).getUsername());
+                index++;
+                testVals.add(users.getEntry(i));
+            }
+        }
+        for(int i = 0; i < testVals.getLength()-1; i++) {
+            if(getReachRate(testVals.getEntry(i)) < getReachRate(testVals.getEntry(i+1))) {
+                User temp = testVals.getEntry(i);
+                testVals.replace(i, testVals.getEntry(i+1));
+                testVals.replace(i+1, temp);
+            }
+        }
+        return testVals;
     }
-    
 }
