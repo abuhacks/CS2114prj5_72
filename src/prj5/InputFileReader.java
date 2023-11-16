@@ -18,7 +18,7 @@ public class InputFileReader
      */
     public InputFileReader(String input)
     {
-        //empty
+        readUserFile(input);
     }
     //~Public  Methods ........................................................
     /**
@@ -27,9 +27,11 @@ public class InputFileReader
      */
     private DoublyLinkedList<User> readUserFile(String file)
     {
-        Scanner inStream = IOHelper.createScanner(<String file name>);
+        Scanner inStream = IOHelper.createScanner(file);
         inStream.nextLine();// skip header
-        while (inStream.hasNextLine()) {
+        DoublyLinkedList<User> dLList = new DoublyLinkedList<User>();
+        while (inStream.hasNextLine()) 
+        {
 
 
             String line = inStream.nextLine().replaceAll(" ", "");
@@ -47,7 +49,45 @@ public class InputFileReader
 
 
             // TODO : Populate the Classes created to store the data
-
-
+            //new dllist
+            //new user with those fields
+            User newUser = new User(month, username, channel, country, 
+                mainTopic, likes, posts, followers, comments, views);
+            if (isAMonth(month))
+            {
+                dLList.add(newUser);
+            }
+        }
+        return dLList;
+    }
+    /**
+     * helper method for the readUserFile method
+     */
+    private int toInt(String str)
+    {
+        try
+        {
+            return Integer.ParseInt(str);
+        }
+        catch(Exception e){
+            return 0;
+        }
+    }
+    /**
+     * helper method for readUserFile
+     * @param month the string we are checking for a month
+     */
+    private boolean isAMonth(String month)
+    {
+        if (month.equals("January") || month.equals("February") || 
+            month.equals("March") || month.equals("April") ||
+            month.equals("May") || month.equals("June") ||
+            month.equals("July") || month.equals("August") ||
+            month.equals("September") || month.equals("October") ||
+            month.equals("November") || month.equals("December"))
+        {
+            return true
+        }
+        return false;
     }
 }
