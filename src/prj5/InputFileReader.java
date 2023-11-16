@@ -24,7 +24,7 @@ public class InputFileReader
      */
     public InputFileReader(String input)
     {
-        readUserFile(input);
+        dLList = readUserFile(input);
     }
     //~Public  Methods ........................................................
     /**
@@ -35,7 +35,7 @@ public class InputFileReader
     {
         Scanner inStream = IOHelper.createScanner(file);
         inStream.nextLine();// skip header
-        DoublyLinkedList<User> dLList = new DoublyLinkedList<User>();
+        DoublyLinkedList<User> list = new DoublyLinkedList<User>();
         while (inStream.hasNextLine()) 
         {
 
@@ -59,10 +59,10 @@ public class InputFileReader
                 mainTopic, likes, posts, followers, comments, views);
             if (isAMonth(month))
             {
-                dLList.add(newUser);
+                list.add(newUser);
             }
         }
-        return dLList;
+        return list;
     }
     /**
      * helper method for the readUserFile method
