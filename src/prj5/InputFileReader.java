@@ -2,6 +2,9 @@ package prj5;
 
 import java.util.Scanner;
 
+import student.IOHelper;
+
+
 /**
  * // -------------------------------------------------------------------------
 /**
@@ -52,9 +55,7 @@ public class InputFileReader
             int views = toInt(values[9]);
 
 
-            // TODO : Populate the Classes created to store the data
-            //new dllist
-            //new user with those fields
+            
             User newUser = new User(month, username, channel, country, 
                 mainTopic, likes, posts, followers, comments, views);
             if (isAMonth(month))
@@ -71,9 +72,10 @@ public class InputFileReader
     {
         try
         {
-            return Integer.ParseInt(str);
+            return Integer.parseInt(str);
         }
-        catch(Exception e){
+        catch(Exception e)
+        {
             return 0;
         }
     }
@@ -90,17 +92,11 @@ public class InputFileReader
             month.equals("September") || month.equals("October") ||
             month.equals("November") || month.equals("December"))
         {
-            return true
+            return true;
         }
         return false;
     }
     
     
-    for(int i = 0; i < 1; i++) {
-        for(int j = 1; j < dLList.getLength(); j++) {
-            if(!(dLList.getEntry(i).getUsername().equals(dLList.getEntry(j).getUsername()))) {
-                
-            }
-        }
-    }
+    
 }
