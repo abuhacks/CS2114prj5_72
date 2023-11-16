@@ -2,8 +2,8 @@ package prj5;
 
 import java.util.Scanner;
 
-import student.IOHelper;
 
+import student.IOHelper;
 
 /**
  * // -------------------------------------------------------------------------
@@ -17,7 +17,6 @@ public class InputFileReader
 {
     //~ Fields ................................................................
     private DoublyLinkedList<User> dLList;
-    private DoublyLinkedList<User> dLList2;
     //~ Constructors ..........................................................
     /**
      * creates a new InputFileReader object
@@ -96,7 +95,5 @@ public class InputFileReader
         }
         return false;
     }
-    
-    
-    
+   
 }
