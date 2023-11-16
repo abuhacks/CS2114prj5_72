@@ -65,8 +65,33 @@ public class SortingCalculator
      * @return the sorted list.
      */
     public DoublyLinkedList<User> sortByName() {
-        
+        for(int i = 0; i < users.getLength(); i++) {
+            for(int j = 1; j < users.getLength() - 1; j++) {
+                if(users.getEntry(i).compareTo(users.getEntry(j)) > 0) {
+                    User temp = users.getEntry(i);
+                    users.replace(i, users.getEntry(j));
+                    users.replace(j, temp);
+                }
+            }
+        }
+        return users;
     }
     
+    
+    // ----------------------------------------------------------
+    /**
+     * Sorts the list by traditional rate.
+     * @return the sorted list.
+     */
+    public DoublyLinkedList<User> sortByTraditionalRate() {
+        for(int i = 0; i < users.getLength(); i++) {
+            
+        }
+        return users;
+    }
+    
+    public DoublyLinkedList<User> sortByReachRate() {
+        
+    }
     
 }
