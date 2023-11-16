@@ -27,7 +27,12 @@ public class SortingCalculator
      * @param user to get rate from.
      * @return the reach by engagement rate
      */
-    public double getReachEngagementRate(User user) {
+    public double getReachEngagementRate(User user, DoublyLinkedList<User> users3) {
+        for(int i = 0; i < 1; i++) {
+            if(users3.getEntry(i).getUsername().equals(user.getUsername())) {
+                
+            }
+        }
         return (((user.getComments() + user.getLikes())/ user.getViews())) * .1;
     }
     

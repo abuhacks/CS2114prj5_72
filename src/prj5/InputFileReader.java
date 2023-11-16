@@ -96,11 +96,5 @@ public class InputFileReader
     }
     
     
-    for(int i = 0; i < 1; i++) {
-        for(int j = 1; j < dLList.getLength(); j++) {
-            if(!(dLList.getEntry(i).getUsername().equals(dLList.getEntry(j).getUsername()))) {
-                
-            }
-        }
-    }
+   
 }
