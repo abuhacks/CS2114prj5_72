@@ -207,19 +207,24 @@ public class DoublyLinkedList<T>
     @Override
     public void add(int index, T entry)
     {
-        if ((index == 0) || (index == size - 1))
+        if ((index == 0 && getLength() == 0) || (index == getLength()-1))
         {
             this.add(entry);
-            size++;
         }
-        else
+        else if(index > 0 && index < size-1)
         {
-            Node<T> nextEntry = getNode(index);
+            Node<T> added = new Node<T>(entry);
+            Node<T> nextTo = getNode(index);
+            Node<T> prevTo = getNode(index-1);
+            prevTo.setNext(added);
+            added.setPrevious(prevTo);
+            added.setNext(nextTo);
+            nextTo.setPrevious(added);
             size++;
-        }
-
-        
+        } 
+        else if(index < 0 || index >= getLength()){
         throw new IndexOutOfBoundsException();
+        }
     }
 
 
@@ -230,9 +235,9 @@ public class DoublyLinkedList<T>
     @Override
     public void clear()
     {
-        firstNode = null;
+        firstNode = new Node<T>(null);
+        lastNode = new Node<T>(null);
         firstNode.next = lastNode;
-        lastNode = null;
         lastNode.prev = firstNode;
         size = 0;
     }
@@ -247,6 +252,9 @@ public class DoublyLinkedList<T>
     @Override
     public boolean contains(T entry)
     {
+        if(getLength() == 0) {
+            return false;
+        }
         Node<T> current = firstNode;
         while (current != null)
         {
