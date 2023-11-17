@@ -207,23 +207,34 @@ public class DoublyLinkedList<T>
     @Override
     public void add(int index, T entry)
     {
-        if ((index == 0 && getLength() == 0) || (index == getLength()-1))
+        Node<T> added = new Node<T>(entry);
+        if (index == 0)
         {
-            this.add(entry);
+            added.setNext(firstNode);
+            firstNode.setPrevious(added);
+            firstNode = added;
+            size++;
         }
-        else if(index > 0 && index < size-1)
+        else if (index == size)
         {
-            Node<T> added = new Node<T>(entry);
+            added.setPrevious(lastNode);
+            lastNode.setNext(added);
+            lastNode = added;
+            size++;
+        }
+        else if (index > 0 && index < size)
+        {
             Node<T> nextTo = getNode(index);
-            Node<T> prevTo = getNode(index-1);
+            Node<T> prevTo = getNode(index - 1);
             prevTo.setNext(added);
             added.setPrevious(prevTo);
             added.setNext(nextTo);
             nextTo.setPrevious(added);
             size++;
-        } 
-        else if(index < 0 || index >= getLength()){
-        throw new IndexOutOfBoundsException();
+        }
+        else
+        {
+            throw new IndexOutOfBoundsException();
         }
     }
 
@@ -252,7 +263,8 @@ public class DoublyLinkedList<T>
     @Override
     public boolean contains(T entry)
     {
-        if(getLength() == 0) {
+        if (getLength() == 0)
+        {
             return false;
         }
         Node<T> current = firstNode;
@@ -320,15 +332,26 @@ public class DoublyLinkedList<T>
     @Override
     public T remove(int index)
     {
+        if (index < 0 || index >= getLength())
+        {
+            throw new IndexOutOfBoundsException();
+        }
         Node<T> placeholder = getNode(index);
-        if (!this.isEmpty() && index < this.getLength())
+        if (index == 0)
+        {
+            firstNode = firstNode.getNext();
+        }
+        else if (index == getLength() - 1)
+        {
+            lastNode = lastNode.getPrevious();
+        }
+        else
         {
             placeholder.getPrevious().setNext(placeholder.getNext());
             placeholder.getNext().setPrevious(placeholder.getPrevious());
-            size--;
-            return placeholder.getData();
         }
-        throw new IndexOutOfBoundsException();
+        size--;
+        return placeholder.getData();
 
     }
 
@@ -339,14 +362,39 @@ public class DoublyLinkedList<T>
      * object.
      * 
      * @return the object that will be replaced by the entry in the parameter.
+     * @param index
+     *            the index of the node that will be replaced
+     * @param entry
+     *            the entry will replace the entry at index
      */
     @Override
     public T replace(int index, T entry)
     {
+        if (index < 0 || index >= getLength())
+        {
+            throw new IndexOutOfBoundsException();
+        }
         Node<T> placeholder = getNode(index);
         Node<T> replacement = new Node<T>(entry);
-        placeholder.getPrevious().setNext(replacement);
-        placeholder.getNext().setPrevious(replacement);
+        if (firstNode.equals(placeholder))
+        {
+            replacement.setNext(firstNode.getNext());
+            firstNode.getNext().setPrevious(replacement);
+            firstNode = replacement;
+        }
+        else if (lastNode.equals(placeholder))
+        {
+            replacement.setPrevious(lastNode.getPrevious());
+            lastNode.getPrevious().setNext(replacement);
+            lastNode = replacement;
+        }
+        else
+        {
+            placeholder.getPrevious().setNext(replacement);
+            placeholder.getNext().setPrevious(replacement);
+            replacement.setPrevious(placeholder.getPrevious());
+            replacement.setNext(placeholder.getNext());
+        }
         return placeholder.getData();
     }
 
