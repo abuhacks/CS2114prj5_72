@@ -39,8 +39,6 @@ public class InputFileReader
         DoublyLinkedList<User> list = new DoublyLinkedList<User>();
         while (inStream.hasNextLine()) 
         {
-
-
             String line = inStream.nextLine().replaceAll(" ", "");
             String[] values = line.split(",");
             String month = values[0];

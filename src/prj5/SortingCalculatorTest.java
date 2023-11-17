@@ -36,6 +36,7 @@ public class SortingCalculatorTest extends TestCase
             "Cars", 10, 10, 10, 10, 10);
         user6 = new User("March", "Miggy", "MiggyMagtoto", "Taiwan", 
             "Cars", 20, 20, 20, 20, 20);
+        theList = new DoublyLinkedList<User>();
         theList.add(user1);
         theList.add(user2);
         theList.add(user3);
@@ -54,5 +55,25 @@ public class SortingCalculatorTest extends TestCase
             "Cars", 1011, 432, 3434, 43, 20);
         calculator.addToList(user7);
         assertTrue(theList.contains(user7));
+    }
+    
+    // ----------------------------------------------------------
+    /**
+     * Tests getting the list.
+     */
+    public void testGetList() {
+        assertEquals(calculator.getList(), theList);
+    }
+    
+    // ----------------------------------------------------------
+    /**
+     * Tests the sortByName() method.
+     */
+    public void testSortByName() {
+        DoublyLinkedList<User> testing = new DoublyLinkedList<User>();
+        testing.add(user2);
+        testing.add(user3);
+        testing.add(user1);
+        assertEquals(calculator.sortByName(), testing);
     }
 }
