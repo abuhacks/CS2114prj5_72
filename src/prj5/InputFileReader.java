@@ -1,6 +1,8 @@
 package prj5;
 
 import java.util.Scanner;
+
+
 import student.IOHelper;
 
 /**
@@ -14,8 +16,8 @@ import student.IOHelper;
 public class InputFileReader
 {
     //~ Fields ................................................................
+    @SuppressWarnings("unused")
     private DoublyLinkedList<User> dLList;
-    private DoublyLinkedList<User> dLList2;
     //~ Constructors ..........................................................
     /**
      * creates a new InputFileReader object
@@ -23,7 +25,7 @@ public class InputFileReader
      */
     public InputFileReader(String input)
     {
-        readUserFile(input);
+        dLList = readUserFile(input);
     }
     //~Public  Methods ........................................................
     /**
@@ -34,7 +36,7 @@ public class InputFileReader
     {
         Scanner inStream = IOHelper.createScanner(file);
         inStream.nextLine();// skip header
-        DoublyLinkedList<User> dLList = new DoublyLinkedList<User>();
+        DoublyLinkedList<User> list = new DoublyLinkedList<User>();
         while (inStream.hasNextLine()) 
         {
 
@@ -56,12 +58,13 @@ public class InputFileReader
             
             User newUser = new User(month, username, channel, country, 
                 mainTopic, likes, posts, followers, comments, views);
-            if (isAMonth(month))
+            if (isAMonth(month) && validNumberValues(followers, likes,
+                comments, posts, views))
             {
-                dLList.add(newUser);
+                list.add(newUser);
             }
         }
-        return dLList;
+        return list;
     }
     /**
      * helper method for the readUserFile method
@@ -94,7 +97,22 @@ public class InputFileReader
         }
         return false;
     }
-    
-    
+    /**
+     * helper method for readUserFile method
+     * @param f follower count
+     * @param l like count
+     * @param c comments
+     * @param p posts
+     * @param v views
+     * @return whether they are valid values
+     */
+    private boolean validNumberValues(int f, int l, int c, int p, int v)
+    {
+        if (f < 0 || l < 0 || c < 0 || p < 0 || v < 0)
+        {
+            return false;
+        }
+        return true;
+    }
    
 }
