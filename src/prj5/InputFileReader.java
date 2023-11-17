@@ -2,43 +2,45 @@ package prj5;
 
 import java.util.Scanner;
 
-
 import student.IOHelper;
 
 /**
  * // -------------------------------------------------------------------------
-/**
- *  parses the input data from given files
+ * /**
+ * parses the input data from given files
  * 
- *  @author 14342
- *  @version Nov 16, 2023
+ * @author 14342
+ * @version Nov 16, 2023
  */
-public class InputFileReader
-{
-    //~ Fields ................................................................
+public class InputFileReader {
+    // ~ Fields ................................................................
     @SuppressWarnings("unused")
     private DoublyLinkedList<User> dLList;
-    //~ Constructors ..........................................................
+
+    // ~ Constructors ..........................................................
     /**
      * creates a new InputFileReader object
-     * @param input the input file
+     * 
+     * @param input
+     *            the input file
      */
-    public InputFileReader(String input)
-    {
+    public InputFileReader(String input) {
         dLList = readUserFile(input);
     }
-    //~Public  Methods ........................................................
+
+
+    // ~Public Methods ........................................................
     /**
      * helper method that will be used in the constructor
-     * @param file the given file
+     * 
+     * @param file
+     *            the given file
      */
-    private DoublyLinkedList<User> readUserFile(String file)
-    {
+    public DoublyLinkedList<User> readUserFile(String file) {
         Scanner inStream = IOHelper.createScanner(file);
         inStream.nextLine();// skip header
         DoublyLinkedList<User> list = new DoublyLinkedList<User>();
-        while (inStream.hasNextLine()) 
-        {
+        while (inStream.hasNextLine()) {
             String line = inStream.nextLine().replaceAll(" ", "");
             String[] values = line.split(",");
             String month = values[0];
@@ -52,65 +54,69 @@ public class InputFileReader
             int comments = toInt(values[8]);
             int views = toInt(values[9]);
 
-
-            
-            User newUser = new User(month, username, channel, country, 
+            User newUser = new User(month, username, channel, country,
                 mainTopic, likes, posts, followers, comments, views);
-            if (isAMonth(month) && validNumberValues(followers, likes,
-                comments, posts, views))
-            {
+            if (isAMonth(month) && validNumberValues(followers, likes, comments,
+                posts, views)) {
                 list.add(newUser);
             }
         }
         return list;
     }
+
+
     /**
      * helper method for the readUserFile method
      */
-    private int toInt(String str)
-    {
-        try
-        {
+    private int toInt(String str) {
+        try {
             return Integer.parseInt(str);
         }
-        catch(Exception e)
-        {
+        catch (Exception e) {
             return 0;
         }
     }
+
+
     /**
      * helper method for readUserFile
-     * @param month the string we are checking for a month
+     * 
+     * @param month
+     *            the string we are checking for a month
      */
-    private boolean isAMonth(String month)
-    {
-        if (month.equals("January") || month.equals("February") || 
-            month.equals("March") || month.equals("April") ||
-            month.equals("May") || month.equals("June") ||
-            month.equals("July") || month.equals("August") ||
-            month.equals("September") || month.equals("October") ||
-            month.equals("November") || month.equals("December"))
-        {
+    private boolean isAMonth(String month) {
+        if (month.equals("January") || month.equals("February") || month.equals(
+            "March") || month.equals("April") || month.equals("May") || month
+                .equals("June") || month.equals("July") || month.equals(
+                    "August") || month.equals("September") || month.equals(
+                        "October") || month.equals("November") || month.equals(
+                            "December")) {
             return true;
         }
         return false;
     }
+
+
     /**
      * helper method for readUserFile method
-     * @param f follower count
-     * @param l like count
-     * @param c comments
-     * @param p posts
-     * @param v views
+     * 
+     * @param f
+     *            follower count
+     * @param l
+     *            like count
+     * @param c
+     *            comments
+     * @param p
+     *            posts
+     * @param v
+     *            views
      * @return whether they are valid values
      */
-    private boolean validNumberValues(int f, int l, int c, int p, int v)
-    {
-        if (f < 0 || l < 0 || c < 0 || p < 0 || v < 0)
-        {
+    private boolean validNumberValues(int f, int l, int c, int p, int v) {
+        if (f < 0 || l < 0 || c < 0 || p < 0 || v < 0) {
             return false;
         }
         return true;
     }
-   
+
 }
