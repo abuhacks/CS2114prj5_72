@@ -140,26 +140,30 @@ public class User implements Comparable<User>
     }
     /**
      * Changes the amount of likes.
+     * @param likes3 the new amount
      */
     public void setLikes(int likes3) {
         likes = likes3;
     }
     /**
      * Changes the amount of followers.
+     * @param followers3 the new amount of followers.
      */
     public void setFollowers(int followers3) {
         followers = followers3;
     }
     /**
      * Changes the amount of comments.
+     * @param comments3 new amount of comments.
      */
     public void setComments(int comments3) {
         comments = comments3;
     }
     /**
      * Changes the amount of views.
+     * @param views3 new amount of views.
      */
-    public void getViews(int views3) {
+    public void setViews(int views3) {
         views = views3;
     }
 
@@ -176,9 +180,9 @@ public class User implements Comparable<User>
     
     public String toString() {
         StringBuilder s = new StringBuilder();
-        s.append("" + month + " " + username + " " + channelName + " " + 
-        country + " " + mainTopic + " " + likes + " " + posts + 
-        " " + comments + " " + views);
+        s.append("" + month + ", " + username + ", " + channelName + ", " + 
+        country + ", " + mainTopic + ", " + likes + ", " + posts + 
+        ", " + followers + ", " + comments + ", " + views);
         return s.toString();
     }
 }

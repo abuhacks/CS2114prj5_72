@@ -21,30 +21,7 @@ public class SortingCalculator
         users = users2;
     }
     //~Public  Methods ........................................................
-    // ----------------------------------------------------------
-    /**
-     * Returns the reach engagement rate for a user.
-     * @param user to get rate from.
-     * @return the reach by engagement rate
-     */
-    public double getReachEngagementRate(User user, DoublyLinkedList<User> users3) {
-        for(int i = 0; i < 1; i++) {
-            if(users3.getEntry(i).getUsername().equals(user.getUsername())) {
-                
-            }
-        }
-        return (((user.getComments() + user.getLikes())/ user.getViews())) * .1;
-    }
     
-    // ----------------------------------------------------------
-    /**
-     * Returns the traditional engagement rate.
-     * @param user to get rate from.
-     * @return the traditional rate.
-     */
-    public double getTraditionalEngagementRate(User user) {
-        return ( (user.getComments() + user.getLikes())/ user.getFollowers()) * 100;
-    }
     
     // ----------------------------------------------------------
     /**
@@ -117,7 +94,7 @@ public class SortingCalculator
                 user3.setFollowers(user3.getFollowers() + users.getEntry(i).getFollowers());
             }
         }
-        return ( (user3.getComments() + user3.getLikes())/ user3.getFollowers()) * .1;
+        return ( (user3.getComments() + user3.getLikes())/ user3.getFollowers()) * 1.0;
     }
     
     // ----------------------------------------------------------
@@ -129,7 +106,8 @@ public class SortingCalculator
         DoublyLinkedList<User> testVals = new DoublyLinkedList<User>();
         DoublyLinkedList<String> names = new DoublyLinkedList<String>();
         int index = 0;
-        for(int i = 0; i < users.getLength(); i++) {
+        names.add(users.getEntry(0).getUsername());
+        for(int i = 1; i < users.getLength(); i++) {
             for(int j = 0; j < names.getLength(); j++) {
                 if(names.getEntry(j).equals(users.getEntry(i).getUsername())) {
                     continue;
