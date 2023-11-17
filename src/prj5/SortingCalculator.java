@@ -47,17 +47,33 @@ public class SortingCalculator
      * @return the sorted list.
      */
     public DoublyLinkedList<User> sortByName() {
-
-        for(int i = 0; i < users.getLength(); i++) {
-            for(int j = 1; j < users.getLength() - 1; j++) {
-                if(users.getEntry(i).compareTo(users.getEntry(j)) > 0) {
-                    User temp = users.getEntry(i);
-                    users.replace(i, users.getEntry(j));
-                    users.replace(j, temp);
+        
+        DoublyLinkedList<User> testVals = new DoublyLinkedList<User>();
+        DoublyLinkedList<String> names = new DoublyLinkedList<String>();
+        int index = 0;
+        names.add(users.getEntry(0).getChannelName());
+        for(int i = 1; i < users.getLength(); i++) {
+            for(int j = 0; j < names.getLength(); j++) {
+                if(names.getEntry(j).equals(users.getEntry(i).getChannelName())) {
+                    continue;
                 }
+                else if(!names.getEntry(j).equals(users.getEntry(i).getChannelName()) && 
+                    !names.contains(users.getEntry(i).getChannelName()))
+                names.add(index, users.getEntry(i).getChannelName());
+                index++;
+                testVals.add(users.getEntry(i));
             }
         }
-        return users;
+        
+
+        for(int i = 0; i < testVals.getLength() - 1; i++) {
+                if(users.getEntry(i).compareTo(users.getEntry(i + 1)) > 0) {
+                    User temp = users.getEntry(i);
+                    users.replace(i, users.getEntry(i+1));
+                    users.replace(i + 1, temp);
+            }
+        }
+        return testVals;
 
      
     }
@@ -106,15 +122,15 @@ public class SortingCalculator
         DoublyLinkedList<User> testVals = new DoublyLinkedList<User>();
         DoublyLinkedList<String> names = new DoublyLinkedList<String>();
         int index = 0;
-        names.add(users.getEntry(0).getUsername());
+        names.add(users.getEntry(0).getChannelName());
         for(int i = 1; i < users.getLength(); i++) {
             for(int j = 0; j < names.getLength(); j++) {
-                if(names.getEntry(j).equals(users.getEntry(i).getUsername())) {
+                if(names.getEntry(j).equals(users.getEntry(i).getChannelName())) {
                     continue;
                 }
-                else if(!names.getEntry(j).equals(users.getEntry(i).getUsername()) && 
-                    !names.contains(users.getEntry(i).getUsername()))
-                names.add(index, users.getEntry(i).getUsername());
+                else if(!names.getEntry(j).equals(users.getEntry(i).getChannelName()) && 
+                    !names.contains(users.getEntry(i).getChannelName()))
+                names.add(index, users.getEntry(i).getChannelName());
                 index++;
                 testVals.add(users.getEntry(i));
             }
