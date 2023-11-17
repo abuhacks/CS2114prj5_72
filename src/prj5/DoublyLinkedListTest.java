@@ -51,6 +51,49 @@ public class DoublyLinkedListTest
     {
         list.add(0, "Chicken1");
         assertEquals("Chicken1", list.getEntry(0));
+        list.add(0, "Chicken2");
+        assertEquals("Chicken2", list.getEntry(1));
+        list.add(0,"Chicken1.5");
+        assertEquals(3, list.getLength());
+       
+        assertEquals("Chicken1.5", list.getEntry(1));
+        Exception exc = null;
+        try {
+            list.add(4, "Chicken3");
+        }
+        catch(Exception e) {
+            exc = e;
+        }
+        assertTrue(exc instanceof IndexOutOfBoundsException);
+        
+    }
+    // ----------------------------------------------------------
+    /**
+     * This method tests the clear() method. 
+     */
+    public void testClear() {
+        list.clear();
+        assertEquals(0, list.getLength());
+        list.add("Chicken");
+        list.add("Chicken");
+        list.add("Chicken"); 
+        assertEquals(3, list.getLength());
+        list.clear();
+        assertEquals(0, list.getLength());
+    }
+    // ----------------------------------------------------------
+    /**
+     * This method tests the contains() method. 
+     */
+    public void testContains() {
+        assertFalse(list.contains("chicken"));
+        list.add("chicken1");
+        list.add("chicken2");
+        list.add("chicken3");
+        assertTrue(list.contains("chicken1"));
+        assertTrue(list.contains("chicken2"));
+        assertTrue(list.contains("chicken3"));
+        assertFalse(list.contains("chicken"));
     }
 
 }
