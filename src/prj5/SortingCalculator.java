@@ -67,33 +67,25 @@ public class SortingCalculator
 
         DoublyLinkedList<User> testVals = new DoublyLinkedList<User>();
         DoublyLinkedList<String> names = new DoublyLinkedList<String>();
-        int index = 0;
-        names.add(users.getEntry(0).getChannelName());
-        for (int i = 1; i < users.getLength(); i++)
+        for (int i = 0; i < users.getLength(); i++)
         {
-            for (int j = 0; j < names.getLength(); j++)
+            if (names.contains((users.getEntry(i).getChannelName())))
             {
-                if (names.getEntry(j)
-                    .equals(users.getEntry(i).getChannelName()))
-                {
-                    continue;
-                }
-                else if (!names.getEntry(j)
-                    .equals(users.getEntry(i).getChannelName())
-                    && !names.contains(users.getEntry(i).getChannelName()))
-                    names.add(index, users.getEntry(i).getChannelName());
-                index++;
-                testVals.add(users.getEntry(i));
+                continue;
             }
+            names.add(users.getEntry(i).getChannelName());
+            testVals.add(users.getEntry(i));
         }
 
-        for (int i = 0; i < testVals.getLength() - 1; i++)
+        for (int i = 0; i < testVals.getLength(); i++)
         {
-            if (users.getEntry(i).compareTo(users.getEntry(i + 1)) > 0)
-            {
-                User temp = users.getEntry(i);
-                users.replace(i, users.getEntry(i + 1));
-                users.replace(i + 1, temp);
+            for (int j = i+1; j < testVals.getLength(); j++) {
+                if (users.getEntry(i).compareTo(users.getEntry(j)) > 0)
+                {
+                    User temp = users.getEntry(i);
+                    users.replace(i, users.getEntry(j));
+                    users.replace(j, temp);
+                }
             }
         }
         return testVals;
