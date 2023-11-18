@@ -144,7 +144,7 @@ public class SortingCalculator
     // ----------------------------------------------------------
     /**
      * Sorts the data based on traditional rate.
-     * @return
+     * @return 
      */
     public DoublyLinkedList<User> sortByTraditionalRate() {
         DoublyLinkedList<User> testVals = new DoublyLinkedList<User>();
