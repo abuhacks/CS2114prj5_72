@@ -488,7 +488,7 @@ public class DoublyLinkedList<T>
     /**
      * This method compares DoublyLinkedList by the size of each list
      * 
-     * @param size
+     * @param other
      *            the size of the other DoublyLinkedList
      * @return int 1 if current has a larger size than other, negative 1 if
      *             other list had larger size, 0 if both are equal in size.
