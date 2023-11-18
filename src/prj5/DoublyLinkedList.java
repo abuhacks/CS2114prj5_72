@@ -4,8 +4,8 @@ import list.ListInterface;
 
 // -------------------------------------------------------------------------
 /**
- * Write a one-sentence summary of your class here. Follow it with additional
- * details about its purpose, what abstraction it represents, and how to use it.
+ * This is the DoublyLinkedList class, which implements the ListInterface and
+ * Comparable interfaces to create
  * 
  * @author jchen
  * @version Nov 14, 2023
@@ -444,7 +444,8 @@ public class DoublyLinkedList<T>
     @SuppressWarnings("unchecked")
     public boolean equals(Object object)
     {
-        if(object == null) {
+        if (object == null)
+        {
             return false;
         }
         if (this.getClass() == object.getClass())
@@ -472,11 +473,17 @@ public class DoublyLinkedList<T>
 
     // ----------------------------------------------------------
     /**
-     * This method compares two DoublyLinkedLists and it will rank a
-     * DoublyLinkedList higher or lower based on size.
+     * This method compares each node in a DoublyLinkedList, and it sorts the
+     * data based off the compareTo() method for the object stored in each node.
      */
+    public void insertionSort()
+    {
+        // will implement
+    }
+
+
     @Override
-    public int compareTo(T obj)
+    public int compareTo(T o)
     {
         // TODO Auto-generated method stub
         return 0;
