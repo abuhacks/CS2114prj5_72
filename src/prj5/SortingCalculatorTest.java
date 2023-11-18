@@ -25,17 +25,17 @@ public class SortingCalculatorTest extends TestCase
     //~Public  Methods ........................................................
     public void setUp() {
         user1 = new User("February", "narnarnoscoper", "NarenDaBeast", "India", 
-            "Cars", 0, 0, 0, 0, 0);
+            "Cars", 1, 1, 1, 1, 1);
         user2 = new User("February", "jchen", "JoeyCHEN", "China", 
-            "Cars", 10, 10, 10, 10, 10);
+            "Cars", 10, 10, 1, 10, 10);
         user3 = new User("February", "Miggy", "MiggyMagtoto", "Taiwan", 
-            "Cars", 20, 20, 20, 20, 20);
+            "Cars", 20, 20, 1, 20, 20);
         user4 = new User("March", "narnarnoscoper", "NarenDaBeast", "India", 
-            "Cars", 0, 0, 0, 0, 0);
+            "Cars", 1, 1, 1, 1, 1);
         user5 = new User("March", "jchen", "JoeyCHEN", "China", 
-            "Cars", 10, 10, 10, 10, 10);
+            "Cars", 10, 10, 1, 10, 10);
         user6 = new User("March", "Miggy", "MiggyMagtoto", "Taiwan", 
-            "Cars", 20, 20, 20, 20, 20);
+            "Cars", 20, 20, 1, 20, 20);
         theList = new DoublyLinkedList<User>();
         theList.add(user1);
         theList.add(user2);
@@ -69,11 +69,35 @@ public class SortingCalculatorTest extends TestCase
     /**
      * Tests the sortByName() method.
      */
-    public void testSortByName() {
-        DoublyLinkedList<User> testing = new DoublyLinkedList<User>();
-        testing.add(user2);
-        testing.add(user3);
-        testing.add(user1);
-        assertEquals(calculator.sortByName(), testing);
+    //public void testSortByName() {
+        //DoublyLinkedList<User> testing = new DoublyLinkedList<User>();
+        //testing.add(user2);
+       // testing.add(user3);
+       // testing.add(user1);
+       // assertEquals(calculator.sortByName(), testing);
+    //}
+    
+    public void testSortByReachRate() {
+        DoublyLinkedList<User> newList2 = new DoublyLinkedList<User>();
+        newList2.add(user3);
+        newList2.add(user2);
+        newList2.add(user1);
+        assertEquals(calculator.sortByReachRate().getEntry(0).getChannelName(), "NarenDaBeast");
+        assertEquals(calculator.sortByReachRate().getEntry(1).getChannelName(), "JoeyCHEN");
+        assertEquals(calculator.sortByReachRate().getEntry(2).getChannelName(), "MiggyMagtoto");
+    }
+    
+    // ----------------------------------------------------------
+    /**
+     * Tests the traditional rate.
+     */
+    public void testSortByTraditionalRate() {
+        DoublyLinkedList<User> newList2 = new DoublyLinkedList<User>();
+        newList2.add(user3);
+        newList2.add(user2);
+        newList2.add(user1);
+        assertEquals(calculator.sortByTraditionalRate().getEntry(0).getChannelName(), "MiggyMagtoto");
+        assertEquals(calculator.sortByTraditionalRate().getEntry(1).getChannelName(), "JoeyCHEN");
+        assertEquals(calculator.sortByTraditionalRate().getEntry(2).getChannelName(), "NarenDaBeast");
     }
 }

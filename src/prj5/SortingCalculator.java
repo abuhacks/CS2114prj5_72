@@ -87,7 +87,7 @@ public class SortingCalculator
      */
     public double getTraditionalRate(User user3) {
         for(int i = 0; i < users.getLength(); i++) {
-            if(users.getEntry(i).getUsername().equals(user3.getUsername())) {
+            if(users.getEntry(i).getChannelName().equals(user3.getChannelName()) && users.getEntry(i) != user3) {
                 user3.setComments(user3.getComments() + users.getEntry(i).getComments());
                 user3.setLikes(user3.getLikes() + users.getEntry(i).getLikes());
                 user3.setFollowers(user3.getFollowers() + users.getEntry(i).getFollowers());
@@ -104,13 +104,13 @@ public class SortingCalculator
      */
     public double getReachRate(User user3) {
         for(int i = 0; i < users.getLength(); i++) {
-            if(users.getEntry(i).getUsername().equals(user3.getUsername())) {
+            if(users.getEntry(i).getChannelName().equals(user3.getChannelName()) && users.getEntry(i) != user3) {
                 user3.setComments(user3.getComments() + users.getEntry(i).getComments());
                 user3.setLikes(user3.getLikes() + users.getEntry(i).getLikes());
                 user3.setFollowers(user3.getFollowers() + users.getEntry(i).getFollowers());
             }
         }
-        return ( (user3.getComments() + user3.getLikes())/ user3.getFollowers()) * 1.0;
+        return ( (user3.getComments() + user3.getLikes())/ user3.getViews()) * 100;
     }
     
     // ----------------------------------------------------------
@@ -121,26 +121,50 @@ public class SortingCalculator
     public DoublyLinkedList<User> sortByReachRate() {
         DoublyLinkedList<User> testVals = new DoublyLinkedList<User>();
         DoublyLinkedList<String> names = new DoublyLinkedList<String>();
-        int index = 0;
-        names.add(users.getEntry(0).getChannelName());
-        for(int i = 1; i < users.getLength(); i++) {
-            for(int j = 0; j < names.getLength(); j++) {
-                if(names.getEntry(j).equals(users.getEntry(i).getChannelName())) {
+        for(int i = 0; i < users.getLength(); i++) {
+                if(names.contains((users.getEntry(i).getChannelName()))) {
                     continue;
                 }
-                else if(!names.getEntry(j).equals(users.getEntry(i).getChannelName()) && 
-                    !names.contains(users.getEntry(i).getChannelName()))
-                names.add(index, users.getEntry(i).getChannelName());
-                index++;
+                names.add(users.getEntry(i).getChannelName());
                 testVals.add(users.getEntry(i));
-            }
         }
-        for(int i = 0; i < testVals.getLength()-1; i++) {
-            if(getReachRate(testVals.getEntry(i)) < getReachRate(testVals.getEntry(i+1))) {
-                User temp = testVals.getEntry(i);
-                testVals.replace(i, testVals.getEntry(i+1));
-                testVals.replace(i+1, temp);
+        for(int i = 0; i < testVals.getLength(); i++) {
+            for(int j = i+1; j < testVals.getLength(); j++) {
+                if(getReachRate(testVals.getEntry(i)) < getReachRate(testVals.getEntry(j))) {
+                    User temp = testVals.getEntry(i);
+                    testVals.replace(i, testVals.getEntry(j));
+                    testVals.replace(j, temp);
+                }
             }
+           
+        }
+        return testVals;
+    }
+    
+    // ----------------------------------------------------------
+    /**
+     * Sorts the data based on traditional rate.
+     * @return
+     */
+    public DoublyLinkedList<User> sortByTraditionalRate() {
+        DoublyLinkedList<User> testVals = new DoublyLinkedList<User>();
+        DoublyLinkedList<String> names = new DoublyLinkedList<String>();
+        for(int i = 0; i < users.getLength(); i++) {
+                if(names.contains((users.getEntry(i).getChannelName()))) {
+                    continue;
+                }
+                names.add(users.getEntry(i).getChannelName());
+                testVals.add(users.getEntry(i));
+        }
+        for(int i = 0; i < testVals.getLength(); i++) {
+            for(int j = i+1; j < testVals.getLength(); j++) {
+                if(getTraditionalRate(testVals.getEntry(i)) < getTraditionalRate(testVals.getEntry(j))) {
+                    User temp = testVals.getEntry(i);
+                    testVals.replace(i, testVals.getEntry(j));
+                    testVals.replace(j, temp);
+                }
+            }
+           
         }
         return testVals;
     }
