@@ -494,7 +494,7 @@ public class DoublyLinkedList<T>
      *             other list had larger size, 0 if both are equal in size.
      */
     @Override
-    public int compareTo(T size)
+    public int compareTo(T other)
     {
         return 0;
     }
