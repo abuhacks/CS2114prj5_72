@@ -35,6 +35,7 @@ public class InputFileReader {
      * 
      * @param file
      *            the given file
+     * @return DoublyLinkedList<User> which 
      */
     public DoublyLinkedList<User> readUserFile(String file) {
         Scanner inStream = IOHelper.createScanner(file);

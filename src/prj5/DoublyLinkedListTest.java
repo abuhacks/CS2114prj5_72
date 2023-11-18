@@ -120,26 +120,92 @@ public class DoublyLinkedListTest
 
     // ----------------------------------------------------------
     /**
-     * This method tests the remove() method.
+     * This method tests the getEntry() method.
      */
-    public void testRemove()
+    public void testGetEntry()
     {
         Exception exc = null;
         try {
-            list.remove(1);
+            list.getEntry(0);
+        }
+        catch(Exception e) {
+            exc = e;
+        }
+        assertTrue(exc instanceof IndexOutOfBoundsException);
+       
+        list.add("chicken");
+        try {
+            list.getEntry(2);
         }
         catch(Exception e) {
             exc = e;
         }
         assertTrue(exc instanceof IndexOutOfBoundsException);
         try {
-            list.remove(-1);
+            list.getEntry(-1);
         }
         catch(Exception e) {
             exc = e;
         }
         assertTrue(exc instanceof IndexOutOfBoundsException);
         
+        list.add("chicken2");
+        list.add("chicken3");
+        list.add("chicken4");
+        assertEquals("chicken", list.getEntry(0));
+        assertEquals("chicken2", list.getEntry(1));
+        assertEquals("chicken3", list.getEntry(2));
+        assertEquals("chicken4", list.getEntry(3));
+        
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * This method tests the getLength() method.
+     */
+    public void testGetLength()
+    {
+
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * This method tests the isEmpty() method.
+     */
+    public void testIsEmpty()
+    {
+
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * This method tests the remove() method.
+     */
+    public void testRemove()
+    {
+        Exception exc = null;
+        try
+        {
+            list.remove(1);
+        }
+        catch (Exception e)
+        {
+            exc = e;
+        }
+        assertTrue(exc instanceof IndexOutOfBoundsException);
+        try
+        {
+            list.remove(-1);
+        }
+        catch (Exception e)
+        {
+            exc = e;
+        }
+        assertTrue(exc instanceof IndexOutOfBoundsException);
+
         list.add("chicken1");
         list.add("chicken1");
         list.add("chicken3");
@@ -162,17 +228,21 @@ public class DoublyLinkedListTest
     public void testReplace()
     {
         Exception exc = null;
-        try {
+        try
+        {
             list.replace(1, "chicken");
         }
-        catch(Exception e) {
+        catch (Exception e)
+        {
             exc = e;
         }
         assertTrue(exc instanceof IndexOutOfBoundsException);
-        try {
+        try
+        {
             list.replace(-1, "chicken");
         }
-        catch(Exception e) {
+        catch (Exception e)
+        {
             exc = e;
         }
         assertTrue(exc instanceof IndexOutOfBoundsException);
@@ -195,7 +265,14 @@ public class DoublyLinkedListTest
      */
     public void testToArray()
     {
-        
+        list.add("chicken1");
+        list.add("chicken2");
+        list.add("chicken3");
+        Object[] array = list.toArray();
+        assertEquals(3, array.length);
+        assertEquals("chicken1", array[0]);
+        assertEquals("chicken2", array[1]);
+        assertEquals("chicken3", array[2]);
     }
 
 
@@ -205,7 +282,12 @@ public class DoublyLinkedListTest
      */
     public void testToString()
     {
-
+        assertEquals("{}", list.toString());
+        list.add("chicken");
+        assertEquals("{chicken}", list.toString());
+        list.add("chicken2");
+        list.add("chicken3");
+        assertEquals("{chicken, chicken2, chicken3}", list.toString());
     }
 
 
@@ -213,9 +295,20 @@ public class DoublyLinkedListTest
     /**
      * This method tests the equals() method.
      */
+    @SuppressWarnings("unlikely-arg-type")
     public void testEquals()
     {
-
+        DoublyLinkedList<String> list2 = new DoublyLinkedList<String>();
+        list.add("chicken");
+        list2.add("chicken");
+        assertTrue(list.equals(list2));
+        assertTrue(list.equals(list));
+        assertFalse(list.equals(null));
+        list2.add("chicken");
+        assertFalse(list.equals(list2));
+        list.add("beef");
+        assertFalse(list.equals(list2));
+        assertFalse(list.equals(1));
     }
 
 
@@ -225,7 +318,7 @@ public class DoublyLinkedListTest
      */
     public void testCompareTo()
     {
-
+       
     }
 
 }

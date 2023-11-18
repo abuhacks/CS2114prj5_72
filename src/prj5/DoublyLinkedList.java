@@ -34,25 +34,6 @@ public class DoublyLinkedList<T>
         }
 
 
-        // ----------------------------------------------------------
-        /**
-         * Create a new Node object.
-         * 
-         * @param data
-         *            the data an object holds
-         * @param next
-         *            the next Node of this Node object
-         * @param prev
-         *            the previous Node of this Node object
-         */
-        public Node(T data, Node<T> next, Node<T> prev)
-        {
-            this.data = data;
-            this.next = next;
-            this.prev = prev;
-        }
-
-
         // ~Public Methods .....................................................
         // ----------------------------------------------------------
         /**
@@ -410,7 +391,7 @@ public class DoublyLinkedList<T>
     {
         Object[] entries = new Object[getLength()];
         Node<T> current = firstNode;
-        for (int i = 0; i < this.getLength(); i++)
+        for (int i = 0; i < getLength(); i++)
         {
             entries[i] = current.getData();
             current = current.getNext();
@@ -429,17 +410,24 @@ public class DoublyLinkedList<T>
     {
         StringBuilder entries = new StringBuilder();
         entries.append("{");
-        Node<T> current = firstNode;
-        while (current != null)
+        if (getLength() > 0)
         {
-            entries.append(current.getData());
-            if (current != lastNode)
+            Node<T> current = firstNode;
+            while (current != null)
             {
-                entries.append(", ");
+                entries.append(current.getData());
+                if (current != lastNode)
+                {
+                    entries.append(", ");
+                }
+                current = current.getNext();
             }
-            current = current.getNext();
+            entries.append("}");
         }
-        entries.append("}");
+        else
+        {
+            entries.append("}");
+        }
         return entries.toString();
     }
 
@@ -456,7 +444,10 @@ public class DoublyLinkedList<T>
     @SuppressWarnings("unchecked")
     public boolean equals(Object object)
     {
-        if (this.getClass() == object.getClass() && object != null)
+        if(object == null) {
+            return false;
+        }
+        if (this.getClass() == object.getClass())
         {
             DoublyLinkedList<T> obj = (DoublyLinkedList<T>)object;
             if (this.getLength() == obj.getLength())
