@@ -63,7 +63,7 @@ public class SortingCalculator
      * @return the sorted list.
      */
     
-    /*
+    
     public DoublyLinkedList<User> sortByName()
     {
 
@@ -79,7 +79,7 @@ public class SortingCalculator
             testVals.add(users.getEntry(i));
         }
 
-        for (int i = 0; i < testVals.getLength(); i++)
+        for (int i = 0; i < testVals.getLength() - 1; i++)
         {
             for (int j = i + 1; j < testVals.getLength(); j++)
             {
@@ -94,7 +94,7 @@ public class SortingCalculator
         return testVals;
 
     }
-    */
+    
 
 
     // ----------------------------------------------------------
