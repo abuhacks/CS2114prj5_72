@@ -62,6 +62,8 @@ public class SortingCalculator
      * 
      * @return the sorted list.
      */
+    
+    /*
     public DoublyLinkedList<User> sortByName()
     {
 
@@ -92,6 +94,7 @@ public class SortingCalculator
         return testVals;
 
     }
+    */
 
 
     // ----------------------------------------------------------
