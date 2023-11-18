@@ -97,7 +97,7 @@ public class SortingCalculatorTest extends TestCase
         newList2.add(user2);
         newList2.add(user1);
         assertEquals(calculator.sortByTraditionalRate().getEntry(0).getChannelName(), "MiggyMagtoto");
-        assertEquals(calculator.sortByTraditionalRate().getEntry(1).getChannelName(), "JoeyCHEN");
+        assertEquals(calculator.sortByTraditionalRate().getEntry(1).getChannelName(), "MiggyMagtoto");
         assertEquals(calculator.sortByTraditionalRate().getEntry(2).getChannelName(), "NarenDaBeast");
     }
 }

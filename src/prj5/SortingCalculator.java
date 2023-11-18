@@ -1,4 +1,8 @@
 package prj5;
+
+import java.util.HashMap;
+import java.util.Map;
+
 // -------------------------------------------------------------------------
 /**
  *  Used for sorting the information based off certain values.
@@ -86,14 +90,23 @@ public class SortingCalculator
      * @return the sorted list.
      */
     public double getTraditionalRate(User user3) {
+        Map<String, Integer> newMap = new HashMap<String, Integer>();
+        newMap.put("January", 1);
+        newMap.put("February", 2);
+        newMap.put("March", 3);
+        newMap.put("April", 4);
+        User temp = user3;
         for(int i = 0; i < users.getLength(); i++) {
             if(users.getEntry(i).getChannelName().equals(user3.getChannelName()) && users.getEntry(i) != user3) {
                 user3.setComments(user3.getComments() + users.getEntry(i).getComments());
                 user3.setLikes(user3.getLikes() + users.getEntry(i).getLikes());
-                user3.setFollowers(user3.getFollowers() + users.getEntry(i).getFollowers());
+                if(newMap.get(users.getEntry(i).getMonth()) > newMap.get(temp.getMonth())) {
+                    temp = users.getEntry(i);
+                }
             }
+            
         }
-        return ( (user3.getComments() + user3.getLikes())/ user3.getFollowers()) * 100;
+        return ( (user3.getComments() + user3.getLikes())/ temp.getFollowers()) * 100;
     }
     
     // ----------------------------------------------------------
@@ -144,7 +157,7 @@ public class SortingCalculator
     // ----------------------------------------------------------
     /**
      * Sorts the data based on traditional rate.
-     * @return
+     * @return the sorted list.
      */
     public DoublyLinkedList<User> sortByTraditionalRate() {
         DoublyLinkedList<User> testVals = new DoublyLinkedList<User>();
