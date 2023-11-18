@@ -9,6 +9,8 @@ import list.ListInterface;
  * 
  * @author jchen
  * @version Nov 14, 2023
+ * @param <T>
+ *            genric object for the data of each node in DoublyLinkedList object
  */
 public class DoublyLinkedList<T>
     implements ListInterface<T>, Comparable<T>
@@ -482,11 +484,18 @@ public class DoublyLinkedList<T>
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * This method compares DoublyLinkedList by the size of each list
+     * 
+     * @param size
+     *            the size of the other DoublyLinkedList
+     * @return int 1 if current has a larger size than other, negative 1 if
+     *             other list had larger size, 0 if both are equal in size.
+     */
     @Override
-    public int compareTo(T o)
+    public int compareTo(T size)
     {
-        // TODO Auto-generated method stub
         return 0;
     }
-
 }

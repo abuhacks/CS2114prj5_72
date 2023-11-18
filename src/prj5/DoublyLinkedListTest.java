@@ -125,30 +125,36 @@ public class DoublyLinkedListTest
     public void testGetEntry()
     {
         Exception exc = null;
-        try {
+        try
+        {
             list.getEntry(0);
         }
-        catch(Exception e) {
+        catch (Exception e)
+        {
             exc = e;
         }
         assertTrue(exc instanceof IndexOutOfBoundsException);
-       
+
         list.add("chicken");
-        try {
+        try
+        {
             list.getEntry(2);
         }
-        catch(Exception e) {
+        catch (Exception e)
+        {
             exc = e;
         }
         assertTrue(exc instanceof IndexOutOfBoundsException);
-        try {
+        try
+        {
             list.getEntry(-1);
         }
-        catch(Exception e) {
+        catch (Exception e)
+        {
             exc = e;
         }
         assertTrue(exc instanceof IndexOutOfBoundsException);
-        
+
         list.add("chicken2");
         list.add("chicken3");
         list.add("chicken4");
@@ -156,7 +162,7 @@ public class DoublyLinkedListTest
         assertEquals("chicken2", list.getEntry(1));
         assertEquals("chicken3", list.getEntry(2));
         assertEquals("chicken4", list.getEntry(3));
-        
+
     }
 
 
@@ -166,7 +172,11 @@ public class DoublyLinkedListTest
      */
     public void testGetLength()
     {
-
+        assertEquals(0, list.getLength());
+        list.add("chicken");
+        assertEquals(1, list.getLength());
+        list.remove(0);
+        assertEquals(0, list.getLength());
     }
 
 
@@ -176,7 +186,11 @@ public class DoublyLinkedListTest
      */
     public void testIsEmpty()
     {
-
+        assertTrue(list.isEmpty());
+        list.add("chicken");
+        assertFalse(list.isEmpty());
+        list.remove(0);
+        assertTrue(list.isEmpty());
     }
 
 
@@ -309,16 +323,6 @@ public class DoublyLinkedListTest
         list.add("beef");
         assertFalse(list.equals(list2));
         assertFalse(list.equals(1));
-    }
-
-
-    // ----------------------------------------------------------
-    /**
-     * This method tests the compareTo() method.
-     */
-    public void testCompareTo()
-    {
-       
     }
 
 }
