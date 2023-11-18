@@ -137,11 +137,12 @@ public class SortingCalculatorTest
         assertEquals(calculator.getList(), theList);
     }
 
-
     // ----------------------------------------------------------
     /**
      * Tests the sortByName() method.
      */
+
+
     // public void testSortByName() {
     // DoublyLinkedList<User> testing = new DoublyLinkedList<User>();
     // testing.add(user2);
