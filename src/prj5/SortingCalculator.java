@@ -135,7 +135,7 @@ public class SortingCalculator
     /**
      * Gets the reach rate of a user.
      * 
-     * @param user3
+     * @param user3 the user to input
      * @return the reach rate.
      */
     public double getReachRate(User user3)

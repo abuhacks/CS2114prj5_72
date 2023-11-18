@@ -125,6 +125,13 @@ public class SortingCalculatorTest
             20);
         calculator.addToList(user7);
         assertTrue(theList.contains(user7));
+        DoublyLinkedList<User> testCase = new DoublyLinkedList<User>();
+        testCase.add(user4);
+        testCase.add(user5);
+        testCase.add(user6);
+        assertTrue(testCase.contains(user4));
+        assertTrue(testCase.contains(user5));
+        assertTrue(testCase.contains(user6));
     }
 
 
@@ -134,6 +141,10 @@ public class SortingCalculatorTest
      */
     public void testGetList()
     {
+        assertEquals(calculator.getList(), theList);
+        theList.add(user4);
+        theList.add(user5);
+        theList.add(user6);
         assertEquals(calculator.getList(), theList);
     }
 
@@ -190,5 +201,8 @@ public class SortingCalculatorTest
         assertEquals(
             calculator.sortByTraditionalRate().getEntry(2).getChannelName(),
             "NarenDaBeast");
+        newList2.add(user4);
+        newList2.add(user5);
+        newList2.add(user6);
     }
 }

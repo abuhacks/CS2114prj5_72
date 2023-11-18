@@ -18,6 +18,9 @@ public class UserTest
     // ~ Constructors ..........................................................
 
     // ~Public Methods ........................................................
+    /**
+     * Sets up the test values.
+     */
     public void setUp()
     {
         newUser = new User(
