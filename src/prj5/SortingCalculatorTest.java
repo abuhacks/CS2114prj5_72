@@ -4,8 +4,7 @@ import student.TestCase;
 
 // -------------------------------------------------------------------------
 /**
- * Write a one-sentence summary of your class here. Follow it with additional
- * details about its purpose, what abstraction it represents, and how to use it.
+ * Sorting test class to test the sorting calcualtor.
  * 
  * @author naren
  * @version Nov 16, 2023
@@ -150,7 +149,9 @@ public class SortingCalculatorTest
     // testing.add(user1);
     // assertEquals(calculator.sortByName(), testing);
     // }
-
+    /**
+     * Tests the sortByReach() method.
+     */
     public void testSortByReachRate()
     {
         DoublyLinkedList<User> newList2 = new DoublyLinkedList<User>();

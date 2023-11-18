@@ -4,7 +4,7 @@ import student.TestCase;
 
 // -------------------------------------------------------------------------
 /**
- * Tests the User class.
+ * Tests the User class for faults.
  * 
  * @author naren
  * @version Nov 16, 2023
