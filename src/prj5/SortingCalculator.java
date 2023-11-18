@@ -79,15 +79,15 @@ public class SortingCalculator
             testVals.add(users.getEntry(i));
         }
 
-        for (int i = 0; i < testVals.getLength() - 1; i++)
+        for (int i = 0; i < testVals.getLength(); i++)
         {
             for (int j = i + 1; j < testVals.getLength(); j++)
             {
-                if (users.getEntry(i).compareTo(users.getEntry(j)) > 0)
+                if (testVals.getEntry(i).compareTo(testVals.getEntry(j)) > 0)
                 {
-                    User temp = users.getEntry(i);
-                    users.replace(i, users.getEntry(j));
-                    users.replace(j, temp);
+                    User temp = testVals.getEntry(i);
+                    testVals.replace(i, users.getEntry(j));
+                    testVals.replace(j, temp);
                 }
             }
         }
@@ -179,7 +179,7 @@ public class SortingCalculator
             names.add(users.getEntry(i).getChannelName());
             testVals.add(users.getEntry(i));
         }
-        for (int i = 0; i < testVals.getLength(); i++)
+        for (int i = 0; i < testVals.getLength() - 1; i++)
         {
             for (int j = i + 1; j < testVals.getLength(); j++)
             {
