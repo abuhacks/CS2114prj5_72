@@ -255,8 +255,10 @@ public class User
         return channelName.compareTo(o.channelName);
     }
 
+
     /**
      * Returns a string.
+     * 
      * @return it in a form of a string.
      */
     public String toString()

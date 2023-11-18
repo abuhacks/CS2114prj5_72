@@ -79,7 +79,8 @@ public class SortingCalculator
 
         for (int i = 0; i < testVals.getLength(); i++)
         {
-            for (int j = i+1; j < testVals.getLength(); j++) {
+            for (int j = i + 1; j < testVals.getLength(); j++)
+            {
                 if (users.getEntry(i).compareTo(users.getEntry(j)) > 0)
                 {
                     User temp = users.getEntry(i);
