@@ -158,32 +158,30 @@ public class SortingCalculator
      *            user to be checked
      * @return the sorted list.
      */
+    @SuppressWarnings("cast")
     public double getTraditionalRate(User user3)
     {
         Map<String, Integer> newMap = new HashMap<String, Integer>();
         newMap.put("January", 1);
         newMap.put("February", 2);
         newMap.put("March", 3);
-        
-
+       
+        double tempComments = user3.getComments();
+        double tempLikes = user3.getLikes();
         User temp = user3;
-        for (int i = 0; i < users.getLength(); i++)
-        {
-            if (users.getEntry(i).getChannelName()
-                .equals(user3.getChannelName()) && users.getEntry(i) != user3)
-            {
-                user3.setComments(
-                    user3.getComments() + users.getEntry(i).getComments());
-                user3.setLikes(user3.getLikes() + users.getEntry(i).getLikes());
-                if (newMap.get(temp.getMonth()) < newMap
-                    .get(users.getEntry(i).getMonth()))
-                {
+
+        for (int i = 0; i < users.getLength(); i++) {
+            if (users.getEntry(i).getChannelName().equals(user3.getChannelName()) && users.getEntry(i) != user3) {
+                tempComments += users.getEntry(i).getComments();
+                tempLikes += users.getEntry(i).getLikes();
+
+                if (newMap.get(temp.getMonth()) < newMap.get(users.getEntry(i).getMonth())) {
                     temp = users.getEntry(i);
                 }
             }
         }
-        return ((user3.getComments() + user3.getLikes())
-            / (double)temp.getFollowers()) * 100;
+
+        return ((tempComments + tempLikes) / (double) temp.getFollowers()) * 100;
     }
 
 
@@ -197,21 +195,19 @@ public class SortingCalculator
      */
     public double getReachRate(User user3)
     {
-        int totalComments = user3.getComments();
-        int totalLikes = user3.getLikes();
-        int totalViews = user3.getViews();
+        double totalComments = user3.getComments();
+        double totalLikes = user3.getLikes();
+        double totalViews = user3.getViews();
 
-        for (int i = 0; i < users.getLength(); i++)
-        {
-            if (users.getEntry(i).getChannelName()
-                .equals(user3.getChannelName()) && users.getEntry(i) != user3)
-            {
+        for (int i = 0; i < users.getLength(); i++) {
+            if (users.getEntry(i).getChannelName().equals(user3.getChannelName()) && users.getEntry(i) != user3) {
                 totalComments += users.getEntry(i).getComments();
                 totalLikes += users.getEntry(i).getLikes();
                 totalViews += users.getEntry(i).getViews();
             }
         }
-        return ((totalComments + totalLikes) / (double) totalViews) * 100;
+
+        return ((totalComments + totalLikes) / totalViews) * 100;
     }
 
 
