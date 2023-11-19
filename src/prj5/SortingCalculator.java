@@ -136,7 +136,7 @@ public class SortingCalculator
         {
             for (int j = i + 1; j < testVals.getLength(); j++)
             {
-                if (testVals.getEntry(i).compareTo(testVals.getEntry(j)) > 0)
+                if (testVals.getEntry(i).getChannelName().compareToIgnoreCase(testVals.getEntry(j).getChannelName()) > 0)
                 {
                     User temp = testVals.getEntry(i);
                     testVals.replace(i, testVals.getEntry(j));
