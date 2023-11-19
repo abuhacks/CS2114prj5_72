@@ -155,12 +155,10 @@ public class SortingCalculator
             }
         }
 
-        // Adding user3's metrics as well
         totalComments += user3.getComments();
         totalLikes += user3.getLikes();
         totalViews += user3.getViews();
 
-        // Calculate reach rate (comments + likes) / views * 100
         return ((totalComments + totalLikes) / (double) totalViews) * 100;
     }
 
