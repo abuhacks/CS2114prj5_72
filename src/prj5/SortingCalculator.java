@@ -197,9 +197,9 @@ public class SortingCalculator
      */
     public double getReachRate(User user3)
     {
-        double totalComments = user3.getComments();
-        double totalLikes = user3.getLikes();
-        double totalViews = user3.getViews();
+        int totalComments = user3.getComments();
+        int totalLikes = user3.getLikes();
+        int totalViews = user3.getViews();
 
         for (int i = 0; i < users.getLength(); i++)
         {
@@ -211,7 +211,7 @@ public class SortingCalculator
                 totalViews += users.getEntry(i).getViews();
             }
         }
-        return ((totalComments + totalLikes) / totalViews) * 100;
+        return ((totalComments + totalLikes) / (double) totalViews) * 100;
     }
 
 
