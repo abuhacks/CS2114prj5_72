@@ -175,11 +175,11 @@ public class SortingCalculator
             names.add(users.getEntry(i).getChannelName());
             testVals.add(users.getEntry(i));
         }
-        for (int i = 0; i < testVals.getLength() - 1; i++)
+        for (int i = 0; i < testVals.getLength(); i++)
         {
             for (int j = 0; j < testVals.getLength() - i - 1; j++)
             {
-                if (getReachRate(testVals.getEntry(j)) < getReachRate(
+                if (getReachRate(testVals.getEntry(i)) < getReachRate(
                     testVals.getEntry(j + 1)))
                 {
                     User temp = testVals.getEntry(j);
