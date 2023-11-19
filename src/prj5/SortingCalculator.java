@@ -114,12 +114,7 @@ public class SortingCalculator
                 user3.setComments(
                     user3.getComments() + users.getEntry(i).getComments());
                 user3.setLikes(user3.getLikes() + users.getEntry(i).getLikes());
-                Months month1 = Months.valueOf(users.getEntry(i).getMonth());
-                Months month2 = Months.valueOf(temp.getMonth());
-                if(month1.ordinal() > month2.ordinal()) 
-                {
-                    temp = users.getEntry(i);
-                }
+                
             }
         }
         return ((user3.getComments() + user3.getLikes())
