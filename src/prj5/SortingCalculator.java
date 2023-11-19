@@ -234,14 +234,14 @@ public class SortingCalculator
         }
         for (int i = 0; i < testVals.getLength(); i++)
         {
-            for (int j = 0; j < testVals.getLength() - i - 1; j++)
+            for (int j = i + 1; j < testVals.getLength(); j++)
             {
                 if (getReachRate(testVals.getEntry(i)) < getReachRate(
-                    testVals.getEntry(j + 1)))
+                    testVals.getEntry(j)))
                 {
                     User temp = testVals.getEntry(j);
-                    testVals.replace(j, testVals.getEntry(j + 1));
-                    testVals.replace(j + 1, temp);
+                    testVals.replace(j, testVals.getEntry(i));
+                    testVals.replace(j, temp);
                 }
             }
         }
