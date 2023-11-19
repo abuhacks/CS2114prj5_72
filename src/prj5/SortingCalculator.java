@@ -112,6 +112,7 @@ public class SortingCalculator
         newMap.put("February", 2);
         newMap.put("March", 3);
         newMap.put("April", 4);
+        newMap.put("May", 5);
         User temp = user3;
         for (int i = 0; i < users.getLength(); i++)
         {
@@ -129,7 +130,7 @@ public class SortingCalculator
             }
 
         }
-        return ((user3.getComments() + user3.getLikes()) / temp.getFollowers())
+        return ((user3.getComments() + user3.getLikes()) / (double) temp.getFollowers())
             * 100;
     }
 
@@ -143,9 +144,9 @@ public class SortingCalculator
      */
     public double getReachRate(User user3)
     {
-        int totalComments = 0;
-        int totalLikes = 0;
-        int totalViews = 0;
+        double totalComments = 0;
+        double totalLikes = 0;
+        double totalViews = 0;
 
         for (int i = 0; i < users.getLength(); i++) {
             if (users.getEntry(i).getChannelName().equals(user3.getChannelName())) {
@@ -156,7 +157,7 @@ public class SortingCalculator
         }
 
 
-        return ((totalComments + totalLikes) / (double) totalViews) * 100;
+        return ((totalComments + totalLikes) / totalViews) * 100;
     }
 
 
