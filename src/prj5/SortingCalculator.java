@@ -87,7 +87,7 @@ public class SortingCalculator
                 if (testVals.getEntry(i).compareTo(testVals.getEntry(j)) > 0)
                 {
                     User temp = testVals.getEntry(i);
-                    testVals.replace(i, users.getEntry(j));
+                    testVals.replace(i, testVals.getEntry(j));
                     testVals.replace(j, temp);
                 }
             }
