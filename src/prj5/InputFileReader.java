@@ -16,7 +16,6 @@ public class InputFileReader {
     // ~ Fields ................................................................
     @SuppressWarnings("unused")
     private DoublyLinkedList<User> dLList;
-    private SortingCalculator newTemp = new SortingCalculator(dLList);
     // ~ Constructors ..........................................................
     /**
      * creates a new InputFileReader object
