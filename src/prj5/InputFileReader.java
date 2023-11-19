@@ -149,8 +149,6 @@ public class InputFileReader
      * @return the list.
      */
 
-    
-
     public DoublyLinkedList<User> getList()
     {
         return dLList;
