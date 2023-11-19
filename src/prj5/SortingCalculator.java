@@ -62,8 +62,7 @@ public class SortingCalculator
      * 
      * @return the sorted list.
      */
-    
-    
+
     public DoublyLinkedList<User> sortByName()
     {
 
@@ -94,7 +93,6 @@ public class SortingCalculator
         return testVals;
 
     }
-    
 
 
     // ----------------------------------------------------------
@@ -107,12 +105,6 @@ public class SortingCalculator
      */
     public double getTraditionalRate(User user3)
     {
-        Map<String, Integer> newMap = new HashMap<String, Integer>();
-        newMap.put("January", 1);
-        newMap.put("February", 2);
-        newMap.put("March", 3);
-        newMap.put("April", 4);
-        newMap.put("May", 5);
         User temp = user3;
         for (int i = 0; i < users.getLength(); i++)
         {
@@ -122,16 +114,16 @@ public class SortingCalculator
                 user3.setComments(
                     user3.getComments() + users.getEntry(i).getComments());
                 user3.setLikes(user3.getLikes() + users.getEntry(i).getLikes());
-                if (newMap.get(users.getEntry(i).getMonth()) > newMap
-                    .get(temp.getMonth()))
+                Months month1 = Months.valueOf(users.getEntry(i).getMonth());
+                Months month2 = Months.valueOf(temp.getMonth());
+                if(month1.ordinal() > month2.ordinal()) 
                 {
                     temp = users.getEntry(i);
                 }
             }
-
         }
-        return ((user3.getComments() + user3.getLikes()) / (double) temp.getFollowers())
-            * 100;
+        return ((user3.getComments() + user3.getLikes())
+            / (double)temp.getFollowers()) * 100;
     }
 
 
@@ -139,7 +131,8 @@ public class SortingCalculator
     /**
      * Gets the reach rate of a user.
      * 
-     * @param user3 the user to input
+     * @param user3
+     *            the user to input
      * @return the reach rate.
      */
     public double getReachRate(User user3)
@@ -148,14 +141,16 @@ public class SortingCalculator
         double totalLikes = 0;
         double totalViews = 0;
 
-        for (int i = 0; i < users.getLength(); i++) {
-            if (users.getEntry(i).getChannelName().equals(user3.getChannelName())) {
+        for (int i = 0; i < users.getLength(); i++)
+        {
+            if (users.getEntry(i).getChannelName()
+                .equals(user3.getChannelName()))
+            {
                 totalComments += users.getEntry(i).getComments();
                 totalLikes += users.getEntry(i).getLikes();
                 totalViews += users.getEntry(i).getViews();
             }
         }
-
 
         return ((totalComments + totalLikes) / totalViews) * 100;
     }
@@ -180,9 +175,13 @@ public class SortingCalculator
             names.add(users.getEntry(i).getChannelName());
             testVals.add(users.getEntry(i));
         }
-        for (int i = 0; i < testVals.getLength() - 1; i++) {
-            for (int j = 0; j < testVals.getLength() - i - 1; j++) {
-                if (getReachRate(testVals.getEntry(j)) < getReachRate(testVals.getEntry(j + 1))) {
+        for (int i = 0; i < testVals.getLength() - 1; i++)
+        {
+            for (int j = 0; j < testVals.getLength() - i - 1; j++)
+            {
+                if (getReachRate(testVals.getEntry(j)) < getReachRate(
+                    testVals.getEntry(j + 1)))
+                {
                     User temp = testVals.getEntry(j);
                     testVals.replace(j, testVals.getEntry(j + 1));
                     testVals.replace(j + 1, temp);

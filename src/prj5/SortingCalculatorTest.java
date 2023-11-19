@@ -163,6 +163,7 @@ public class SortingCalculatorTest
         assertEquals(calculator.sortByName(), testing);
     }
 
+
     /**
      * Tests the sortByReach() method.
      */
@@ -181,7 +182,7 @@ public class SortingCalculatorTest
         assertEquals(
             calculator.sortByReachRate().getEntry(2).getChannelName(),
             "MiggyMagtoto");
-        
+
     }
 
 
@@ -208,5 +209,5 @@ public class SortingCalculatorTest
         newList2.add(user5);
         newList2.add(user6);
     }
-    
+
 }
