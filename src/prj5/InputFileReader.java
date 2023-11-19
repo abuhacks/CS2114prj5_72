@@ -122,6 +122,7 @@ public class InputFileReader {
     }
     /**
      * Outputs the value.
+     * @return the list.
      */
     
     /*
@@ -145,5 +146,8 @@ public class InputFileReader {
         
     }
     */
+    public DoublyLinkedList<User> getList() {
+        return dLList;
+    }
 
 }
