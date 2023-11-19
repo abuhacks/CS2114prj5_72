@@ -478,9 +478,34 @@ public class DoublyLinkedList<T>
      * This method compares each node in a DoublyLinkedList, and it sorts the
      * data based off the compareTo() method for the object stored in each node.
      */
+    @SuppressWarnings("unchecked")
     public void insertionSort()
     {
-        // will implement
+        Node<T> sort = firstNode;
+        if (getLength() >= 2)
+        {
+            Node<T> unsort = firstNode.getNext();
+            while (unsort != null)
+            {
+                Node<T> insert = unsort;
+                unsort = unsort.getNext();
+                Node<T> current = firstNode;
+                Node<T> previous = firstNode;
+                while (current != null && ((Comparable<T>)insert.getData())
+                    .compareTo(current.getData()) > 0)
+                {
+                    previous = current;
+                    current = current.getNext();
+                    current.setPrevious(previous);
+                }
+                if (previous == null)
+                {
+                    insert.setNext(sort);
+                    sort.setPrevious(insert);
+                    sort = insert;
+                }
+            }
+        }
     }
 
 
