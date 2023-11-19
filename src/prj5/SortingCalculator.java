@@ -174,8 +174,8 @@ public class SortingCalculator
                 user3.setComments(
                     user3.getComments() + users.getEntry(i).getComments());
                 user3.setLikes(user3.getLikes() + users.getEntry(i).getLikes());
-                if(user3.getMonth().compareByMonth(users.getEntry(i).getMonth()) > 0) {
-                    
+                if(newMap.get(temp.getMonth()) < newMap.get(users.getEntry(i).getMonth())) {
+                    temp = users.getEntry(i);
                 }
             }
         }

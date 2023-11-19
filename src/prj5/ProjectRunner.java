@@ -16,7 +16,7 @@ public class ProjectRunner
     // ----------------------------------------------------------
     /**
      * This runs the entire program.
-     * @param args to check
+     * @param args
      * @throws IOException
      */
     public static void main(String[] args)
