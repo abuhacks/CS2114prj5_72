@@ -57,9 +57,12 @@ public class ProjectRunner
             for (int j = 0; j < newList2.getLength(); j++)
             {
                 System.out.println(newList2.getEntry(j).getChannelName());
-                System.out.println(
-                    "reach: " + decimal
-                        .format(newTemp.getReachRate(newList2.getEntry(j))));
+                String letter = "reach: " + decimal
+                    .format(newTemp.getReachRate(newList2.getEntry(j)));
+                if(newTemp.getReachRate(newList2.getEntry(j)) == 0) {
+                    letter = "reach: N/A";
+                }
+                System.out.println(letter);
                 if (j == newList2.getLength() - 1)
                 {
                     System.out.print("==========");
