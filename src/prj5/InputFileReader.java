@@ -16,6 +16,7 @@ public class InputFileReader {
     // ~ Fields ................................................................
     @SuppressWarnings("unused")
     private DoublyLinkedList<User> dLList;
+
     // ~ Constructors ..........................................................
     /**
      * creates a new InputFileReader object
@@ -25,8 +26,8 @@ public class InputFileReader {
      */
     public InputFileReader(String input) {
         dLList = readUserFile(input);
-        //SortingCalculator newCalc = new SortingCalculator(dLList);
-        //this.output();
+        // SortingCalculator newCalc = new SortingCalculator(dLList);
+        // this.output();
     }
 
 
@@ -36,7 +37,7 @@ public class InputFileReader {
      * 
      * @param file
      *            the given file
-     * @return DoublyLinkedList<User> which 
+     * @return DoublyLinkedList<User> which
      */
     public DoublyLinkedList<User> readUserFile(String file) {
         Scanner inStream = IOHelper.createScanner(file);
@@ -120,12 +121,38 @@ public class InputFileReader {
         }
         return true;
     }
+
+
     /**
      * Outputs the value.
+     * 
      * @return the list.
      */
-    
-   
+
+    /*
+     * private void output() {
+     * DoublyLinkedList<User> newList = newTemp.sortByName();
+     * DoublyLinkedList<User> newList2 = newTemp.sortByReachRate();
+     * for(int i = 0; i < newList.getLength(); i++) {
+     * System.out.println(newList.getEntry(i).getChannelName());
+     * System.out.println("traditional: " +
+     * newTemp.getTraditionalRate(newList.getEntry(i)));
+     * System.out.println("==========");
+     * if(i == newList.getLength() - 1) {
+     * System.out.println("**********");
+     * System.out.println("**********");
+     * }
+     * }
+     * for(int j = 0; j < newList2.getLength(); j++) {
+     * System.out.println(newList.getEntry(j).getChannelName());
+     * System.out.println("reach: " +
+     * newTemp.getTraditionalRate(newList.getEntry(j)));
+     * System.out.println("==========");
+     * }
+     * 
+     * }
+     */
+
     public DoublyLinkedList<User> getList() {
         return dLList;
     }
