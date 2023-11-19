@@ -153,7 +153,9 @@ public class SortingCalculator
                 totalViews += users.getEntry(i).getViews();
             }
         }
-
+        if(totalViews == 0) {
+            return 0;
+        }
         return ((totalComments + totalLikes) / totalViews) * 100;
     }
 
