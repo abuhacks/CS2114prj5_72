@@ -1,5 +1,5 @@
 package prj5;
-public class CompareByName
+public class CompareByName extends Comparable<>
 {
     //~ Fields ................................................................
 
