@@ -13,6 +13,12 @@ import java.text.DecimalFormat;
 public class ProjectRunner
 {
 
+    // ----------------------------------------------------------
+    /**
+     * This runs the entire program.
+     * @param args to check
+     * @throws IOException
+     */
     public static void main(String[] args)
         throws IOException
     {

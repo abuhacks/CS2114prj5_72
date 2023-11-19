@@ -143,19 +143,25 @@ public class SortingCalculator
      */
     public double getReachRate(User user3)
     {
-        for (int i = 0; i < users.getLength(); i++)
-        {
-            if (users.getEntry(i).getChannelName()
-                .equals(user3.getChannelName()) && users.getEntry(i) != user3)
-            {
-                user3.setComments(
-                    user3.getComments() + users.getEntry(i).getComments());
-                user3.setLikes(user3.getLikes() + users.getEntry(i).getLikes());
-                user3.setViews(user3.getViews() + users.getEntry(i).getViews());
+        int totalComments = 0;
+        int totalLikes = 0;
+        int totalViews = 0;
+
+        for (int i = 0; i < users.getLength(); i++) {
+            if (users.getEntry(i).getChannelName().equals(user3.getChannelName())) {
+                totalComments += users.getEntry(i).getComments();
+                totalLikes += users.getEntry(i).getLikes();
+                totalViews += users.getEntry(i).getViews();
             }
         }
-        return ((user3.getComments() + user3.getLikes()) / user3.getViews())
-           *100 ;
+
+        // Adding user3's metrics as well
+        totalComments += user3.getComments();
+        totalLikes += user3.getLikes();
+        totalViews += user3.getViews();
+
+        // Calculate reach rate (comments + likes) / views * 100
+        return ((totalComments + totalLikes) / (double) totalViews) * 100;
     }
 
 
@@ -178,19 +184,14 @@ public class SortingCalculator
             names.add(users.getEntry(i).getChannelName());
             testVals.add(users.getEntry(i));
         }
-        for (int i = 0; i < testVals.getLength() - 1; i++)
-        {
-            for (int j = i + 1; j < testVals.getLength(); j++)
-            {
-                if (getReachRate(testVals.getEntry(i)) < getReachRate(
-                    testVals.getEntry(j)))
-                {
-                    User temp = testVals.getEntry(i);
-                    testVals.replace(i, testVals.getEntry(j));
-                    testVals.replace(j, temp);
+        for (int i = 0; i < testVals.getLength() - 1; i++) {
+            for (int j = 0; j < testVals.getLength() - i - 1; j++) {
+                if (getReachRate(testVals.getEntry(j)) < getReachRate(testVals.getEntry(j + 1))) {
+                    User temp = testVals.getEntry(j);
+                    testVals.replace(j, testVals.getEntry(j + 1));
+                    testVals.replace(j + 1, temp);
                 }
             }
-
         }
         return testVals;
     }
