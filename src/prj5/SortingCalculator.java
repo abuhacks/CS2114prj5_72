@@ -29,59 +29,7 @@ public class SortingCalculator
         users = users2;
     }
 
-
-    // ~Private Methods ........................................................
-    // ----------------------------------------------------------
-    /**
-     * This method compares the months for each users, which return an int
-     * value, which determines if a month is later than another month. For
-     * example, March is ranked higher than Janurary.
-     * 
-     * @return 1 if current month is ranked higher, -1 if current month is
-     *             ranked lower, 0 if month is equal
-     */
-    @SuppressWarnings("unlikely-arg-type")
-    private int compareByMonth(String month)
-    {
-        String[] months = new String[12];
-        months[0] = "Janurary";
-        months[1] = "February";
-        months[2] = "March";
-        months[3] = "April";
-        months[4] = "May";
-        months[5] = "June";
-        months[6] = "July";
-        months[7] = "August";
-        months[8] = "September";
-        months[9] = "October";
-        months[10] = "November";
-        months[11] = "December";
-        int current = 0;
-        int other = 0;
-        for (int i = 0; i < months.length; i++)
-        {
-            if (this.equals(months[i]))
-            {
-                current = i;
-            }
-            if (month.equals(months[i]))
-            {
-                other = i;
-            }
-        }
-        if (current > other)
-        {
-            return 1;
-        }
-        else if (current < other)
-        {
-            return -1;
-        }
-        else
-        {
-            return 0;
-        }
-    }
+    
     // ~Public Methods ........................................................
 
 
