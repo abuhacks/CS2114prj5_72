@@ -4,6 +4,7 @@
 package prj5;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 /**
  * This is the ProjectRunner Class that takes in the InputFileReader and reads
@@ -29,6 +30,7 @@ public class ProjectRunner
         boolean showGUI = false;
         if (showConsole)
         {
+            DecimalFormat decimal = new DecimalFormat("#.#");
             SortingCalculator newTemp = new SortingCalculator(filer.getList());
             DoublyLinkedList<User> newList = newTemp.sortByName();
             DoublyLinkedList<User> newList2 = newTemp.sortByReachRate();
@@ -37,7 +39,7 @@ public class ProjectRunner
                 System.out.println(newList.getEntry(i).getChannelName());
                 System.out.println(
                     "traditional: "
-                        + newTemp.getTraditionalRate(newList.getEntry(i)));
+                        + decimal.format(newTemp.getTraditionalRate(newList.getEntry(i))));
                 System.out.println("==========");
                 if (i == newList.getLength() - 1)
                 {
@@ -49,8 +51,13 @@ public class ProjectRunner
             {
                 System.out.println(newList2.getEntry(j).getChannelName());
                 System.out.println(
-                    "reach: " + newTemp.getReachRate(newList2.getEntry(j)));
-                System.out.println("==========");
+                    "reach: " + decimal.format(newTemp.getReachRate(newList2.getEntry(j))));
+                if(j == newList2.getLength() - 1) {
+                    System.out.print("==========");
+                }
+                else {
+                    System.out.println("==========");
+                }
             }
         }
         if (showGUI)

@@ -125,27 +125,7 @@ public class InputFileReader {
      * @return the list.
      */
     
-    /*
-    private void output() {
-        DoublyLinkedList<User> newList = newTemp.sortByName();
-        DoublyLinkedList<User> newList2 = newTemp.sortByReachRate();
-        for(int i = 0; i < newList.getLength(); i++) {
-            System.out.println(newList.getEntry(i).getChannelName());
-            System.out.println("traditional: " + newTemp.getTraditionalRate(newList.getEntry(i)));
-            System.out.println("==========");
-            if(i == newList.getLength() - 1) {
-                System.out.println("**********");
-                System.out.println("**********");
-            }
-        }
-        for(int j = 0; j < newList2.getLength(); j++) {
-            System.out.println(newList.getEntry(j).getChannelName());
-            System.out.println("reach: " + newTemp.getTraditionalRate(newList.getEntry(j)));
-            System.out.println("==========");
-        }
-        
-    }
-    */
+   
     public DoublyLinkedList<User> getList() {
         return dLList;
     }
