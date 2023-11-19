@@ -211,7 +211,6 @@ public class SortingCalculator
                 totalViews += users.getEntry(i).getViews();
             }
         }
-
         return ((totalComments + totalLikes) / totalViews) * 100;
     }
 
