@@ -165,6 +165,7 @@ public class SortingCalculator
         newMap.put("January", 1);
         newMap.put("February", 2);
         newMap.put("March", 3);
+        newMap.put("April", 4);
        
         double tempComments = user3.getComments();
         double tempLikes = user3.getLikes();

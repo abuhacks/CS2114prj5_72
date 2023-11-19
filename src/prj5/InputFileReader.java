@@ -71,7 +71,7 @@ public class InputFileReader
                 followers,
                 comments,
                 views);
-            if (isAMonth(month)
+            if (isFirstQuarter(month)
                 && validNumberValues(followers, likes, comments, posts, views))
             {
                 list.add(newUser);
@@ -103,14 +103,10 @@ public class InputFileReader
      * @param month
      *            the string we are checking for a month
      */
-    private boolean isAMonth(String month)
+    private boolean isFirstQuarter(String month)
     {
         if (month.equals("January") || month.equals("February")
-            || month.equals("March") || month.equals("April")
-            || month.equals("May") || month.equals("June")
-            || month.equals("July") || month.equals("August")
-            || month.equals("September") || month.equals("October")
-            || month.equals("November") || month.equals("December"))
+            || month.equals("March"))
         {
             return true;
         }
