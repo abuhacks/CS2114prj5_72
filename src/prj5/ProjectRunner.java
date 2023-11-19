@@ -16,6 +16,7 @@ public class ProjectRunner
     // ----------------------------------------------------------
     /**
      * This runs the entire program.
+     * 
      * @param args
      * @throws IOException
      */
@@ -44,8 +45,8 @@ public class ProjectRunner
             {
                 System.out.println(newList.getEntry(i).getChannelName());
                 System.out.println(
-                    "traditional: "
-                        + decimal.format(newTemp.getTraditionalRate(newList.getEntry(i))));
+                    "traditional: " + decimal.format(
+                        newTemp.getTraditionalRate(newList.getEntry(i))));
                 System.out.println("==========");
                 if (i == newList.getLength() - 1)
                 {
@@ -57,11 +58,14 @@ public class ProjectRunner
             {
                 System.out.println(newList2.getEntry(j).getChannelName());
                 System.out.println(
-                    "reach: " + decimal.format(newTemp.getReachRate(newList2.getEntry(j))));
-                if(j == newList2.getLength() - 1) {
+                    "reach: " + decimal
+                        .format(newTemp.getReachRate(newList2.getEntry(j))));
+                if (j == newList2.getLength() - 1)
+                {
                     System.out.print("==========");
                 }
-                else {
+                else
+                {
                     System.out.println("==========");
                 }
             }
