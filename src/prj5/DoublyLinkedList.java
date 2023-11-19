@@ -13,7 +13,7 @@ import list.ListInterface;
  *            genric object for the data of each node in DoublyLinkedList object
  */
 public class DoublyLinkedList<T>
-    implements ListInterface<T>, Comparable<T>
+    implements ListInterface<T>//, Comparable<T>
 {
     private static class Node<T>
     {
