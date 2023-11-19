@@ -155,9 +155,6 @@ public class SortingCalculator
             }
         }
 
-        totalComments += user3.getComments();
-        totalLikes += user3.getLikes();
-        totalViews += user3.getViews();
 
         return ((totalComments + totalLikes) / (double) totalViews) * 100;
     }
