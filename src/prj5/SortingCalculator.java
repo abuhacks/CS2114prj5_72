@@ -164,11 +164,6 @@ public class SortingCalculator
         newMap.put("January", 1);
         newMap.put("February", 2);
         newMap.put("March", 3);
-        newMap.put("April", 4);
-        newMap.put("May", 4);
-        newMap.put("June", 4);
-        newMap.put("July", 4);
-        newMap.put("August", 4);
         
 
         User temp = user3;
