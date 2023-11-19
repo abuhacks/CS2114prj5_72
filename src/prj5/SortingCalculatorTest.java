@@ -154,13 +154,13 @@ public class SortingCalculatorTest
      */
 
 
-    // public void testSortByName() {
-    // DoublyLinkedList<User> testing = new DoublyLinkedList<User>();
-    // testing.add(user2);
-    // testing.add(user3);
-    // testing.add(user1);
-    // assertEquals(calculator.sortByName(), testing);
-    // }
+    public void testSortByName() {
+    DoublyLinkedList<User> testing = new DoublyLinkedList<User>();
+    testing.add(user2);
+    testing.add(user3);
+    testing.add(user1);
+    assertEquals(calculator.sortByName(), testing);
+    }
     /**
      * Tests the sortByReach() method.
      */
