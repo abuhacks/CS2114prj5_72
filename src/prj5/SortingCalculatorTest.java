@@ -181,6 +181,7 @@ public class SortingCalculatorTest
         assertEquals(
             calculator.sortByReachRate().getEntry(2).getChannelName(),
             "MiggyMagtoto");
+        
     }
 
 
@@ -206,5 +207,10 @@ public class SortingCalculatorTest
         newList2.add(user4);
         newList2.add(user5);
         newList2.add(user6);
+    }
+    
+    public void testGetReachRate() {
+        calculator.getReachRate(user1);
+        
     }
 }
