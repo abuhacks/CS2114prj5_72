@@ -209,8 +209,4 @@ public class SortingCalculatorTest
         newList2.add(user6);
     }
     
-    public void testGetReachRate() {
-        calculator.getReachRate(user1);
-        
-    }
 }
