@@ -41,7 +41,7 @@ public class SortingCalculator
      *             ranked lower, 0 if month is equal
      */
     @SuppressWarnings("unlikely-arg-type")
-    private int compareByMonth(String month)
+    public int compareByMonth(String month)
     {
         String[] months = new String[12];
         months[0] = "Janurary";
@@ -159,6 +159,12 @@ public class SortingCalculator
      */
     public double getTraditionalRate(User user3)
     {
+        Map<String, Integer> newMap = new HashMap<String, Integer>();
+        newMap.put("January", 1);
+        newMap.put("February", 2);
+        newMap.put("March", 3);
+        newMap.put("April", 4);
+        
         User temp = user3;
         for (int i = 0; i < users.getLength(); i++)
         {
@@ -168,7 +174,9 @@ public class SortingCalculator
                 user3.setComments(
                     user3.getComments() + users.getEntry(i).getComments());
                 user3.setLikes(user3.getLikes() + users.getEntry(i).getLikes());
-
+                if(user3.getMonth().compareByMonth(users.getEntry(i).getMonth()) > 0) {
+                    
+                }
             }
         }
         return ((user3.getComments() + user3.getLikes())
