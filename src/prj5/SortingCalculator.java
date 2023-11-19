@@ -151,12 +151,11 @@ public class SortingCalculator
                 user3.setComments(
                     user3.getComments() + users.getEntry(i).getComments());
                 user3.setLikes(user3.getLikes() + users.getEntry(i).getLikes());
-                user3.setFollowers(
-                    user3.getFollowers() + users.getEntry(i).getFollowers());
+                user3.setViews(user3.getViews() + users.getEntry(i).getViews());
             }
         }
         return ((user3.getComments() + user3.getLikes()) / user3.getViews())
-            * 100;
+           *100 ;
     }
 
 
