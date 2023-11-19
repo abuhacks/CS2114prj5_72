@@ -182,6 +182,7 @@ public class SortingCalculatorTest
         assertEquals(
             calculator.sortByReachRate().getEntry(2).getChannelName(),
             "MiggyMagtoto");
+        
 
     }
 
@@ -201,7 +202,7 @@ public class SortingCalculatorTest
             "MiggyMagtoto");
         assertEquals(
             calculator.sortByTraditionalRate().getEntry(1).getChannelName(),
-            "MiggyMagtoto");
+            "JoeyCHEN");
         assertEquals(
             calculator.sortByTraditionalRate().getEntry(2).getChannelName(),
             "NarenDaBeast");

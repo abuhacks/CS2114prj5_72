@@ -112,23 +112,28 @@ public class SortingCalculator
         newMap.put("February", 2);
         newMap.put("March", 3);
         newMap.put("April", 4);
-       
+
         double tempComments = user3.getComments();
         double tempLikes = user3.getLikes();
         User temp = user3;
 
-        for (int i = 0; i < users.getLength(); i++) {
-            if (users.getEntry(i).getChannelName().equals(user3.getChannelName()) && users.getEntry(i) != user3) {
+        for (int i = 0; i < users.getLength(); i++)
+        {
+            if (users.getEntry(i).getChannelName()
+                .equals(user3.getChannelName()) && users.getEntry(i) != user3)
+            {
                 tempComments += users.getEntry(i).getComments();
                 tempLikes += users.getEntry(i).getLikes();
 
-                if (newMap.get(temp.getMonth()) < newMap.get(users.getEntry(i).getMonth())) {
+                if (newMap.get(temp.getMonth()) < newMap
+                    .get(users.getEntry(i).getMonth()))
+                {
                     temp = users.getEntry(i);
                 }
             }
         }
 
-        return ((tempComments + tempLikes) / (double) temp.getFollowers()) * 100;
+        return ((tempComments + tempLikes) / (double)temp.getFollowers()) * 100;
     }
 
 
@@ -146,14 +151,18 @@ public class SortingCalculator
         double totalLikes = user3.getLikes();
         double totalViews = user3.getViews();
 
-        for (int i = 0; i < users.getLength(); i++) {
-            if (users.getEntry(i).getChannelName().equals(user3.getChannelName()) && users.getEntry(i) != user3) {
+        for (int i = 0; i < users.getLength(); i++)
+        {
+            if (users.getEntry(i).getChannelName()
+                .equals(user3.getChannelName()) && users.getEntry(i) != user3)
+            {
                 totalComments += users.getEntry(i).getComments();
                 totalLikes += users.getEntry(i).getLikes();
                 totalViews += users.getEntry(i).getViews();
             }
         }
-        if(totalViews == 0) {
+        if (totalViews == 0)
+        {
             return -Double.MAX_VALUE;
         }
         return ((totalComments + totalLikes) / totalViews) * 100;
