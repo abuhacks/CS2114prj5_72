@@ -473,12 +473,10 @@ public class DoublyLinkedList<T>
     }
 
 
-    // ----------------------------------------------------------
-    /**
-     * This method compares each node in a DoublyLinkedList, and it sorts the
-     * data based off the compareTo() method for the object stored in each node.
-     */
-    @SuppressWarnings("unchecked")
+
+     //This method compares each node in a DoublyLinkedList, and it sorts the
+     //data based off the compareTo() method for the object stored in each node.
+    /*
     public void insertionSort()
     {
         Node<T> sort = firstNode;
@@ -507,22 +505,20 @@ public class DoublyLinkedList<T>
             }
         }
     }
-
-
-    // ----------------------------------------------------------
-    /**
-     * This method compares DoublyLinkedList by the size of each list
-     * 
-     * @param other
-     *            the size of the other DoublyLinkedList
-     * @return int 1 if current has a larger size than other, negative 1 if
-     *             other list had larger size, 0 if both are equal in size.
      */
-    @Override
+
+
+     //This method compares DoublyLinkedList by the size of each list
+     //param other
+                //the size of the other DoublyLinkedList
+     //return int 1 if current has a larger size than other, negative 1 if
+                 //other list had larger size, 0 if both are equal in size.
+
+    /*
     public int compareTo(T other)
     {
         return 0;
     }
-    
+    */
     
 }
