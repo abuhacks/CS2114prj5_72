@@ -256,19 +256,12 @@ public class User
     }
 
 
-    // ----------------------------------------------------------
     /**
      * This method compares the months for each users, which return an int
      * value, which determines if a month is later than another month. For
      * example, March is ranked higher than Janurary.
      * 
-     * @return 1 if current month is ranked higher, -1 if current month is
-     *             ranked lower, 0 if month is equal
-     * @param month
-     *            the month being compared to.
-     */
-    @SuppressWarnings("unlikely-arg-type")
-    public int compareByMonth(String month)
+    public int compareByMonth(User month1)
     {
         String[] months = new String[12];
         months[0] = "Janurary";
@@ -309,8 +302,7 @@ public class User
             return 0;
         }
     }
-
-
+    */
     /**
      * Returns a string.
      * 
