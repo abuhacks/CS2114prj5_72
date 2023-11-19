@@ -154,7 +154,7 @@ public class SortingCalculator
             }
         }
         if(totalViews == 0) {
-            return 0;
+            return -Double.MAX_VALUE;
         }
         return ((totalComments + totalLikes) / totalViews) * 100;
     }

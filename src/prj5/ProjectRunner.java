@@ -31,7 +31,7 @@ public class ProjectRunner
         }
         else
         {
-            filer = new InputFileReader("SampleInput3_2023.csv");
+            filer = new InputFileReader("SampleInput1_2023.csv");
         }
         boolean showConsole = true;
         boolean showGUI = false;
@@ -59,7 +59,7 @@ public class ProjectRunner
                 System.out.println(newList2.getEntry(j).getChannelName());
                 String letter = "reach: " + decimal
                     .format(newTemp.getReachRate(newList2.getEntry(j)));
-                if(newTemp.getReachRate(newList2.getEntry(j)) == 0) {
+                if(newTemp.getReachRate(newList2.getEntry(j)) == -Double.MAX_VALUE) {
                     letter = "reach: N/A";
                 }
                 System.out.println(letter);
