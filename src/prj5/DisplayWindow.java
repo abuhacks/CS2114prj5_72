@@ -10,7 +10,6 @@ import cs2.Shape;
 import cs2.TextShape;
 import cs2.Window;
 import cs2.WindowSide;
-// import prj5.Playlist;
 import prj5.SortingCalculator;
 import prj5.User;
 import list.AList;
@@ -21,62 +20,89 @@ import list.AList;
 public class DisplayWindow {
     private Window window;
     private SortingCalculator sortingCalculator;
-    private Button accept;
-    private Button reject;
+    private User users;
+    private Button january;
+    private Button february;
+    private Button march;
+    private Button firstQuarter;
+    private Button sortChanlName;
+    private Button sortEngagRate;
+    private Button quit;
 
     private static final double DISPLAY_FACTOR = 1.5;
 
     private static final int MARGIN = 12;
-    private static final int PLAYLIST_PADDING = 50;
-    private static final int PLAYLIST_X = PLAYLIST_PADDING;
-    private static final int PLAYLIST_Y = 280;
-    private static final int PLAYLIST_SIZE = ((int)(500 * DISPLAY_FACTOR) - (4
-        * PLAYLIST_PADDING)) / 3;
+    // private static final int PLAYLIST_PADDING = 50;
+    // private static final int PLAYLIST_X = PLAYLIST_PADDING;
+    // private static final int PLAYLIST_Y = 280;
+    // private static final int PLAYLIST_SIZE = ((int)(500 * DISPLAY_FACTOR) -
+    // (4
+    // * PLAYLIST_PADDING)) / 3;
 
     private AList<Shape[]> songRectangles;
-    private static final int MUSIC_NOTE_SIZE = 31;
-    private static final int QUEUE_STARTX = MARGIN + 30;
-    private static final int QUEUE_STARTY = 20;
-    private static final int SONG_SHAPE_HEIGHT = 75;
+    // private static final int MUSIC_NOTE_SIZE = 31;
+    // private static final int QUEUE_STARTX = MARGIN + 30;
+    // private static final int QUEUE_STARTY = 20;
+    // private static final int SONG_SHAPE_HEIGHT = 75;
 
-    private Shape[] playlistShapes = new Shape[3];
-    private CircleShape[] playlistCircles = new CircleShape[3];
-    private static Color[] PLAYLIST_COLORS = new Color[8];
+    // private Shape[] playlistShapes = new Shape[3];
+    // private CircleShape[] playlistCircles = new CircleShape[3];
+    // private static Color[] PLAYLIST_COLORS = new Color[8];
 
     /**
      * 
      */
     public DisplayWindow(SortingCalculator sortingCalculator) {
-        window = new Window("Playlist Algorithm Generator");
+        window = new Window("Social Media Vis");
         window.setSize((int)(500 * DISPLAY_FACTOR), (int)(500
             * DISPLAY_FACTOR));
 
         this.sortingCalculator = sortingCalculator;
 
-        accept = new Button("Add to Playlist");
-        window.addButton(accept, WindowSide.SOUTH);
-        accept.onClick(this, "clickedAccept");
+        january = new Button("January");
+        window.addButton(january, WindowSide.SOUTH);
+        january.onClick(this, "clickedJanuary");
 
-        reject = new Button("Reject from Playlist");
-        window.addButton(reject, WindowSide.SOUTH);
-        reject.onClick(this, "clickedReject");
+        february = new Button("February");
+        window.addButton(february, WindowSide.SOUTH);
+        february.onClick(this, "clickedFebruary");
+
+        march = new Button("March");
+        window.addButton(march, WindowSide.SOUTH);
+        march.onClick(this, "clickedMarch");
+
+        firstQuarter = new Button("First Quarter(Jan - March)");
+        window.addButton(firstQuarter, WindowSide.SOUTH);
+        firstQuarter.onClick(this, "clickedFirstQuarter");
+
+        sortChanlName = new Button("Sort by Channel Name");
+        window.addButton(sortChanlName, WindowSide.NORTH);
+        sortChanlName.onClick(this, "clickedSortChanlName");
+
+        sortEngagRate = new Button("Sory by Engagement Rate");
+        window.addButton(sortEngagRate, WindowSide.NORTH);
+        sortEngagRate.onClick(this, "clickedSortEngagRate");
+
+        quit = new Button("Quit");
+        window.addButton(quit, WindowSide.NORTH);
+        quit.onClick(this, "clickedQuit");
 
         this.songRectangles = new AList<Shape[]>();
 
-        PLAYLIST_COLORS[0] = new Color(51, 92, 103); // blue
-        PLAYLIST_COLORS[1] = new Color(224, 159, 62); // yellow
-        PLAYLIST_COLORS[2] = new Color(158, 42, 43); // red
-        PLAYLIST_COLORS[3] = new Color(17, 17, 17); // black
-        PLAYLIST_COLORS[4] = new Color(38, 68, 77); // dark blue
-        PLAYLIST_COLORS[5] = new Color(97, 69, 27); // dark yellow
-        PLAYLIST_COLORS[6] = new Color(71, 19, 19); // dark red
-        PLAYLIST_COLORS[7] = new Color(255, 255, 255); // white
+        // PLAYLIST_COLORS[0] = new Color(51, 92, 103); // blue
+        // PLAYLIST_COLORS[1] = new Color(224, 159, 62); // yellow
+        // PLAYLIST_COLORS[2] = new Color(158, 42, 43); // red
+        // PLAYLIST_COLORS[3] = new Color(17, 17, 17); // black
+        // PLAYLIST_COLORS[4] = new Color(38, 68, 77); // dark blue
+        // PLAYLIST_COLORS[5] = new Color(97, 69, 27); // dark yellow
+        // PLAYLIST_COLORS[6] = new Color(71, 19, 19); // dark red
+        // PLAYLIST_COLORS[7] = new Color(255, 255, 255); // white
 
-        initButtons();
-        drawPlaylists();
-        drawShapes();
-        updateText();
-        updateButtons();
+        // initButtons();
+        // drawPlaylists();
+        // drawShapes();
+        // updateText();
+        // updateButtons();
 
     }
 
@@ -89,10 +115,114 @@ public class DisplayWindow {
      * @param button
      *            accept button (the one that was pressed)
      */
-    public void clickedAccept(Button button) {
-        if (!playlistCalculator.getQueue().isEmpty()) {
 
-            if (playlistCalculator.addSongToPlaylist()) {
+    public void clickedJanuary(Button button) {
+        if (!sortingCalculator.sortByName().isEmpty()) {
+
+            if (!sortingCalculator.sortByReachRate().isEmpty()) {
+
+                sortingCalculator.getReachRate(users);
+                update();
+            }
+
+            if (!sortingCalculator.sortByTraditionalRate().isEmpty()) {
+                sortingCalculator.getTraditionalRate(users);
+                update();
+            }
+
+            users.getChannelName();
+            update();
+
+        }
+        else {
+            january.disable();
+            february.disable();
+            march.disable();
+            firstQuarter.disable();
+            sortChanlName.disable();
+            sortEngagRate.disable();
+            endSimulation();
+        }
+
+    }
+
+
+    public void clickedFebruary(Button button) {
+        if (!sortingCalculator.getQueue().isEmpty()) {
+
+            if (sortingCalculator.addSongToPlaylist()) {
+                update();
+            }
+            else {
+                accept.disable();
+            }
+        }
+        else {
+            accept.disable();
+            reject.disable();
+            endSimulation();
+        }
+    }
+
+
+    public void clickedMarch(Button button) {
+        if (!sortingCalculator.getQueue().isEmpty()) {
+
+            if (sortingCalculator.addSongToPlaylist()) {
+                update();
+            }
+            else {
+                accept.disable();
+            }
+        }
+        else {
+            accept.disable();
+            reject.disable();
+            endSimulation();
+        }
+    }
+
+
+    public void clickedfirstQuarter(Button button) {
+        if (!sortingCalculator.getQueue().isEmpty()) {
+
+            if (sortingCalculator.addSongToPlaylist()) {
+                update();
+            }
+            else {
+                accept.disable();
+            }
+        }
+        else {
+            accept.disable();
+            reject.disable();
+            endSimulation();
+        }
+    }
+
+
+    public void clickedSortChanlName(Button button) {
+        if (!sortingCalculator.getQueue().isEmpty()) {
+
+            if (sortingCalculator.addSongToPlaylist()) {
+                update();
+            }
+            else {
+                accept.disable();
+            }
+        }
+        else {
+            accept.disable();
+            reject.disable();
+            endSimulation();
+        }
+    }
+
+
+    public void clickedSortEngagRate(Button button) {
+        if (!sortingCalculator.getQueue().isEmpty()) {
+
+            if (sortingCalculator.addSongToPlaylist()) {
                 update();
             }
             else {
@@ -108,13 +238,24 @@ public class DisplayWindow {
 
 
     /**
+     * 
+     * @param button
+     */
+    public void clickedQuit(Button button) {
+
+        endSimulation();
+
+    }
+
+
+    /**
      * Rejects adding the current song to the playlist.
      *
      * @param button
      *            the reject button
      */
     public void clickedReject(Button button) {
-        playlistCalculator.reject();
+        sortingCalculator.reject();
         accept.enable();
         update();
     }
@@ -124,15 +265,17 @@ public class DisplayWindow {
      * Update everything. Wipes the screen and resets.
      */
     private void update() {
-        if (playlistCalculator.getQueue().isEmpty()) {
+        if (sortingCalculator.sortByName().isEmpty() && sortingCalculator
+            .sortByTraditionalRate().isEmpty() && sortingCalculator
+                .sortByReachRate().isEmpty()) {
             endSimulation();
         }
         else {
-            window.removeAllShapes();
-            updateQueue();
-            drawPlaylists();
-            updateText();
-            updateButtons();
+            // window.removeAllShapes();
+            // updateQueue();
+            // drawPlaylists();
+            // updateText();
+            // updateButtons();
 
         }
     }
@@ -144,7 +287,7 @@ public class DisplayWindow {
      */
     private void updateButtons() {
         reject.enable();
-        if (playlistCalculator.getPlaylistForSong(playlistCalculator.getQueue()
+        if (sortingCalculator.getPlaylistForSong(sortingCalculator.getQueue()
             .getFront()) != null)
             accept.enable();
         else
@@ -157,7 +300,7 @@ public class DisplayWindow {
      * is empty, otherwise enable
      */
     private void initButtons() {
-        if (playlistCalculator.getQueue().isEmpty()) {
+        if (sortingCalculator.getQueue().isEmpty()) {
             accept.disable();
             reject.disable();
         }
@@ -200,7 +343,7 @@ public class DisplayWindow {
         window.moveToFront(innerPhone);
         int textY = innerPhone.getY() + 5;
         int textX = innerPhone.getX() + 5;
-        Playlist playlist = playlistCalculator.getPlaylists()[playlistIndex];
+        Playlist playlist = sortingCalculator.getPlaylists()[playlistIndex];
         String message = playlist.getName();
         TextShape playlistName = new TextShape(textX, textY, message,
             Color.WHITE, 20);
@@ -405,11 +548,14 @@ public class DisplayWindow {
      * This method disables the buttons and is called when the queue is empty
      */
     private void endSimulation() {
-        accept.disable();
-        reject.disable();
+        january.disable();
+        february.disable();
+        march.disable();
+        firstQuarter.disable();
+        sortChanlName.disable();
+        sortEngagRate.disable();
+        quit.disable();
         window.removeAllShapes();
-
-        // Message
         TextShape simulationStatus = new TextShape(0, 0,
             "All Songs Processed!");
         int x = (window.getGraphPanelWidth() / 2) - (simulationStatus.getWidth()
