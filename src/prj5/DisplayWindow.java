@@ -27,6 +27,8 @@ public class DisplayWindow {
     private Button firstQuarter;
     private Button sortChanlName;
     private Button sortEngagRate;
+    private Button tradEngagRate;
+    private Button reachEngagRate;
     private Button quit;
 
     private static final double DISPLAY_FACTOR = 1.5;
@@ -79,13 +81,21 @@ public class DisplayWindow {
         window.addButton(sortChanlName, WindowSide.NORTH);
         sortChanlName.onClick(this, "clickedSortChanlName");
 
-        sortEngagRate = new Button("Sory by Engagement Rate");
+        sortEngagRate = new Button("Sort by Engagement Rate");
         window.addButton(sortEngagRate, WindowSide.NORTH);
         sortEngagRate.onClick(this, "clickedSortEngagRate");
 
         quit = new Button("Quit");
         window.addButton(quit, WindowSide.NORTH);
         quit.onClick(this, "clickedQuit");
+
+        tradEngagRate = new Button("Traditional Engagement Rate");
+        window.addButton(tradEngagRate, WindowSide.WEST);
+        tradEngagRate.onClick(this, "clickedTradEngageRate");
+
+        reachEngagRate = new Button("Reach Engagement Rate");
+        window.addButton(reachEngagRate, WindowSide.WEST);
+        reachEngagRate.onClick(this, "clickedReachEngagRate");
 
         this.songRectangles = new AList<Shape[]>();
 
@@ -117,6 +127,57 @@ public class DisplayWindow {
      */
 
     public void clickedJanuary(Button button) {
+        sortChnlName();
+
+    }
+
+
+    public void clickedFebruary(Button button) {
+        sortChnlName();
+
+    }
+
+
+    public void clickedMarch(Button button) {
+        sortChnlName();
+
+    }
+
+
+    public void clickedfirstQuarter(Button button) {
+        sortChnlName();
+
+    }
+
+
+    public void clickedSortChanlName(Button button) {
+
+        sortChnlName();
+    }
+
+
+    public void clickedSortEngagRate(Button button) {
+
+        sortEngageRate();
+        //This class isnt right, just tryna figure out how to create it 
+    }
+
+
+    /**
+     * 
+     * @param button
+     */
+    public void clickedQuit(Button button) {
+
+        endSimulation();
+
+    }
+
+
+    /**
+     * 
+     */
+    public void sortChnlName() {
         if (!sortingCalculator.sortByName().isEmpty()) {
 
             if (!sortingCalculator.sortByReachRate().isEmpty()) {
@@ -143,121 +204,37 @@ public class DisplayWindow {
             sortEngagRate.disable();
             endSimulation();
         }
-
     }
 
 
-    public void clickedFebruary(Button button) {
-        if (!sortingCalculator.getQueue().isEmpty()) {
+    public void sortEngageRate() {
+        if (!sortingCalculator.sortByName().isEmpty()) {
 
-            if (sortingCalculator.addSongToPlaylist()) {
+            if (!sortingCalculator.sortByReachRate().isEmpty()) {
+
+                sortingCalculator.getReachRate(users);
                 update();
             }
-            else {
-                accept.disable();
-            }
-        }
-        else {
-            accept.disable();
-            reject.disable();
-            endSimulation();
-        }
-    }
 
-
-    public void clickedMarch(Button button) {
-        if (!sortingCalculator.getQueue().isEmpty()) {
-
-            if (sortingCalculator.addSongToPlaylist()) {
+            if (!sortingCalculator.sortByTraditionalRate().isEmpty()) {
+                sortingCalculator.getTraditionalRate(users);
                 update();
             }
-            else {
-                accept.disable();
-            }
+
+            users.getChannelName();
+            update();
+
         }
         else {
-            accept.disable();
-            reject.disable();
+            january.disable();
+            february.disable();
+            march.disable();
+            firstQuarter.disable();
+            sortChanlName.disable();
+            sortEngagRate.disable();
             endSimulation();
-        }
-    }
+        }// This class is wrong, tryna figure out how to implement it
 
-
-    public void clickedfirstQuarter(Button button) {
-        if (!sortingCalculator.getQueue().isEmpty()) {
-
-            if (sortingCalculator.addSongToPlaylist()) {
-                update();
-            }
-            else {
-                accept.disable();
-            }
-        }
-        else {
-            accept.disable();
-            reject.disable();
-            endSimulation();
-        }
-    }
-
-
-    public void clickedSortChanlName(Button button) {
-        if (!sortingCalculator.getQueue().isEmpty()) {
-
-            if (sortingCalculator.addSongToPlaylist()) {
-                update();
-            }
-            else {
-                accept.disable();
-            }
-        }
-        else {
-            accept.disable();
-            reject.disable();
-            endSimulation();
-        }
-    }
-
-
-    public void clickedSortEngagRate(Button button) {
-        if (!sortingCalculator.getQueue().isEmpty()) {
-
-            if (sortingCalculator.addSongToPlaylist()) {
-                update();
-            }
-            else {
-                accept.disable();
-            }
-        }
-        else {
-            accept.disable();
-            reject.disable();
-            endSimulation();
-        }
-    }
-
-
-    /**
-     * 
-     * @param button
-     */
-    public void clickedQuit(Button button) {
-
-        endSimulation();
-
-    }
-
-
-    /**
-     * Rejects adding the current song to the playlist.
-     *
-     * @param button
-     *            the reject button
-     */
-    public void clickedReject(Button button) {
-        sortingCalculator.reject();
-        accept.enable();
-        update();
     }
 
 
@@ -280,254 +257,15 @@ public class DisplayWindow {
         }
     }
 
-
-    /**
-     * This method updates whether the accept button is enabled based on the
-     * qualifications of the upcoming song in the queue
-     */
-    private void updateButtons() {
-        reject.enable();
-        if (sortingCalculator.getPlaylistForSong(sortingCalculator.getQueue()
-            .getFront()) != null)
-            accept.enable();
-        else
-            accept.disable();
-    }
-
-
-    /**
-     * When the window is displayed the first time buttons are disabled if queue
-     * is empty, otherwise enable
-     */
-    private void initButtons() {
-        if (sortingCalculator.getQueue().isEmpty()) {
-            accept.disable();
-            reject.disable();
-        }
-        else {
-            accept.enable();
-            reject.enable();
-        }
-    }
-
-
     /**
      * Draw the phone objects for the playlists seen on screen
      */
-    private void drawPlaylists() {
-        drawPhone(PLAYLIST_X, PLAYLIST_Y, 0);
-        drawPhone(PLAYLIST_X + PLAYLIST_SIZE + PLAYLIST_PADDING, PLAYLIST_Y, 1);
-        drawPhone(PLAYLIST_X + (2 * PLAYLIST_SIZE) + (2 * PLAYLIST_PADDING),
-            PLAYLIST_Y, 2);
-    }
-
-
-    /**
-     * Draws a phone object at the given coordinates for a given playlist index
-     * 
-     * @param x
-     *            x coordinate
-     * @param y
-     *            y coordinate
-     * @param playlistIndex
-     *            index of the playlist
-     */
-    private void drawPhone(int x, int y, int playlistIndex) {
-        Shape phone = new Shape(x, y, PLAYLIST_SIZE, (int)(PLAYLIST_SIZE
-            * 1.25), PLAYLIST_COLORS[3]);
-        playlistShapes[playlistIndex] = phone;
-        Shape innerPhone = new Shape(x + 5, y + 5, PLAYLIST_SIZE - 10,
-            (int)(PLAYLIST_SIZE * 1.25) - 10, Color.darkGray);
-        window.addShape(phone);
-        window.addShape(innerPhone);
-        window.moveToFront(innerPhone);
-        int textY = innerPhone.getY() + 5;
-        int textX = innerPhone.getX() + 5;
-        Playlist playlist = sortingCalculator.getPlaylists()[playlistIndex];
-        String message = playlist.getName();
-        TextShape playlistName = new TextShape(textX, textY, message,
-            Color.WHITE, 20);
-        playlistName.setBackgroundColor(innerPhone.getBackgroundColor());
-        playlistName.setX(innerPhone.getX() + (innerPhone.getWidth()
-            - playlistName.getWidth()) / 2);
-        window.addShape(playlistName);
-        window.moveToFront(playlistName);
-        // populate the playlist with rectangles representing the songs in the
-        // playlist
-        int songStartY = playlistName.getY() + playlistName.getHeight() + 5;
-        for (int i = 0; i < Math.min(playlist.getNumberOfSongs(), 7); i++) {
-            Shape song = new Shape(innerPhone.getX() + 5, songStartY + (i * 25),
-                innerPhone.getWidth() - 10, 20, PLAYLIST_COLORS[playlistIndex]);
-            window.addShape(song);
-            window.moveToFront(song);
-        }
-    }
-
-
-    /**
-     * Draws the notes on the screen in accordance to the queued songs
-     */
-    private void drawShapes() {
-        int shapeX = QUEUE_STARTX;
-        int shapeY = QUEUE_STARTY;
-        Object[] queuedSongs = {};
-        if (playlistCalculator.getQueue() != null) {
-            queuedSongs = playlistCalculator.getQueue().toArray();
-        }
-        for (int i = 0; i < queuedSongs.length; i++) {
-            int shapeWidth = MUSIC_NOTE_SIZE;
-            int playlistPreference = playlistCalculator.getPlaylistIndex(
-                ((Song)queuedSongs[i]).getPlaylistName());
-
-            if (playlistPreference == -1) {
-                playlistPreference = 3;
-            }
-            Color color = PLAYLIST_COLORS[playlistPreference];
-
-            Shape[] songRectangle = drawNote(shapeX, shapeY, color);
-            songRectangles.add(songRectangle);
-            shapeX += shapeWidth + PLAYLIST_PADDING;
-        }
-
-    }
-
-
-    /**
-     * Draws a note at the given coordinates with the given color (using a
-     * rectangle and a circle)
-     * 
-     * @param x
-     *            x coordinate of the note
-     * @param y
-     *            y coordinate of the note
-     * @param color
-     *            color of the note
-     * @return an array of the shapes that make up the note
-     */
-    private Shape[] drawNote(int x, int y, Color color) {
-        Shape[] note = new Shape[2];
-        Shape bar = new Shape(x, y, 6, SONG_SHAPE_HEIGHT, color);
-        Shape circle = new CircleShape(x - MUSIC_NOTE_SIZE + bar.getWidth() + 1,
-            y + bar.getHeight() - (MUSIC_NOTE_SIZE / 2), MUSIC_NOTE_SIZE,
-            color);
-        note[0] = bar;
-        note[1] = circle;
-        window.addShape(bar);
-        window.addShape(circle);
-        return note;
-    }
-
-
-    /**
-     * This method removes the song at the front of the queue and in turn
-     * calls updateNotes to redraw the remaining songs (notes) in the queue
-     */
-    private void updateQueue() {
-        if (!songRectangles.isEmpty())
-            songRectangles.remove(0);
-        updateNotes();
-
-    }
-
-
-    /**
-     * This method redraws the position of the notes on the window.
-     * This is invoked whenever the accept or reject button is clicked
-     */
-    private void updateNotes() {
-        int shapeX = QUEUE_STARTX;
-        for (int i = 0; i < songRectangles.getLength(); i++) {
-            Shape[] arr = songRectangles.getEntry(i);
-            arr[0].setX(shapeX);
-            arr[1].setX(shapeX - MUSIC_NOTE_SIZE + arr[0].getWidth() + 1);
-            window.addShape(arr[0]);
-            window.addShape(arr[1]);
-            shapeX = shapeX + arr[1].getWidth() + PLAYLIST_PADDING;
-
-        }
-    }
-
-
-    /**
-     * This updates the text objects across the entire window
-     */
-    private void updateText() {
-        updatePlaylistText();
-        updateSongText();
-    }
-
-
-    /**
-     * This method updates the text objects that are associated with the queued
-     * song
-     */
-    private void updateSongText() {
-        Song song = playlistCalculator.getQueue().getFront();
-        int x = PLAYLIST_PADDING;
-        int y = QUEUE_STARTY + SONG_SHAPE_HEIGHT + PLAYLIST_PADDING;
-        int ogY = y;
-        int maxX = x;
-        String message = song.getName();
-        TextShape songText = addTextShape(message, x, y);
-        y += songText.getHeight();
-        maxX = Math.max(maxX, x + songText.getWidth());
-        message = "Percent Pop: " + song.getGenreSet().getPop() + "%";
-        songText = addTextShape(message, x, y);
-        y += songText.getHeight();
-        maxX = Math.max(maxX, x + songText.getWidth());
-        message = "Percent Rock: " + song.getGenreSet().getRock() + "%";
-        songText = addTextShape(message, x, y);
-        y += songText.getHeight();
-        maxX = Math.max(maxX, x + songText.getWidth());
-        message = "Percent Country: " + song.getGenreSet().getCountry() + "%";
-        songText = addTextShape(message, x, y);
-        y += songText.getHeight();
-        maxX = Math.max(maxX, x + songText.getWidth());
-        message = "Suggested Playlist: " + (song.getPlaylistName().equals("")
-            ? "No-Playlist"
-            : song.getPlaylistName());
-        songText = addTextShape(message, x, y);
-        maxX = Math.max(maxX, x + songText.getWidth());
-        drawNote(maxX + MARGIN + MUSIC_NOTE_SIZE, ogY, Color.BLACK);
-    }
-
-
-    /**
-     * This method updates the text underneath the playlists on the window.
-     */
-    private void updatePlaylistText() {
-        for (int i = 0; i < playlistShapes.length; i++) {
-            final int textMargin = 3;
-            Shape playlistShape = playlistShapes[i];
-            int x = playlistShape.getX();
-            int y = playlistShape.getY() + playlistShape.getHeight()
-                + textMargin;
-            Playlist playlist = playlistCalculator.getPlaylists()[i];
-            String message = "Pop: " + playlist.getMinGenreSet().getPop()
-                + "% - " + playlist.getMaxGenreSet().getPop() + "%";
-            TextShape popText = addTextShape(message, x, y);
-            popText.setX(x + (playlistShape.getWidth() / 2) - (popText
-                .getWidth() / 2));
-            y += popText.getHeight() + textMargin;
-            message = "Rock: " + playlist.getMinGenreSet().getRock() + "% - "
-                + playlist.getMaxGenreSet().getRock() + "%";
-            TextShape rockText = addTextShape(message, x, y);
-            rockText.setX(x + (playlistShape.getWidth() / 2) - (rockText
-                .getWidth() / 2));
-            y += rockText.getHeight() + textMargin;
-            message = "County: " + playlist.getMinGenreSet().getCountry()
-                + "% - " + playlist.getMaxGenreSet().getCountry() + "%";
-            TextShape countryText = addTextShape(message, x, y);
-            countryText.setX(x + (playlistShape.getWidth() / 2) - (countryText
-                .getWidth() / 2));
-            y += countryText.getHeight() + textMargin;
-            message = "Songs in Mix: " + playlist.getNumberOfSongs() + "/"
-                + playlist.getCapacity();
-            TextShape songsInMixText = addTextShape(message, x, y);
-            songsInMixText.setX(x + (playlistShape.getWidth() / 2)
-                - (songsInMixText.getWidth() / 2));
-        }
-    }
+    // private void drawPlaylists() {
+    // drawPhone(PLAYLIST_X, PLAYLIST_Y, 0);
+    // drawPhone(PLAYLIST_X + PLAYLIST_SIZE + PLAYLIST_PADDING, PLAYLIST_Y, 1);
+    // drawPhone(PLAYLIST_X + (2 * PLAYLIST_SIZE) + (2 * PLAYLIST_PADDING),
+    // PLAYLIST_Y, 2);
+    // }
 
 
     /**
