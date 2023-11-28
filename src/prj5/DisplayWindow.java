@@ -33,7 +33,7 @@ public class DisplayWindow {
 
     private static final double DISPLAY_FACTOR = 1.5;
 
-    private static final int MARGIN = 12;
+    // private static final int MARGIN = 12;
     // private static final int PLAYLIST_PADDING = 50;
     // private static final int PLAYLIST_X = PLAYLIST_PADDING;
     // private static final int PLAYLIST_Y = 280;
@@ -159,7 +159,7 @@ public class DisplayWindow {
     public void clickedSortEngagRate(Button button) {
 
         sortEngageRate();
-        //This class isnt right, just tryna figure out how to create it 
+        // This class isnt right, just tryna figure out how to create it
     }
 
 
@@ -233,7 +233,7 @@ public class DisplayWindow {
             sortChanlName.disable();
             sortEngagRate.disable();
             endSimulation();
-        }// This class is wrong, tryna figure out how to implement it
+        } // This class is wrong, tryna figure out how to implement it
 
     }
 
@@ -292,17 +292,11 @@ public class DisplayWindow {
         firstQuarter.disable();
         sortChanlName.disable();
         sortEngagRate.disable();
+        tradEngagRate.disable();
+        reachEngagRate.disable();
         quit.disable();
         window.removeAllShapes();
-        TextShape simulationStatus = new TextShape(0, 0,
-            "All Songs Processed!");
-        int x = (window.getGraphPanelWidth() / 2) - (simulationStatus.getWidth()
-            / 2);
-        int y = (window.getGraphPanelHeight() / 2);
-        simulationStatus.moveTo(x, y);
-        simulationStatus.setBackgroundColor(Color.white);
-        simulationStatus.setForegroundColor(Color.black);
-        window.addShape(simulationStatus);
+        System.exit(0);
     }
 
 }
