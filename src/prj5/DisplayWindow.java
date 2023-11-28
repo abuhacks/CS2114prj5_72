@@ -4,9 +4,11 @@
 package prj5;
 
 import java.awt.Color;
+import javax.print.DocFlavor.STRING;
 import cs2.Button;
 import cs2.CircleShape;
 import cs2.Shape;
+import cs2.SquareShape;
 import cs2.TextShape;
 import cs2.Window;
 import cs2.WindowSide;
@@ -32,24 +34,19 @@ public class DisplayWindow {
     private Button quit;
 
     private static final double DISPLAY_FACTOR = 1.5;
-
-    // private static final int MARGIN = 12;
-    // private static final int PLAYLIST_PADDING = 50;
-    // private static final int PLAYLIST_X = PLAYLIST_PADDING;
-    // private static final int PLAYLIST_Y = 280;
-    // private static final int PLAYLIST_SIZE = ((int)(500 * DISPLAY_FACTOR) -
-    // (4
-    // * PLAYLIST_PADDING)) / 3;
+    private static final int MARGIN = 12;
+    private static final int ENGAGE_PADDING = 50;
 
     private AList<Shape[]> songRectangles;
-    // private static final int MUSIC_NOTE_SIZE = 31;
-    // private static final int QUEUE_STARTX = MARGIN + 30;
-    // private static final int QUEUE_STARTY = 20;
-    // private static final int SONG_SHAPE_HEIGHT = 75;
 
-    // private Shape[] playlistShapes = new Shape[3];
-    // private CircleShape[] playlistCircles = new CircleShape[3];
-    // private static Color[] PLAYLIST_COLORS = new Color[8];
+    private static final int BAR_GRAPH_SIZE = 10;
+    private static final int BAR_GRAPH_WIDTH = 100;
+    private static final int BAR_GRAPH_HEIGHT = 200;
+
+    private Shape bar1 = new Shape(60, 350, 35, 200, Color.RED);
+    private Shape bar2 = new Shape(175, 350, 35, 200, Color.GREEN);
+    private Shape bar3 = new Shape(290, 350, 35, 200, Color.YELLOW);
+    private Shape bar4 = new Shape(405, 350, 35, 200, Color.BLUE);
 
     /**
      * 
@@ -99,20 +96,9 @@ public class DisplayWindow {
 
         this.songRectangles = new AList<Shape[]>();
 
-        // PLAYLIST_COLORS[0] = new Color(51, 92, 103); // blue
-        // PLAYLIST_COLORS[1] = new Color(224, 159, 62); // yellow
-        // PLAYLIST_COLORS[2] = new Color(158, 42, 43); // red
-        // PLAYLIST_COLORS[3] = new Color(17, 17, 17); // black
-        // PLAYLIST_COLORS[4] = new Color(38, 68, 77); // dark blue
-        // PLAYLIST_COLORS[5] = new Color(97, 69, 27); // dark yellow
-        // PLAYLIST_COLORS[6] = new Color(71, 19, 19); // dark red
-        // PLAYLIST_COLORS[7] = new Color(255, 255, 255); // white
-
-        // initButtons();
-        // drawPlaylists();
-        // drawShapes();
-        // updateText();
-        // updateButtons();
+        addTextShape("FirstQuarter(Jan-March)", 10, 10);
+        addTextShape("Traditional Engagement Rate", 10, 30);
+        addTextShape("Sorting by Channel Name", 10, 50);
 
     }
 
@@ -125,43 +111,6 @@ public class DisplayWindow {
      * @param button
      *            accept button (the one that was pressed)
      */
-
-    public void clickedJanuary(Button button) {
-        sortChnlName();
-
-    }
-
-
-    public void clickedFebruary(Button button) {
-        sortChnlName();
-
-    }
-
-
-    public void clickedMarch(Button button) {
-        sortChnlName();
-
-    }
-
-
-    public void clickedfirstQuarter(Button button) {
-        sortChnlName();
-
-    }
-
-
-    public void clickedSortChanlName(Button button) {
-
-        sortChnlName();
-    }
-
-
-    public void clickedSortEngagRate(Button button) {
-
-        sortEngageRate();
-        // This class isnt right, just tryna figure out how to create it
-    }
-
 
     /**
      * 
@@ -177,22 +126,24 @@ public class DisplayWindow {
     /**
      * 
      */
-    public void sortChnlName() {
+    public void clickedSortChanlName(Button button) {
+
         if (!sortingCalculator.sortByName().isEmpty()) {
 
             if (!sortingCalculator.sortByReachRate().isEmpty()) {
 
-                sortingCalculator.getReachRate(users);
-                update();
+                window.addShape(bar1);
+                window.addShape(bar2);
+                window.addShape(bar3);
+                window.addShape(bar4);
+
             }
 
             if (!sortingCalculator.sortByTraditionalRate().isEmpty()) {
+                users.getChannelName();
                 sortingCalculator.getTraditionalRate(users);
-                update();
+                window.addShape(bar1);
             }
-
-            users.getChannelName();
-            update();
 
         }
         else {
@@ -213,16 +164,15 @@ public class DisplayWindow {
             if (!sortingCalculator.sortByReachRate().isEmpty()) {
 
                 sortingCalculator.getReachRate(users);
-                update();
+
             }
 
             if (!sortingCalculator.sortByTraditionalRate().isEmpty()) {
                 sortingCalculator.getTraditionalRate(users);
-                update();
+
             }
 
             users.getChannelName();
-            update();
 
         }
         else {
@@ -238,34 +188,28 @@ public class DisplayWindow {
     }
 
 
-    /**
-     * Update everything. Wipes the screen and resets.
-     */
-    private void update() {
-        if (sortingCalculator.sortByName().isEmpty() && sortingCalculator
-            .sortByTraditionalRate().isEmpty() && sortingCalculator
-                .sortByReachRate().isEmpty()) {
-            endSimulation();
-        }
-        else {
-            // window.removeAllShapes();
-            // updateQueue();
-            // drawPlaylists();
-            // updateText();
-            // updateButtons();
+    public void clickedJanuary(Button button) {
+        // sortChnlName();
 
-        }
     }
 
-    /**
-     * Draw the phone objects for the playlists seen on screen
-     */
-    // private void drawPlaylists() {
-    // drawPhone(PLAYLIST_X, PLAYLIST_Y, 0);
-    // drawPhone(PLAYLIST_X + PLAYLIST_SIZE + PLAYLIST_PADDING, PLAYLIST_Y, 1);
-    // drawPhone(PLAYLIST_X + (2 * PLAYLIST_SIZE) + (2 * PLAYLIST_PADDING),
-    // PLAYLIST_Y, 2);
-    // }
+
+    public void clickedFebruary(Button button) {
+        // sortChnlName();
+
+    }
+
+
+    public void clickedMarch(Button button) {
+        // sortChnlName();
+
+    }
+
+
+    public void clickedfirstQuarter(Button button) {
+        // sortChnlName();
+
+    }
 
 
     /**
@@ -273,7 +217,7 @@ public class DisplayWindow {
      */
     private TextShape addTextShape(String message, int x, int y) {
         if (message != null) {
-            TextShape shape = new TextShape(x, y, message, Color.black);
+            TextShape shape = new TextShape(x, y, message, Color.BLACK);
             shape.setBackgroundColor(Color.white);
             window.addShape(shape);
             return shape;
