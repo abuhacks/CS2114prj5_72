@@ -135,40 +135,41 @@ public class DisplayWindow {
      * 
      */
     public void clickedSortChanlName(Button button) {
-
         clickedS(button);
-        // if (!sortingCalculator.sortByName().isEmpty()) {
 
-        // if (!sortingCalculator.sortByReachRate().isEmpty()) {
+        if (!sortingCalculator.sortByName().isEmpty()) {
 
-        // window.addShape(bar1);
-        // window.addShape(bar2);
-        // window.addShape(bar3);
-        // window.addShape(bar4);
+            if (!sortingCalculator.sortByReachRate().isEmpty()) {
 
-        // }
+                window.addShape(bar1);
+                window.addShape(bar2);
+                window.addShape(bar3);
+                window.addShape(bar4);
 
-        // if (!sortingCalculator.sortByTraditionalRate().isEmpty()) {
-        // users.getChannelName();
-        // sortingCalculator.getTraditionalRate(users);
-        // window.addShape(bar1);
-        // }
+            }
 
-        // }
-        // else {
-        // january.disable();
-        // february.disable();
-        // march.disable();
-        // firstQuarter.disable();
-        // sortChanlName.disable();
-        // sortEngagRate.disable();
-        // endSimulation();
-        // }
+            if (!sortingCalculator.sortByTraditionalRate().isEmpty()) {
+                users.getChannelName();
+                sortingCalculator.getTraditionalRate(users);
+                window.addShape(bar1);
+            }
+
+        }
+        else {
+            january.disable();
+            february.disable();
+            march.disable();
+            firstQuarter.disable();
+            sortChanlName.disable();
+            sortEngagRate.disable();
+            endSimulation();
+        }
     }
 
 
     public void clickedSortEngagRate(Button button) {
         clickedS(button);
+
         // if (!sortingCalculator.sortByName().isEmpty()) {
 
         // if (!sortingCalculator.sortByReachRate().isEmpty()) {
@@ -269,7 +270,7 @@ public class DisplayWindow {
 
         }
         else if (button.equals(sortEngagRate)) {
-            bottom.setText("Sort By Engagemenet Rate");
+            bottom.setText("Sort By Engagement Rate");
 
         }
 
