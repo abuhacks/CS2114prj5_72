@@ -20,6 +20,7 @@ import list.AList;
  * 
  */
 public class DisplayWindow {
+
     private Window window;
     private SortingCalculator sortingCalculator;
     private User users;
@@ -96,9 +97,9 @@ public class DisplayWindow {
 
         this.songRectangles = new AList<Shape[]>();
 
-        addTextShape("FirstQuarter(Jan-March)", 10, 10);
-        addTextShape("Traditional Engagement Rate", 10, 30);
-        addTextShape("Sorting by Channel Name", 10, 50);
+        // addTextShape("FirstQuarter(Jan-March)", 10, 10);
+        // addTextShape("Traditional Engagement Rate", 10, 30);
+        // addTextShape("Sorting by Channel Name", 10, 50);
 
     }
 
@@ -189,26 +190,51 @@ public class DisplayWindow {
 
 
     public void clickedJanuary(Button button) {
+
+        clickedS(button);
         // sortChnlName();
 
     }
 
 
     public void clickedFebruary(Button button) {
+        clickedS(button);
         // sortChnlName();
 
     }
 
 
     public void clickedMarch(Button button) {
+        clickedS(button);
         // sortChnlName();
 
     }
 
 
-    public void clickedfirstQuarter(Button button) {
+    public void clickedFirstQuarter(Button button) {
+        clickedS(button);
         // sortChnlName();
 
+    }
+
+
+    /**
+     * 
+     * @param button
+     */
+    public void clickedS(Button button) {
+        if (button.equals(january)) {
+            addTextShape("January", 10, 10);
+        }
+        else if (button.equals(february)) {
+            addTextShape("February", 10, 10);
+        }
+        else if (button.equals(march)) {
+            addTextShape("March", 10, 10);
+        }
+        else if (button.equals(firstQuarter)) {
+            addTextShape("FirstQuarter(Jan-March)", 10, 10);
+        }
     }
 
 
