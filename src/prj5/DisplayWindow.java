@@ -22,6 +22,10 @@ import list.AList;
 public class DisplayWindow {
 
     private Window window;
+    private TextShape top;
+    private TextShape middle;
+    private TextShape bottom;
+
     private SortingCalculator sortingCalculator;
     private User users;
     private Button january;
@@ -97,9 +101,12 @@ public class DisplayWindow {
 
         this.songRectangles = new AList<Shape[]>();
 
-        // addTextShape("FirstQuarter(Jan-March)", 10, 10);
-        // addTextShape("Traditional Engagement Rate", 10, 30);
-        // addTextShape("Sorting by Channel Name", 10, 50);
+        top = new TextShape(10, 10, "");
+        middle = new TextShape(10, 30, "");
+        bottom = new TextShape(10, 50, "");
+        window.addShape(top);
+        window.addShape(middle);
+        window.addShape(bottom);
 
     }
 
@@ -129,62 +136,64 @@ public class DisplayWindow {
      */
     public void clickedSortChanlName(Button button) {
 
-        if (!sortingCalculator.sortByName().isEmpty()) {
+        clickedS(button);
+        // if (!sortingCalculator.sortByName().isEmpty()) {
 
-            if (!sortingCalculator.sortByReachRate().isEmpty()) {
+        // if (!sortingCalculator.sortByReachRate().isEmpty()) {
 
-                window.addShape(bar1);
-                window.addShape(bar2);
-                window.addShape(bar3);
-                window.addShape(bar4);
+        // window.addShape(bar1);
+        // window.addShape(bar2);
+        // window.addShape(bar3);
+        // window.addShape(bar4);
 
-            }
+        // }
 
-            if (!sortingCalculator.sortByTraditionalRate().isEmpty()) {
-                users.getChannelName();
-                sortingCalculator.getTraditionalRate(users);
-                window.addShape(bar1);
-            }
+        // if (!sortingCalculator.sortByTraditionalRate().isEmpty()) {
+        // users.getChannelName();
+        // sortingCalculator.getTraditionalRate(users);
+        // window.addShape(bar1);
+        // }
 
-        }
-        else {
-            january.disable();
-            february.disable();
-            march.disable();
-            firstQuarter.disable();
-            sortChanlName.disable();
-            sortEngagRate.disable();
-            endSimulation();
-        }
+        // }
+        // else {
+        // january.disable();
+        // february.disable();
+        // march.disable();
+        // firstQuarter.disable();
+        // sortChanlName.disable();
+        // sortEngagRate.disable();
+        // endSimulation();
+        // }
     }
 
 
-    public void sortEngageRate() {
-        if (!sortingCalculator.sortByName().isEmpty()) {
+    public void clickedSortEngagRate(Button button) {
+        clickedS(button);
+        // if (!sortingCalculator.sortByName().isEmpty()) {
 
-            if (!sortingCalculator.sortByReachRate().isEmpty()) {
+        // if (!sortingCalculator.sortByReachRate().isEmpty()) {
 
-                sortingCalculator.getReachRate(users);
+        // sortingCalculator.getReachRate(users);
 
-            }
+        // }
 
-            if (!sortingCalculator.sortByTraditionalRate().isEmpty()) {
-                sortingCalculator.getTraditionalRate(users);
+        // if (!sortingCalculator.sortByTraditionalRate().isEmpty()) {
+        // sortingCalculator.getTraditionalRate(users);
 
-            }
+        // }
 
-            users.getChannelName();
+        // users.getChannelName();
 
-        }
-        else {
-            january.disable();
-            february.disable();
-            march.disable();
-            firstQuarter.disable();
-            sortChanlName.disable();
-            sortEngagRate.disable();
-            endSimulation();
-        } // This class is wrong, tryna figure out how to implement it
+        // }
+        // else {
+        // january.disable();
+        // february.disable();
+        // march.disable();
+        // firstQuarter.disable();
+        // sortChanlName.disable();
+        // sortEngagRate.disable();
+        // endSimulation();
+        // }
 
     }
 
@@ -218,23 +227,52 @@ public class DisplayWindow {
     }
 
 
+    public void clickedTradEngageRate(Button button) {
+        clickedS(button);
+        // sortChnlName();
+
+    }
+
+
+    public void clickedReachEngagRate(Button button) {
+        clickedS(button);
+        // sortChnlName();
+
+    }
+
+
     /**
      * 
      * @param button
      */
     public void clickedS(Button button) {
         if (button.equals(january)) {
-            addTextShape("January", 10, 10);
+            top.setText("January");
         }
         else if (button.equals(february)) {
-            addTextShape("February", 10, 10);
+            top.setText("February");
         }
         else if (button.equals(march)) {
-            addTextShape("March", 10, 10);
+            top.setText("March");
         }
         else if (button.equals(firstQuarter)) {
-            addTextShape("FirstQuarter(Jan-March)", 10, 10);
+            top.setText("First Quarter(Jan - March)");
         }
+        else if (button.equals(tradEngagRate)) {
+            middle.setText("Traditional Engagement Rate");
+        }
+        else if (button.equals(reachEngagRate)) {
+            middle.setText("Reach Engagement Rate");
+        }
+        else if (button.equals(sortChanlName)) {
+            bottom.setText("Sort By Channel Name");
+
+        }
+        else if (button.equals(sortEngagRate)) {
+            bottom.setText("Sort By Engagemenet Rate");
+
+        }
+
     }
 
 
