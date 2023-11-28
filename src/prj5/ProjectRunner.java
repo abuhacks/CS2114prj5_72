@@ -5,6 +5,8 @@ package prj5;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 
 /**
  * This is the ProjectRunner Class that takes in the InputFileReader and reads
@@ -63,12 +65,16 @@ public class ProjectRunner {
                 }
             }
         }
+        /*
+         * TODO: For final Submission - Should have the GUI display for the
+         * input data
+         */
         if (showGUI) {
-            /*
-             * TODO: For final Submission - Should have the GUI display for the
-             * input data
-             */
-        }
-    }
 
+            SortingCalculator mid = new SortingCalculator(filer.getList());
+            DisplayWindow bron = new DisplayWindow(mid);
+
+        }
+
+    }
 }
