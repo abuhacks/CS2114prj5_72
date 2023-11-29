@@ -224,6 +224,17 @@ public class SortingCalculator {
                 testVals.add(users.getEntry(i));
             }
         }
+        for (int i = 0; i < testVals.getLength(); i++) {
+            for (int j = i + 1; j < testVals.getLength(); j++) {
+                if (getTraditionalRate(testVals.getEntry(
+                    i)) < getTraditionalRate(testVals.getEntry(j))) {
+                    User temp = testVals.getEntry(i);
+                    testVals.replace(i, testVals.getEntry(j));
+                    testVals.replace(j, temp);
+                }
+            }
+
+        }
         return testVals;
     }
 }
