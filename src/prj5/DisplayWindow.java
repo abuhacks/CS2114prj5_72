@@ -25,9 +25,7 @@ public class DisplayWindow {
     private TextShape top;
     private TextShape middle;
     private TextShape bottom;
-
     private SortingCalculator sortingCalculator;
-    private User users;
     private Button january;
     private Button february;
     private Button march;
@@ -39,19 +37,7 @@ public class DisplayWindow {
     private Button quit;
 
     private static final double DISPLAY_FACTOR = 1.5;
-    private static final int MARGIN = 12;
-    private static final int ENGAGE_PADDING = 50;
-
     private AList<Shape[]> songRectangles;
-
-    private static final int BAR_GRAPH_SIZE = 10;
-    private static final int BAR_GRAPH_WIDTH = 100;
-    private static final int BAR_GRAPH_HEIGHT = 200;
-
-    private Shape bar1 = new Shape(60, 350, 35, 200, Color.RED);
-    private Shape bar2 = new Shape(175, 350, 35, 200, Color.GREEN);
-    private Shape bar3 = new Shape(290, 350, 35, 200, Color.YELLOW);
-    private Shape bar4 = new Shape(405, 350, 35, 200, Color.BLUE);
 
     /**
      * 
@@ -136,65 +122,14 @@ public class DisplayWindow {
      */
     public void clickedSortChanlName(Button button) {
         clickedS(button);
+        drawBarGraphTrad();
+        drawBarGraphReach();
 
-        if (!sortingCalculator.sortByName().isEmpty()) {
-
-            if (!sortingCalculator.sortByReachRate().isEmpty()) {
-
-                window.addShape(bar1);
-                window.addShape(bar2);
-                window.addShape(bar3);
-                window.addShape(bar4);
-
-            }
-
-            if (!sortingCalculator.sortByTraditionalRate().isEmpty()) {
-                users.getChannelName();
-                sortingCalculator.getTraditionalRate(users);
-                window.addShape(bar1);
-            }
-
-        }
-        else {
-            january.disable();
-            february.disable();
-            march.disable();
-            firstQuarter.disable();
-            sortChanlName.disable();
-            sortEngagRate.disable();
-            endSimulation();
-        }
     }
 
 
     public void clickedSortEngagRate(Button button) {
         clickedS(button);
-
-        // if (!sortingCalculator.sortByName().isEmpty()) {
-
-        // if (!sortingCalculator.sortByReachRate().isEmpty()) {
-
-        // sortingCalculator.getReachRate(users);
-
-        // }
-
-        // if (!sortingCalculator.sortByTraditionalRate().isEmpty()) {
-        // sortingCalculator.getTraditionalRate(users);
-
-        // }
-
-        // users.getChannelName();
-
-        // }
-        // else {
-        // january.disable();
-        // february.disable();
-        // march.disable();
-        // firstQuarter.disable();
-        // sortChanlName.disable();
-        // sortEngagRate.disable();
-        // endSimulation();
-        // }
 
     }
 
@@ -202,43 +137,117 @@ public class DisplayWindow {
     public void clickedJanuary(Button button) {
 
         clickedS(button);
-        // sortChnlName();
 
     }
 
 
     public void clickedFebruary(Button button) {
         clickedS(button);
-        // sortChnlName();
 
     }
 
 
     public void clickedMarch(Button button) {
         clickedS(button);
-        // sortChnlName();
 
     }
 
 
     public void clickedFirstQuarter(Button button) {
         clickedS(button);
-        // sortChnlName();
 
     }
 
 
     public void clickedTradEngageRate(Button button) {
         clickedS(button);
-        // sortChnlName();
+        drawBarGraphTrad();
 
     }
 
 
     public void clickedReachEngagRate(Button button) {
         clickedS(button);
-        // sortChnlName();
+        drawBarGraphReach();
 
+    }
+
+
+    /**
+     * 
+     */
+    public void drawBarGraphTrad() {
+        window.removeAllShapes();
+
+        DoublyLinkedList<User> userList = sortingCalculator.getList();
+
+        int barSpacing = 80;
+        int initialX = 30;
+
+        Color[] colors = { Color.BLUE, Color.GREEN, Color.RED, Color.YELLOW };
+
+        for (int i = 0; i < Math.min(userList.getLength(), 4); i++) {
+            User user = userList.getEntry(i);
+            double traditionalRate = sortingCalculator.getTraditionalRate(user);
+            String channelName = user.getChannelName();
+
+            int barWidth = 50;
+            int barHeight = (int)(traditionalRate);
+
+            Shape bar = new Shape(initialX + i * (barWidth + barSpacing), 550
+                - barHeight, barWidth, barHeight, colors[i]);
+            window.addShape(bar);
+
+            TextShape textShape = new TextShape(initialX + i * (barWidth
+                + barSpacing), 570, channelName, Color.BLACK);
+            window.addShape(textShape);
+
+            TextShape textShapeRate = new TextShape(initialX + i * (barWidth
+                + barSpacing), 590, String.format("%.2f", traditionalRate),
+                Color.BLACK);
+            window.addShape(textShapeRate);
+        }
+
+        window.repaint();
+    }
+
+
+    /**
+     * 
+     */
+    public void drawBarGraphReach() {
+        window.removeAllShapes();
+
+        DoublyLinkedList<User> userList = sortingCalculator.getList();
+
+        int barSpacing = 80;
+        int initialX = 30;
+
+        Color[] colors = { Color.BLUE, Color.GREEN, Color.RED, Color.YELLOW };
+
+        for (int i = 0; i < Math.min(userList.getLength(), 4); i++) {
+            User user = userList.getEntry(i);
+            double reachRate = sortingCalculator.getReachRate(user);
+            String channelName = user.getChannelName();
+
+            int barWidth = 50;
+            int barHeight = (int)(reachRate);
+
+            Shape bar = new Shape(initialX + i * (barWidth + barSpacing), 550
+                - barHeight, barWidth, barHeight, colors[i]);
+            window.addShape(bar);
+
+            TextShape textShape = new TextShape(initialX + i * (barWidth
+                + barSpacing), 570, channelName, Color.BLACK);
+            window.addShape(textShape);
+
+            TextShape textShapeRate = new TextShape(initialX + i * (barWidth
+                + barSpacing), 590, String.format("%.2f", reachRate),
+                Color.BLACK);
+            window.addShape(textShapeRate);
+        }
+
+        window.repaint();
     }
 
 
@@ -274,20 +283,6 @@ public class DisplayWindow {
 
         }
 
-    }
-
-
-    /**
-     * Helper method to add a TextShape to the window (less overall code)
-     */
-    private TextShape addTextShape(String message, int x, int y) {
-        if (message != null) {
-            TextShape shape = new TextShape(x, y, message, Color.BLACK);
-            shape.setBackgroundColor(Color.white);
-            window.addShape(shape);
-            return shape;
-        }
-        return null;
     }
 
 
