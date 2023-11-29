@@ -37,6 +37,8 @@ public class DisplayWindow {
     private Button quit;
     private boolean bear;
     private boolean cap;
+    // private boolean dog;
+    // private boolean rat;
 
     private static final double DISPLAY_FACTOR = 1.5;
     private AList<Shape[]> songRectangles;
@@ -97,7 +99,11 @@ public class DisplayWindow {
         window.addShape(bottom);
 
         bear = false;
-        cap = true;
+        cap = false;
+        
+        DoublyLinkedList<User> abu1 = new DoublyLinkedList<User>();
+        abu1 = sortingCalculator.getList();
+        drawBarGraphTrad(abu1);
 
     }
 
@@ -138,7 +144,14 @@ public class DisplayWindow {
 
 
     public void clickedSortEngagRate(Button button) {
-
+        if (bear) {
+            srtTradEngage();
+            bear = false;
+        }
+        else if (cap) {
+            srtReachEngage();
+            cap = false;
+        }
     }
 
 
@@ -238,14 +251,21 @@ public class DisplayWindow {
      * 
      */
     public void srtTradEngage() {
-        
+
         DoublyLinkedList<User> abu = sortingCalculator.sortByTraditionalRate();
-            for (int i = 0; i < abu.getLength(); i++) {
-            abu.getEntry(i).getChannelName();
+        for (int i = 0; i < abu.getLength(); i++) {
             drawBarGraphTrad(abu);
 
         }
 
+    }
+
+
+    public void srtReachEngage() {
+        DoublyLinkedList<User> abu1 = sortingCalculator.sortByReachRate();
+        for (int i = 0; i < abu1.getLength(); i++) {
+            drawBarGraphReach(abu1);
+        }
     }
 
 
