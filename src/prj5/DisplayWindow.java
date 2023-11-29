@@ -35,6 +35,8 @@ public class DisplayWindow {
     private Button tradEngagRate;
     private Button reachEngagRate;
     private Button quit;
+    private boolean bear;
+    private boolean cap;
 
     private static final double DISPLAY_FACTOR = 1.5;
     private AList<Shape[]> songRectangles;
@@ -94,6 +96,9 @@ public class DisplayWindow {
         window.addShape(middle);
         window.addShape(bottom);
 
+        bear = false;
+        cap = true;
+
     }
 
 
@@ -121,54 +126,97 @@ public class DisplayWindow {
      * 
      */
     public void clickedSortChanlName(Button button) {
-        clickedS(button);
-        drawBarGraphTrad();
-        drawBarGraphReach();
-
+        if (bear) {
+            srtTradName();
+            bear = false;
+        }
+        else if (cap) {
+            srtReachName();
+            cap = false;
+        }
     }
 
 
     public void clickedSortEngagRate(Button button) {
-        clickedS(button);
 
     }
 
 
     public void clickedJanuary(Button button) {
 
-        clickedS(button);
-
     }
 
 
     public void clickedFebruary(Button button) {
-        clickedS(button);
 
     }
 
 
     public void clickedMarch(Button button) {
-        clickedS(button);
 
     }
 
 
     public void clickedFirstQuarter(Button button) {
-        clickedS(button);
 
     }
 
 
+    /**
+     * 
+     * @param button
+     */
     public void clickedTradEngageRate(Button button) {
-        clickedS(button);
-        drawBarGraphTrad();
+
+        tradRate();
 
     }
 
 
+    /**
+     * 
+     * @param button
+     */
     public void clickedReachEngagRate(Button button) {
-        clickedS(button);
-        drawBarGraphReach();
+
+        reachRate();
+
+    }
+
+
+    /**
+     * @return
+     * 
+     */
+    public void tradRate() {
+        DoublyLinkedList<User> abu1 = new DoublyLinkedList<User>();
+        abu1 = sortingCalculator.getList();
+        drawBarGraphTrad(abu1);
+        bear = true;
+    }
+
+
+    /**
+     * 
+     */
+    public void reachRate() {
+        DoublyLinkedList<User> abu2 = new DoublyLinkedList<User>();
+        abu2 = sortingCalculator.getList();
+        drawBarGraphReach(abu2);
+        cap = true;
+    }
+
+
+    /**
+     * 
+     */
+    public void srtTradName() {
+        DoublyLinkedList<User> abu = sortingCalculator.sortByName();
+        for (int i = 0; i < abu.getLength(); i++) {
+            abu.getEntry(i).getChannelName();
+            drawBarGraphTrad(abu);
+
+        }
 
     }
 
@@ -176,22 +224,49 @@ public class DisplayWindow {
     /**
      * 
      */
-    public void drawBarGraphTrad() {
+    public void srtReachName() {
+        DoublyLinkedList<User> abu = sortingCalculator.sortByName();
+        for (int i = 0; i < abu.getLength(); i++) {
+            abu.getEntry(i).getChannelName();
+            drawBarGraphReach(abu);
+
+        }
+    }
+
+
+    /**
+     * 
+     */
+    public void srtTradEngage() {
+        
+        DoublyLinkedList<User> abu = sortingCalculator.sortByTraditionalRate();
+            for (int i = 0; i < abu.getLength(); i++) {
+            abu.getEntry(i).getChannelName();
+            drawBarGraphTrad(abu);
+
+        }
+
+    }
+
+
+    /**
+     * @param abu
+     * 
+     */
+    public void drawBarGraphTrad(DoublyLinkedList<User> abu) {
         window.removeAllShapes();
 
-        DoublyLinkedList<User> userList = sortingCalculator.getList();
-
-        int barSpacing = 80;
+        int barSpacing = 100;
         int initialX = 30;
 
         Color[] colors = { Color.BLUE, Color.GREEN, Color.RED, Color.YELLOW };
 
-        for (int i = 0; i < Math.min(userList.getLength(), 4); i++) {
-            User user = userList.getEntry(i);
+        for (int i = 0; i < Math.min(abu.getLength(), 4); i++) {
+            User user = abu.getEntry(i);
             double traditionalRate = sortingCalculator.getTraditionalRate(user);
             String channelName = user.getChannelName();
 
-            int barWidth = 50;
+            int barWidth = 30;
             int barHeight = (int)(traditionalRate);
 
             Shape bar = new Shape(initialX + i * (barWidth + barSpacing), 550
@@ -215,22 +290,20 @@ public class DisplayWindow {
     /**
      * 
      */
-    public void drawBarGraphReach() {
+    public void drawBarGraphReach(DoublyLinkedList<User> abu) {
         window.removeAllShapes();
 
-        DoublyLinkedList<User> userList = sortingCalculator.getList();
-
-        int barSpacing = 80;
-        int initialX = 30;
+        int barSpacing = 100;
+        int initialX = 40;
 
         Color[] colors = { Color.BLUE, Color.GREEN, Color.RED, Color.YELLOW };
 
-        for (int i = 0; i < Math.min(userList.getLength(), 4); i++) {
-            User user = userList.getEntry(i);
+        for (int i = 0; i < Math.min(abu.getLength(), 4); i++) {
+            User user = abu.getEntry(i);
             double reachRate = sortingCalculator.getReachRate(user);
             String channelName = user.getChannelName();
 
-            int barWidth = 50;
+            int barWidth = 30;
             int barHeight = (int)(reachRate);
 
             Shape bar = new Shape(initialX + i * (barWidth + barSpacing), 550
