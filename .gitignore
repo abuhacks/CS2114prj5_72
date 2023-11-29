@@ -23,5 +23,10 @@
 hs_err_pid*
 replay_pid*
 /bin/
+<<<<<<< Updated upstream
+.classpath
+.project
+=======
+>>>>>>> Stashed changes
 .classpath
 .project

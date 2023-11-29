@@ -210,4 +210,20 @@ public class SortingCalculator {
         }
         return testVals;
     }
+    
+    // ----------------------------------------------------------
+    /**
+     * Sorts based off months.
+     * @param month
+     * @return the new list without months
+     */
+    public DoublyLinkedList<User> sortByMonth(String month) {
+        DoublyLinkedList<User> testVals = new DoublyLinkedList<User>();
+        for (int i = 0; i < users.getLength(); i++) {
+            if (users.getEntry(i).getMonth().equals(month)) {
+                testVals.add(users.getEntry(i));
+            }
+        }
+        return testVals;
+    }
 }
