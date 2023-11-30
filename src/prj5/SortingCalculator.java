@@ -54,7 +54,7 @@ public class SortingCalculator {
     // ----------------------------------------------------------
     /**
      * Returns the users.
-     * @return the users.
+     * @return the users. Users.
      */
     public DoublyLinkedList<User> getUsers() {
         DoublyLinkedList<User> testVals = new DoublyLinkedList<User>();
