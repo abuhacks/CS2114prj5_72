@@ -39,6 +39,9 @@ public class DisplayWindow {
     private boolean cap;
     private boolean dog;
     private boolean rat;
+    private boolean tiger;
+    private boolean abu;
+    private boolean dear;
 
     private static final double DISPLAY_FACTOR = 1.5;
     private AList<Shape[]> songRectangles;
@@ -102,6 +105,9 @@ public class DisplayWindow {
         cap = false;
         dog = false;
         rat = false;
+        tiger = false;
+        abu = false;
+        dear = false;
 
         DoublyLinkedList<User> abu1 = new DoublyLinkedList<User>();
         abu1 = sortingCalculator.getList();
@@ -136,12 +142,10 @@ public class DisplayWindow {
     public void clickedSortChanlName(Button button) {
         if (bear) {
             srtTradName();
-
         }
 
         else if (cap) {
             srtReachName();
-
         }
     }
 
@@ -149,16 +153,24 @@ public class DisplayWindow {
     public void clickedSortEngagRate(Button button) {
         if (bear) {
             srtTradEngage();
+            bear = false;
         }
 
-        if (cap) {
+        else if (cap) {
             srtReachEngage();
+            cap = false;
         }
-        if (dog) {
+        else if (dog) {
             srtTradJanEngage();
+            dog = false;
         }
-        if (rat) {
+        else if (rat) {
             srtTradFebEngage();
+            rat = false;
+        }
+        else if (tiger) {
+            srtTradMarEngage();
+            tiger = false;
         }
 
     }
@@ -179,10 +191,14 @@ public class DisplayWindow {
 
     public void clickedMarch(Button button) {
 
+        tradMarRate();
+
     }
 
 
     public void clickedFirstQuarter(Button button) {
+
+        
 
     }
 
@@ -240,6 +256,7 @@ public class DisplayWindow {
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
             drawBarGraphTrad(abu);
+            bear = true;
 
         }
 
@@ -254,6 +271,7 @@ public class DisplayWindow {
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
             drawBarGraphReach(abu);
+            cap = true;
 
         }
     }
@@ -267,6 +285,7 @@ public class DisplayWindow {
         DoublyLinkedList<User> abu = sortingCalculator.sortByTraditionalRate();
         for (int i = 0; i < abu.getLength(); i++) {
             drawBarGraphTrad(abu);
+            bear = true;
 
         }
 
@@ -277,13 +296,14 @@ public class DisplayWindow {
         DoublyLinkedList<User> abu1 = sortingCalculator.sortByReachRate();
         for (int i = 0; i < abu1.getLength(); i++) {
             drawBarGraphReach(abu1);
+            cap = true;
         }
     }
 
 
     public void tradJanRate() {
         DoublyLinkedList<User> abu1 = new DoublyLinkedList<User>();
-        abu1 = sortingCalculator.getList();
+        abu1 = sortingCalculator.getByMonth("January");
         tradMonth(abu1);
         dog = true;
 
@@ -307,7 +327,7 @@ public class DisplayWindow {
 
     public void tradFebRate() {
         DoublyLinkedList<User> abu14 = new DoublyLinkedList<User>();
-        abu14 = sortingCalculator.getList();
+        abu14 = sortingCalculator.getByMonth("February");
         tradMonth(abu14);
         rat = true;
 
@@ -326,6 +346,28 @@ public class DisplayWindow {
 
         }
 
+    }
+
+
+    public void tradMarRate() {
+        DoublyLinkedList<User> abu14 = new DoublyLinkedList<User>();
+        abu14 = sortingCalculator.getByMonth("March");
+        tradMonth(abu14);
+        tiger = true;
+
+    }
+
+
+    public void srtTradMarEngage() {
+        DoublyLinkedList<User> abu2 = sortingCalculator.sortByTradMonth(
+            "March");
+        for (int i = 0; i < abu2.getLength(); i++) {
+            tradMonth(abu2);
+            tiger = true;
+
+        }
+
+        
     }
 
 
