@@ -252,8 +252,8 @@ public class SortingCalculator {
         }
         for (int i = 0; i < testVals.getLength(); i++) {
             for (int j = i + 1; j < testVals.getLength(); j++) {
-                if (testVals.getEntry(i).getIndividualReachRate() < testVals
-                    .getEntry(j).getIndividualReachRate()) {
+                if (getIndividualReachRate(testVals.getEntry(i)) < getIndividualReachRate(testVals
+                    .getEntry(j))) {
                     User temp = testVals.getEntry(j);
                     testVals.replace(j, testVals.getEntry(i));
                     testVals.replace(i, temp);

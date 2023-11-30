@@ -1,5 +1,7 @@
 package prj5;
+
 import java.util.Comparator;
+
 // -------------------------------------------------------------------------
 /**
  * Write a one-sentence summary of your class here. Follow it with additional
@@ -30,6 +32,15 @@ public class SortReach
             ((one.getComments() + one.getLikes()) / one.getFollowers());
         int reachTwo =
             ((two.getComments() + two.getLikes()) / two.getFollowers());
-        return Integer.compare(reachOne, reachTwo);
+        if(reachOne > reachTwo) {
+            return -1;
+        }
+        else if(reachOne < reachTwo) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+        //return Integer.compare(reachOne, reachTwo);
     }
 }
