@@ -1,5 +1,6 @@
 package prj5;
 
+import java.util.Comparator;
 import list.ListInterface;
 
 // -------------------------------------------------------------------------
@@ -473,11 +474,16 @@ public class DoublyLinkedList<T>
     }
 
 
-
-     //This method compares each node in a DoublyLinkedList, and it sorts the
-     //data based off the compareTo() method for the object stored in each node.
+    // This method compares each node in a DoublyLinkedList, and it sorts the
+    // data based off the compareTo() method for the object stored in each node.
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * 
+     * @param comp
+     */
     /*
-    public void insertionSort()
+    public void insertionSort(Comparator<T> comp)
     {
         Node<T> sort = firstNode;
         if (getLength() >= 2)
@@ -489,8 +495,8 @@ public class DoublyLinkedList<T>
                 unsort = unsort.getNext();
                 Node<T> current = firstNode;
                 Node<T> previous = firstNode;
-                while (current != null && ((Comparable<T>)insert.getData())
-                    .compareTo(current.getData()) > 0)
+                while (current != null
+                    && comp.compare(insert.getData(), current.getData()) > 0)
                 {
                     previous = current;
                     current = current.getNext();
@@ -505,20 +511,40 @@ public class DoublyLinkedList<T>
             }
         }
     }
-     */
-
-
-     //This method compares DoublyLinkedList by the size of each list
-     //param other
-                //the size of the other DoublyLinkedList
-     //return int 1 if current has a larger size than other, negative 1 if
-                 //other list had larger size, 0 if both are equal in size.
-
-    /*
-    public int compareTo(T other)
-    {
-        return 0;
-    }
     */
-    
+    public void insertionSort(Comparator<T> comp)
+    {
+        if(size > 1) {
+            Node<T> unsorted = firstNode.getNext();
+            Node<T> sorted = firstNode;
+            sorted.setNext(null);
+            while(unsorted != null) {
+                Node<T> insert = unsorted;
+                unsorted = unsorted.getNext();
+                insertion(insert, comp);
+            }
+        }
+        
+    }
+    private void insertion(Node<T> insert, Comparator<T> comp) {
+        T insertNode = insert.getData();
+        Node<T> curr = firstNode;
+        Node<T> prev = null;
+        
+        while((curr != null) && comp.compare(insertNode, curr.getData()) > 0) {
+            prev = curr;
+            curr = curr.getNext();
+        }
+        if(prev != null) {
+            prev.setNext(insert);
+            insert.setPrevious(prev);
+            insert.setNext(curr);
+        }
+        else {
+            insert.setNext(firstNode);
+            firstNode.setPrevious(insert);
+            firstNode = insert;
+        }
+    }
+
 }

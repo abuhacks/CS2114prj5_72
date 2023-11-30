@@ -134,11 +134,11 @@ public class DisplayWindow {
     public void clickedSortChanlName(Button button) {
         if (bear) {
             srtTradName();
-            bear = false;
+
         }
         else if (cap) {
             srtReachName();
-            cap = false;
+
         }
     }
 
@@ -146,26 +146,31 @@ public class DisplayWindow {
     public void clickedSortEngagRate(Button button) {
         if (bear) {
             srtTradEngage();
-            bear = false;
+
         }
         else if (cap) {
             srtReachEngage();
-            cap = false;
+
         }
     }
 
 
     public void clickedJanuary(Button button) {
 
-        srtTradMonths();
+        if (bear) {
+            srtTradJan();
 
+        }
+        else if (cap) {
+            srtReachJan();
+
+        }
     }
 
 
     public void clickedFebruary(Button button) {
 
     }
-
 
     public void clickedMarch(Button button) {
 
@@ -274,13 +279,62 @@ public class DisplayWindow {
     /**
      * 
      */
-    public void srtTradMonths() {
+    public void srtTradJan() {
+        DoublyLinkedList<User> abu2 = sortingCalculator.sortByTraditionalRate();
+        for (int i = 0; i < abu2.getLength(); i++) {
+            abu2.getEntry(i).getIndividualTradRate();
+            tradMonth(abu2);
 
-        DoublyLinkedList<User> abu1 = sortingCalculator.sortByReachRate();
-        for (int i = 0; i < abu1.getLength(); i++) {
-            drawBarGraphReach(abu1);
         }
 
+    }
+
+
+    public void srtReachJan() {
+        DoublyLinkedList<User> abu3 = sortingCalculator.sortByReachRate();
+        for (int i = 0; i < abu3.getLength(); i++) {
+            abu3.getEntry(i).getIndividualReachRate();
+            drawBarGraphReach(abu3);
+
+        }
+
+    }
+    
+    /**
+     * @param abu
+     * 
+     */
+    public void tradMonth(DoublyLinkedList<User> abu) {
+        window.removeAllShapes();
+
+        int barSpacing = 100;
+        int initialX = 30;
+
+        Color[] colors = { Color.BLUE, Color.GREEN, Color.RED, Color.YELLOW };
+
+        for (int i = 0; i < Math.min(abu.getLength(), 4); i++) {
+            User user = abu.getEntry(i);
+            double traditionalRate = sortingCalculator.getList().getEntry(i).getIndividualTradRate();
+            String channelName = user.getChannelName();
+
+            int barWidth = 30;
+            int barHeight = (int)(traditionalRate);
+
+            Shape bar = new Shape(initialX + i * (barWidth + barSpacing), 550
+                - barHeight, barWidth, barHeight, colors[i]);
+            window.addShape(bar);
+
+            TextShape textShape = new TextShape(initialX + i * (barWidth
+                + barSpacing), 570, channelName, Color.BLACK);
+            window.addShape(textShape);
+
+            TextShape textShapeRate = new TextShape(initialX + i * (barWidth
+                + barSpacing), 590, String.format("%.2f", traditionalRate),
+                Color.BLACK);
+            window.addShape(textShapeRate);
+        }
+
+        window.repaint();
     }
 
 

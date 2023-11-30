@@ -325,4 +325,59 @@ public class DoublyLinkedListTest
         assertFalse(list.equals(1));
     }
 
+
+    // ----------------------------------------------------------
+    /**
+     * Tests the insertion sort when sorting by channel name.
+     */
+    public void testSortAlphabetical()
+    {
+        DoublyLinkedList<User> list3 = new DoublyLinkedList<User>();
+        list3.add(
+            new User(
+                "February",
+                "narnarnoscoper",
+                "NarenDaBeast",
+                "India",
+                "Cars",
+                1011,
+                35,
+                100987,
+                53809,
+                29492));
+        assertEquals("NarenDaBeast", list3.getEntry(0).getChannelName());
+        list3.insertionSort(new SortAlphabetically());
+        list3.add(
+            new User(
+                "February",
+                "jchen",
+                "JoeyDAMonster",
+                "China",
+                "Cars",
+                1011,
+                35,
+                100987,
+                53809,
+                29492));
+        list3.add(
+            new User(
+                "March",
+                "jchen",
+                "JoeyCHEN",
+                "China",
+                "Cars",
+                10,
+                10,
+                1,
+                10,
+                10));
+        assertEquals("NarenDaBeast", list3.getEntry(0).getChannelName());
+        assertEquals("JoeyDAMonster", list3.getEntry(1).getChannelName());
+        assertEquals("JoeyCHEN", list3.getEntry(2).getChannelName());
+        list3.insertionSort(new SortAlphabetically());
+        assertEquals("JoeyCHEN", list3.getEntry(0).getChannelName());
+        assertEquals("JoeyDAMonster", list3.getEntry(1).getChannelName());
+        assertEquals("NarenDaBeast", list3.getEntry(2).getChannelName());   
+    }
+
 }
