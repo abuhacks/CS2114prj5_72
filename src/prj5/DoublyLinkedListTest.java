@@ -14,6 +14,7 @@ public class DoublyLinkedListTest
 {
     // ~ Fields ................................................................
     private DoublyLinkedList<String> list;
+    private DoublyLinkedList<User> list3;
 
     // ~Public Methods ........................................................
     // ----------------------------------------------------------
@@ -23,6 +24,44 @@ public class DoublyLinkedListTest
     public void setUp()
     {
         list = new DoublyLinkedList<String>();
+        list3 = new DoublyLinkedList<User>();
+        list3.add(
+            new User(
+                "February",
+                "narnarnoscoper",
+                "NarenDaBeast",
+                "India",
+                "Cars",
+                1011,
+                35,
+                100987,
+                53809,
+                29492));
+        assertEquals("NarenDaBeast", list3.getEntry(0).getChannelName());
+        list3.add(
+            new User(
+                "February",
+                "jchen",
+                "JoeyDAMonster",
+                "China",
+                "Cars",
+                1011,
+                35,
+                100987,
+                20000,
+                29492));
+        list3.add(
+            new User(
+                "March",
+                "jchen",
+                "JoeyCHEN",
+                "China",
+                "Cars",
+                10,
+                10,
+                1,
+                20,
+                10));
     }
 
 
@@ -332,52 +371,62 @@ public class DoublyLinkedListTest
      */
     public void testSortAlphabetical()
     {
-        DoublyLinkedList<User> list3 = new DoublyLinkedList<User>();
-        list3.add(
-            new User(
-                "February",
-                "narnarnoscoper",
-                "NarenDaBeast",
-                "India",
-                "Cars",
-                1011,
-                35,
-                100987,
-                53809,
-                29492));
-        assertEquals("NarenDaBeast", list3.getEntry(0).getChannelName());
-        list3.insertionSort(new SortAlphabetically());
-        list3.add(
-            new User(
-                "February",
-                "jchen",
-                "JoeyDAMonster",
-                "China",
-                "Cars",
-                1011,
-                35,
-                100987,
-                53809,
-                29492));
-        list3.add(
-            new User(
-                "March",
-                "jchen",
-                "JoeyCHEN",
-                "China",
-                "Cars",
-                10,
-                10,
-                1,
-                10,
-                10));
+
         assertEquals("NarenDaBeast", list3.getEntry(0).getChannelName());
         assertEquals("JoeyDAMonster", list3.getEntry(1).getChannelName());
         assertEquals("JoeyCHEN", list3.getEntry(2).getChannelName());
         list3.insertionSort(new SortAlphabetically());
         assertEquals("JoeyCHEN", list3.getEntry(0).getChannelName());
         assertEquals("JoeyDAMonster", list3.getEntry(1).getChannelName());
-        assertEquals("NarenDaBeast", list3.getEntry(2).getChannelName());   
+        assertEquals("NarenDaBeast", list3.getEntry(2).getChannelName());
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Tests the insertion sort when sorting by reach rate .
+     */
+    public void testSortReach()
+    {
+        assertEquals(185.88, list3.getEntry(0).getIndividualReachRate(), 0.1);
+        assertEquals(71.24, list3.getEntry(1).getIndividualReachRate(), 0.1);
+        assertEquals(300.0, list3.getEntry(2).getIndividualReachRate(), 0.1);
+        list3.insertionSort(new SortReach());
+        assertEquals(300.0, list3.getEntry(0).getIndividualReachRate(), 0.1);
+        //assertEquals(185.88, list3.getEntry(1).getIndividualReachRate(), 0.1);
+        //assertEquals(71.24, list3.getEntry(2).getIndividualReachRate(), 0.1);
+        list3.add(
+            new User(
+                "February",
+                "jchen2",
+                "JoeyDAMonster",
+                "China",
+                "Cars",
+                1011,
+                35,
+                3420,
+                230422,
+                29492));
+        list3.add(
+            new User(
+                "February",
+                "jchen2",
+                "JoeyDAMonster",
+                "China",
+                "Cars",
+                1011,
+                0,
+                200,
+                10,
+                29492));
+        assertEquals(784.73, list3.getEntry(3).getIndividualReachRate(), 0.1);
+        assertEquals(3.46, list3.getEntry(4).getIndividualReachRate(), 0.1);
+        list3.insertionSort(new SortReach());
+        assertEquals(784.73, list3.getEntry(0).getIndividualReachRate(), 0.1);
+        assertEquals(300.0, list3.getEntry(1).getIndividualReachRate(), 0.1);
+        assertEquals(3.46, list3.getEntry(2).getIndividualReachRate(), 0.1);
+        assertEquals(185.88, list3.getEntry(3).getIndividualReachRate(), 0.1);
+        assertEquals(71.24, list3.getEntry(4).getIndividualReachRate(), 0.1);
     }
 
 }
