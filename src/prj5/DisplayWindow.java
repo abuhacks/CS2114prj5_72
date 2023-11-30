@@ -35,13 +35,10 @@ public class DisplayWindow {
     private Button tradEngagRate;
     private Button reachEngagRate;
     private Button quit;
-    private boolean bear;
-    private boolean cap;
-    private boolean dog;
-    private boolean rat;
-    private boolean tiger;
-    private boolean abu;
-    private boolean dear;
+
+    private String recentMonth;
+    private String recentDisplay;
+    private String recentSort;
 
     private static final double DISPLAY_FACTOR = 1.5;
     private AList<Shape[]> songRectangles;
@@ -99,19 +96,12 @@ public class DisplayWindow {
         bottom = new TextShape(10, 50, "");
         window.addShape(top);
         window.addShape(middle);
+
         window.addShape(bottom);
 
-        bear = false;
-        cap = false;
-        dog = false;
-        rat = false;
-        tiger = false;
-        abu = false;
-        dear = false;
-
-        DoublyLinkedList<User> abu1 = new DoublyLinkedList<User>();
-        abu1 = sortingCalculator.getList();
-        drawBarGraphTrad(abu1);
+        recentMonth = "FirstQuarter";
+        recentDisplay = "Traditional";
+        recentSort = "Engage";
 
     }
 
@@ -140,65 +130,139 @@ public class DisplayWindow {
      * 
      */
     public void clickedSortChanlName(Button button) {
-        if (bear) {
+        recentSort = "ChannelName";
+        if (recentDisplay.equals("Traditional")) {
             srtTradName();
         }
 
-        else if (cap) {
+        else if (recentDisplay.equals("Reach")) {
             srtReachName();
+
         }
+
     }
 
 
     public void clickedSortEngagRate(Button button) {
-        if (bear) {
-            srtTradEngage();
-            bear = false;
+        recentSort = "Engage";
+
+        if (recentMonth.equals("January") && recentDisplay.equals(
+            "Traditional")) {
+            srtTradJanEngage();
+        }
+        else if (recentMonth.equals("February") && recentDisplay.equals(
+            "Traditional")) {
+            srtTradFebEngage();
+        }
+        else if (recentMonth.equals("March") && recentDisplay.equals(
+            "Traditional")) {
+
+            srtTradMarEngage();
         }
 
-        else if (cap) {
+        else if (recentMonth.equals("FirstQuarter") && recentDisplay.equals(
+            "Traditional")) {
+
+            srtTradEngage();
+        }
+        else if (recentMonth.equals("January") && recentDisplay.equals(
+            "Reach")) {
+            srtReachJanEngage();
+        }
+        else if (recentMonth.equals("February") && recentDisplay.equals(
+            "Reach")) {
+            srtReachFebEngage();
+        }
+        else if (recentMonth.equals("March") && recentDisplay.equals("Reach")) {
+            srtReachMarEngage();
+        }
+
+        else if (recentMonth.equals("FirstQuarter") && recentDisplay.equals(
+            "Reach")) {
+
             srtReachEngage();
-            cap = false;
-        }
-        else if (dog) {
-            srtTradJanEngage();
-            dog = false;
-        }
-        else if (rat) {
-            srtTradFebEngage();
-            rat = false;
-        }
-        else if (tiger) {
-            srtTradMarEngage();
-            tiger = false;
         }
 
     }
 
 
     public void clickedJanuary(Button button) {
-        tradJanRate();
+
+        recentMonth = "January";
+
+        if (recentSort.equals("Engage") && recentDisplay.equals(
+            "Traditional")) {
+
+            srtTradJanEngage();
+        }
+        else if (recentSort.equals("Engage") && recentDisplay.equals("Reach")) {
+
+            srtReachJanEngage();
+        }
+        else {
+
+            //
+        }
 
     }
 
 
     public void clickedFebruary(Button button) {
 
-        tradFebRate();
+        recentMonth = "February";
+
+        if (recentSort.equals("Engage") && recentDisplay.equals(
+            "Traditional")) {
+
+            srtTradFebEngage();
+        }
+        else if (recentSort.equals("Engage") && recentDisplay.equals("Reach")) {
+
+            srtReachFebEngage();
+        }
+        else {
+            //
+        }
 
     }
 
 
     public void clickedMarch(Button button) {
 
-        tradMarRate();
+        recentMonth = "March";
+
+        if (recentSort.equals("Engage") && recentDisplay.equals(
+            "Traditional")) {
+
+            srtTradMarEngage();
+        }
+        else if (recentSort.equals("Engage") && recentDisplay.equals("Reach")) {
+
+            srtReachMarEngage();
+        }
+        else {
+            //
+        }
 
     }
 
 
     public void clickedFirstQuarter(Button button) {
 
-        
+        recentMonth = "FirstQuarter";
+
+        if (recentSort.equals("Engage") && recentDisplay.equals(
+            "Traditional")) {
+
+            srtTradEngage();
+        }
+        else if (recentSort.equals("Engage") && recentDisplay.equals("Reach")) {
+
+            srtReachEngage();
+        }
+        else {
+            //
+        }
 
     }
 
@@ -209,7 +273,23 @@ public class DisplayWindow {
      */
     public void clickedTradEngageRate(Button button) {
 
-        tradRate();
+        recentDisplay = "Traditional";
+
+        if (recentSort.equals("Engage") && recentMonth.equals("January")) {
+            srtTradJanEngage();
+        }
+
+        else if (recentSort.equals("Engage") && recentMonth.equals(
+            "February")) {
+            srtTradFebEngage();
+        }
+        else if (recentSort.equals("Engage") && recentMonth.equals("March")) {
+            srtTradMarEngage();
+        }
+        else if (recentSort.equals("Engage") && recentMonth.equals(
+            "FirstQuarter")) {
+            srtTradEngage();
+        }
 
     }
 
@@ -220,7 +300,25 @@ public class DisplayWindow {
      */
     public void clickedReachEngagRate(Button button) {
 
-        reachRate();
+        recentDisplay = "Reach";
+
+        if (recentSort.equals("Engage") && recentMonth.equals("January")) {
+
+            srtReachJanEngage();
+        }
+        else if (recentSort.equals("Engage") && recentMonth.equals(
+            "February")) {
+
+            srtReachFebEngage();
+        }
+        else if (recentSort.equals("Engage") && recentMonth.equals("March")) {
+
+            srtReachMarEngage();
+        }
+        else if (recentSort.equals("Engage") && recentMonth.equals(
+            "FirstQuarter")) {
+            srtReachEngage();
+        }
 
     }
 
@@ -232,8 +330,8 @@ public class DisplayWindow {
     public void tradRate() {
         DoublyLinkedList<User> abu1 = new DoublyLinkedList<User>();
         abu1 = sortingCalculator.getList();
-        drawBarGraphTrad(abu1);
-        bear = true;
+        drawBarGraphTrad(abu1, tradEngagRate);
+
     }
 
 
@@ -243,8 +341,8 @@ public class DisplayWindow {
     public void reachRate() {
         DoublyLinkedList<User> abu2 = new DoublyLinkedList<User>();
         abu2 = sortingCalculator.getList();
-        drawBarGraphReach(abu2);
-        cap = true;
+        drawBarGraphReach(abu2, reachEngagRate);
+
     }
 
 
@@ -255,8 +353,7 @@ public class DisplayWindow {
         DoublyLinkedList<User> abu = sortingCalculator.sortByName();
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
-            drawBarGraphTrad(abu);
-            bear = true;
+            drawBarGraphTrad(abu, sortChanlName);
 
         }
 
@@ -270,8 +367,7 @@ public class DisplayWindow {
         DoublyLinkedList<User> abu = sortingCalculator.sortByName();
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
-            drawBarGraphReach(abu);
-            cap = true;
+            drawBarGraphReach(abu, sortChanlName);
 
         }
     }
@@ -284,8 +380,7 @@ public class DisplayWindow {
 
         DoublyLinkedList<User> abu = sortingCalculator.sortByTraditionalRate();
         for (int i = 0; i < abu.getLength(); i++) {
-            drawBarGraphTrad(abu);
-            bear = true;
+            drawBarGraphTrad(abu, sortEngagRate);
 
         }
 
@@ -295,18 +390,9 @@ public class DisplayWindow {
     public void srtReachEngage() {
         DoublyLinkedList<User> abu1 = sortingCalculator.sortByReachRate();
         for (int i = 0; i < abu1.getLength(); i++) {
-            drawBarGraphReach(abu1);
-            cap = true;
+            drawBarGraphReach(abu1, sortEngagRate);
+
         }
-    }
-
-
-    public void tradJanRate() {
-        DoublyLinkedList<User> abu1 = new DoublyLinkedList<User>();
-        abu1 = sortingCalculator.getByMonth("January");
-        tradMonth(abu1);
-        dog = true;
-
     }
 
 
@@ -317,19 +403,20 @@ public class DisplayWindow {
         DoublyLinkedList<User> abu2 = sortingCalculator.sortByTradMonth(
             "January");
         for (int i = 0; i < abu2.getLength(); i++) {
-            tradMonth(abu2);
-            dog = true;
+            tradMonth(abu2, sortEngagRate);
 
         }
 
     }
 
 
-    public void tradFebRate() {
-        DoublyLinkedList<User> abu14 = new DoublyLinkedList<User>();
-        abu14 = sortingCalculator.getByMonth("February");
-        tradMonth(abu14);
-        rat = true;
+    public void srtReachJanEngage() {
+        DoublyLinkedList<User> abu2 = sortingCalculator.sortByReachMonth(
+            "January");
+        for (int i = 0; i < abu2.getLength(); i++) {
+            reachMonth(abu2, sortEngagRate);
+
+        }
 
     }
 
@@ -341,33 +428,87 @@ public class DisplayWindow {
         DoublyLinkedList<User> abu2 = sortingCalculator.sortByTradMonth(
             "February");
         for (int i = 0; i < abu2.getLength(); i++) {
-            tradMonth(abu2);
-            rat = true;
+            tradMonth(abu2, sortEngagRate);
 
         }
 
     }
 
 
-    public void tradMarRate() {
-        DoublyLinkedList<User> abu14 = new DoublyLinkedList<User>();
-        abu14 = sortingCalculator.getByMonth("March");
-        tradMonth(abu14);
-        tiger = true;
+    public void srtReachFebEngage() {
+        DoublyLinkedList<User> abu2 = sortingCalculator.sortByReachMonth(
+            "February");
+        for (int i = 0; i < abu2.getLength(); i++) {
+            reachMonth(abu2, sortEngagRate);
+
+        }
 
     }
 
 
     public void srtTradMarEngage() {
-        DoublyLinkedList<User> abu2 = sortingCalculator.sortByTradMonth(
+        DoublyLinkedList<User> abu6 = sortingCalculator.sortByTradMonth(
             "March");
-        for (int i = 0; i < abu2.getLength(); i++) {
-            tradMonth(abu2);
-            tiger = true;
+        for (int i = 0; i < abu6.getLength(); i++) {
+            tradMonth(abu6, sortEngagRate);
 
         }
 
-        
+    }
+
+
+    public void srtReachMarEngage() {
+        DoublyLinkedList<User> abu2 = sortingCalculator.sortByReachMonth(
+            "March");
+        for (int i = 0; i < abu2.getLength(); i++) {
+            reachMonth(abu2, sortEngagRate);
+
+        }
+
+    }
+
+
+    public void tradFirstQuarterRate() {
+        DoublyLinkedList<User> abu14 = new DoublyLinkedList<User>();
+        abu14 = sortingCalculator.getUsers();
+        tradFirstQMonth(abu14, firstQuarter);
+
+    }
+
+
+    public void tradFirstQMonth(DoublyLinkedList<User> abu, Button button) {
+        window.removeAllShapes();
+        clickedS(button);
+
+        int barSpacing = 100;
+        int initialX = 30;
+
+        Color[] colors = { Color.BLUE, Color.GREEN, Color.RED, Color.YELLOW };
+
+        for (int i = 0; i < Math.min(abu.getLength(), 4); i++) {
+            User user = abu.getEntry(i);
+            double traditionalMRate = sortingCalculator.getTraditionalRate(
+                user);
+            String channelName = user.getChannelName();
+
+            int barWidth = 30;
+            int barHeight = (int)(traditionalMRate);
+
+            Shape bar = new Shape(initialX + i * (barWidth + barSpacing), 550
+                - barHeight, barWidth, barHeight, colors[i]);
+            window.addShape(bar);
+
+            TextShape textShape = new TextShape(initialX + i * (barWidth
+                + barSpacing), 570, channelName, Color.BLACK);
+            window.addShape(textShape);
+
+            TextShape textShapeRate = new TextShape(initialX + i * (barWidth
+                + barSpacing), 590, String.format("%.2f", traditionalMRate),
+                Color.BLACK);
+            window.addShape(textShapeRate);
+        }
+
+        window.repaint();
     }
 
 
@@ -375,8 +516,9 @@ public class DisplayWindow {
      * @param abu
      * 
      */
-    public void tradMonth(DoublyLinkedList<User> abu) {
+    public void tradMonth(DoublyLinkedList<User> abu, Button button) {
         window.removeAllShapes();
+        clickedS(button);
 
         int barSpacing = 100;
         int initialX = 30;
@@ -410,13 +552,47 @@ public class DisplayWindow {
     }
 
 
+    public void reachMonth(DoublyLinkedList<User> abu, Button button) {
+        window.removeAllShapes();
+        clickedS(button);
+        int barSpacing = 100;
+        int initialX = 30;
+
+        Color[] colors = { Color.BLUE, Color.GREEN, Color.RED, Color.YELLOW };
+
+        for (int i = 0; i < Math.min(abu.getLength(), 4); i++) {
+            User user = abu.getEntry(i);
+            double reachMRate = sortingCalculator.getIndividualReachRate(user);
+            String channelName = user.getChannelName();
+
+            int barWidth = 30;
+            int barHeight = (int)(reachMRate);
+
+            Shape bar = new Shape(initialX + i * (barWidth + barSpacing), 550
+                - barHeight, barWidth, barHeight, colors[i]);
+            window.addShape(bar);
+
+            TextShape textShape = new TextShape(initialX + i * (barWidth
+                + barSpacing), 570, channelName, Color.BLACK);
+            window.addShape(textShape);
+
+            TextShape textShapeRate = new TextShape(initialX + i * (barWidth
+                + barSpacing), 590, String.format("%.2f", reachMRate),
+                Color.BLACK);
+            window.addShape(textShapeRate);
+        }
+
+        window.repaint();
+    }
+
+
     /**
      * @param abu
      * 
      */
-    public void drawBarGraphTrad(DoublyLinkedList<User> abu) {
+    public void drawBarGraphTrad(DoublyLinkedList<User> abu, Button button) {
         window.removeAllShapes();
-
+        clickedS(button);
         int barSpacing = 100;
         int initialX = 30;
 
@@ -449,11 +625,12 @@ public class DisplayWindow {
 
 
     /**
+     * @param button
      * 
      */
-    public void drawBarGraphReach(DoublyLinkedList<User> abu) {
+    public void drawBarGraphReach(DoublyLinkedList<User> abu, Button button) {
         window.removeAllShapes();
-
+        clickedS(button);
         int barSpacing = 100;
         int initialX = 40;
 
@@ -490,30 +667,39 @@ public class DisplayWindow {
      * @param button
      */
     public void clickedS(Button button) {
-        if (button.equals(january)) {
+
+        if (recentMonth.equals("January")) {
             top.setText("January");
+            window.addShape(top);
         }
-        else if (button.equals(february)) {
+        else if (recentMonth.equals("February")) {
             top.setText("February");
+            window.addShape(top);
         }
-        else if (button.equals(march)) {
+        else if (recentMonth.equals("March")) {
             top.setText("March");
+            window.addShape(top);
         }
-        else if (button.equals(firstQuarter)) {
+        else if (recentMonth.equals("FirstQuarter")) {
             top.setText("First Quarter(Jan - March)");
+            window.addShape(top);
         }
-        else if (button.equals(tradEngagRate)) {
+        if (recentDisplay.equals("Traditional")) {
             middle.setText("Traditional Engagement Rate");
+            window.addShape(middle);
         }
-        else if (button.equals(reachEngagRate)) {
+        else if (recentDisplay.equals("Reach")) {
             middle.setText("Reach Engagement Rate");
+            window.addShape(middle);
         }
-        else if (button.equals(sortChanlName)) {
+        if (recentSort.equals("ChannelName")) {
             bottom.setText("Sort By Channel Name");
+            window.addShape(bottom);
 
         }
-        else if (button.equals(sortEngagRate)) {
+        else if (recentSort.equals("Engage")) {
             bottom.setText("Sort By Engagement Rate");
+            window.addShape(bottom);
 
         }
 
