@@ -1,9 +1,11 @@
 package prj5;
+
 import java.util.Comparator;
+
 // -------------------------------------------------------------------------
 /**
- * Write a one-sentence summary of your class here. Follow it with additional
- * details about its purpose, what abstraction it represents, and how to use it.
+ * This is the class that is used to sort User objects by traditional rate
+ * through using a comparator.
  * 
  * @author jchen
  * @version Nov 28, 2023
@@ -26,10 +28,7 @@ public class SortTraditional
         {
             return 0;
         }
-        int traditionalOne =
-            ((one.getComments() + one.getLikes()) / one.getViews());
-        int traditionalTwo =
-            ((two.getComments() + two.getLikes()) / two.getViews());
-        return Integer.compare(traditionalOne, traditionalTwo);
+        return Double
+            .compare(two.getIndividualTradRate(), one.getIndividualTradRate());
     }
 }

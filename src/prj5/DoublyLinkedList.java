@@ -478,7 +478,7 @@ public class DoublyLinkedList<T>
     // data based off the compareTo() method for the object stored in each node.
     // ----------------------------------------------------------
     /**
-     * Place a description of your method here.
+     * REDACTED.
      * 
      * @param comp
      */
@@ -494,11 +494,12 @@ public class DoublyLinkedList<T>
      */
     public void insertionSort(Comparator<T> comp)
     {
-        if (size > 1)
+        if (getLength() > 1)
         {
             Node<T> unsorted = firstNode.getNext();
             Node<T> sorted = firstNode;
             sorted.setNext(null);
+            unsorted.setPrevious(null);
             while (unsorted != null)
             {
                 Node<T> insert = unsorted;
@@ -506,7 +507,7 @@ public class DoublyLinkedList<T>
                 insertion(insert, comp);
             }
         }
-
+        
     }
 
 
@@ -515,11 +516,11 @@ public class DoublyLinkedList<T>
         T insertNode = insert.getData();
         Node<T> curr = firstNode;
         Node<T> prev = null;
+
         if (curr.getNext() == null)
         {
             lastNode = curr;
         }
-
         while ((curr != null) && comp.compare(insertNode, curr.getData()) > 0)
         {
             prev = curr;
@@ -530,6 +531,7 @@ public class DoublyLinkedList<T>
             prev.setNext(insert);
             insert.setPrevious(prev);
             insert.setNext(curr);
+            
         }
         else
         {
@@ -537,6 +539,7 @@ public class DoublyLinkedList<T>
             firstNode.setPrevious(insert);
             firstNode = insert;
         }
+
     }
 
 }

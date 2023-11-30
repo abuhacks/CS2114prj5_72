@@ -4,8 +4,8 @@ import java.util.Comparator;
 
 // -------------------------------------------------------------------------
 /**
- * Write a one-sentence summary of your class here. Follow it with additional
- * details about its purpose, what abstraction it represents, and how to use it.
+ * This is the class that is used to sort User objects by reach rate through
+ * using a comparator.
  * 
  * @author jchen
  * @version Nov 28, 2023
@@ -16,31 +16,22 @@ public class SortReach
     @Override
     public int compare(User one, User two)
     {
-        if (one.getFollowers() == 0 && two.getFollowers() > 0)
+        if (one.getFollowers() < two.getFollowers())
         {
             return -1;
         }
-        if (one.getFollowers() > 0 && two.getFollowers() == 0)
+        if (one.getFollowers() > two.getFollowers())
         {
             return 1;
         }
+        
         if (one.getFollowers() == 0 && two.getFollowers() == 0)
         {
             return 0;
         }
-        int reachOne =
-            ((one.getComments() + one.getLikes()) / one.getFollowers());
-        int reachTwo =
-            ((two.getComments() + two.getLikes()) / two.getFollowers());
-        if(reachOne > reachTwo) {
-            return -1;
-        }
-        else if(reachOne < reachTwo) {
-            return 1;
-        }
-        else {
-            return 0;
-        }
-        //return Integer.compare(reachOne, reachTwo);
+        
+        return Double.compare(
+            two.getIndividualReachRate(),
+            one.getIndividualReachRate());
     }
 }
