@@ -53,8 +53,9 @@ public class SortingCalculator {
     
     // ----------------------------------------------------------
     /**
-     * Returns the users.
-     * @return the users. Users.
+     * Returns the users (removes duplicates).
+     * @return the users.
+     * 
      */
     public DoublyLinkedList<User> getUsers() {
         DoublyLinkedList<User> testVals = new DoublyLinkedList<User>();
@@ -72,22 +73,14 @@ public class SortingCalculator {
 
     // ----------------------------------------------------------
     /**
-     * Sorts the linked list by name.
+     * Sorts the linked list by name (removes all duplicates).
      * 
      * @return the sorted list.
      */
 
     public DoublyLinkedList<User> sortByName() {
 
-        DoublyLinkedList<User> testVals = new DoublyLinkedList<User>();
-        DoublyLinkedList<String> names = new DoublyLinkedList<String>();
-        for (int i = 0; i < users.getLength(); i++) {
-            if (names.contains((users.getEntry(i).getChannelName()))) {
-                continue;
-            }
-            names.add(users.getEntry(i).getChannelName());
-            testVals.add(users.getEntry(i));
-        }
+        DoublyLinkedList<User> testVals = this.getUsers();
 
         for (int i = 0; i < testVals.getLength(); i++) {
             for (int j = i + 1; j < testVals.getLength(); j++) {
@@ -176,15 +169,8 @@ public class SortingCalculator {
      * @return a sorted linked list.
      */
     public DoublyLinkedList<User> sortByReachRate() {
-        DoublyLinkedList<User> testVals = new DoublyLinkedList<User>();
-        DoublyLinkedList<String> names = new DoublyLinkedList<String>();
-        for (int i = 0; i < users.getLength(); i++) {
-            if (names.contains((users.getEntry(i).getChannelName()))) {
-                continue;
-            }
-            names.add(users.getEntry(i).getChannelName());
-            testVals.add(users.getEntry(i));
-        }
+        DoublyLinkedList<User> testVals = this.getUsers();
+        
         for (int i = 0; i < testVals.getLength(); i++) {
             for (int j = i + 1; j < testVals.getLength(); j++) {
                 if (getReachRate(testVals.getEntry(i)) < getReachRate(testVals
@@ -206,15 +192,8 @@ public class SortingCalculator {
      * @return the sorted list.
      */
     public DoublyLinkedList<User> sortByTraditionalRate() {
-        DoublyLinkedList<User> testVals = new DoublyLinkedList<User>();
-        DoublyLinkedList<String> names = new DoublyLinkedList<String>();
-        for (int i = 0; i < users.getLength(); i++) {
-            if (names.contains((users.getEntry(i).getChannelName()))) {
-                continue;
-            }
-            names.add(users.getEntry(i).getChannelName());
-            testVals.add(users.getEntry(i));
-        }
+        DoublyLinkedList<User> testVals = this.getUsers();
+        
         for (int i = 0; i < testVals.getLength(); i++) {
             for (int j = i + 1; j < testVals.getLength(); j++) {
                 if (getTraditionalRate(testVals.getEntry(
