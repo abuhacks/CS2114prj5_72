@@ -50,6 +50,24 @@ public class SortingCalculator {
     public DoublyLinkedList<User> getList() {
         return users;
     }
+    
+    // ----------------------------------------------------------
+    /**
+     * Returns the users.
+     * @return the users.
+     */
+    public DoublyLinkedList<User> getUsers() {
+        DoublyLinkedList<User> testVals = new DoublyLinkedList<User>();
+        DoublyLinkedList<String> names = new DoublyLinkedList<String>();
+        for (int i = 0; i < users.getLength(); i++) {
+            if (names.contains((users.getEntry(i).getChannelName()))) {
+                continue;
+            }
+            names.add(users.getEntry(i).getChannelName());
+            testVals.add(users.getEntry(i));
+        }
+        return testVals;
+    }
 
 
     // ----------------------------------------------------------
@@ -283,6 +301,7 @@ public class SortingCalculator {
     /**
      * Gets the individual reach rate.
      * @param user
+     * 
      * @return reach rate for a user.
      */
     public double getIndividualReachRate(User user) {
