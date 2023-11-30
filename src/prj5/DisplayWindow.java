@@ -100,7 +100,7 @@ public class DisplayWindow {
 
         bear = false;
         cap = false;
-        
+
         DoublyLinkedList<User> abu1 = new DoublyLinkedList<User>();
         abu1 = sortingCalculator.getList();
         drawBarGraphTrad(abu1);
@@ -156,6 +156,8 @@ public class DisplayWindow {
 
 
     public void clickedJanuary(Button button) {
+
+        srtTradMonths();
 
     }
 
@@ -266,6 +268,19 @@ public class DisplayWindow {
         for (int i = 0; i < abu1.getLength(); i++) {
             drawBarGraphReach(abu1);
         }
+    }
+
+
+    /**
+     * 
+     */
+    public void srtTradMonths() {
+
+        DoublyLinkedList<User> abu1 = sortingCalculator.sortByReachRate();
+        for (int i = 0; i < abu1.getLength(); i++) {
+            drawBarGraphReach(abu1);
+        }
+
     }
 
 
