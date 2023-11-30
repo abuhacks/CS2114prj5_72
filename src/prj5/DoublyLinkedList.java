@@ -506,10 +506,7 @@ public class DoublyLinkedList<T>
                 insertion(insert, comp);
             }
         }
-
     }
-
-
     private void insertion(Node<T> insert, Comparator<T> comp)
     {
         T insertNode = insert.getData();

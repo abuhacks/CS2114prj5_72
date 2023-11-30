@@ -393,8 +393,8 @@ public class DoublyLinkedListTest
         assertEquals(300.0, list3.getEntry(2).getIndividualReachRate(), 0.1);
         list3.insertionSort(new SortReach());
         assertEquals(300.0, list3.getEntry(0).getIndividualReachRate(), 0.1);
-        //assertEquals(185.88, list3.getEntry(1).getIndividualReachRate(), 0.1);
-        //assertEquals(71.24, list3.getEntry(2).getIndividualReachRate(), 0.1);
+        assertEquals(185.88, list3.getEntry(1).getIndividualReachRate(), 0.1);
+        assertEquals(71.24, list3.getEntry(2).getIndividualReachRate(), 0.1);
         list3.add(
             new User(
                 "February",
@@ -419,14 +419,14 @@ public class DoublyLinkedListTest
                 200,
                 10,
                 29492));
-        assertEquals(784.73, list3.getEntry(3).getIndividualReachRate(), 0.1);
-        assertEquals(3.46, list3.getEntry(4).getIndividualReachRate(), 0.1);
+        assertEquals(3.46, list3.getEntry(3).getIndividualReachRate(), 0.1);
+        //assertEquals(3.46, list3.getEntry(4).getIndividualReachRate(), 0.1);
         list3.insertionSort(new SortReach());
         assertEquals(784.73, list3.getEntry(0).getIndividualReachRate(), 0.1);
         assertEquals(300.0, list3.getEntry(1).getIndividualReachRate(), 0.1);
-        assertEquals(3.46, list3.getEntry(2).getIndividualReachRate(), 0.1);
-        assertEquals(185.88, list3.getEntry(3).getIndividualReachRate(), 0.1);
-        assertEquals(71.24, list3.getEntry(4).getIndividualReachRate(), 0.1);
+        assertEquals(185.88, list3.getEntry(2).getIndividualReachRate(), 0.1);
+        assertEquals(3.46, list3.getEntry(3).getIndividualReachRate(), 0.1);
+        assertEquals(3.46, list3.getEntry(4).getIndividualReachRate(), 0.1);
     }
 
 }

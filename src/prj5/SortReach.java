@@ -28,19 +28,8 @@ public class SortReach
         {
             return 0;
         }
-        int reachOne =
-            ((one.getComments() + one.getLikes()) / one.getFollowers());
-        int reachTwo =
-            ((two.getComments() + two.getLikes()) / two.getFollowers());
-        if(reachOne > reachTwo) {
-            return -1;
-        }
-        else if(reachOne < reachTwo) {
-            return 1;
-        }
-        else {
-            return 0;
-        }
-        //return Integer.compare(reachOne, reachTwo);
+        return Double.compare(
+            two.getIndividualReachRate(),
+            one.getIndividualReachRate());
     }
 }
