@@ -29,7 +29,7 @@ public class InsertionTest
                 "Cars",
                 0,
                 35,
-                100987,
+                1,
                 2,
                 1));
         list.add(
@@ -41,7 +41,7 @@ public class InsertionTest
                 "Cars",
                 0,
                 35,
-                100987,
+                1,
                 3,
                 1));
         list.add(
@@ -53,7 +53,7 @@ public class InsertionTest
                 "Cars",
                 0,
                 35,
-                100987,
+                1,
                 1,
                 1));
         list.add(
@@ -65,7 +65,7 @@ public class InsertionTest
                 "Cars",
                 0,
                 35,
-                100987,
+                1,
                 5,
                 1));
         list.add(
@@ -77,7 +77,7 @@ public class InsertionTest
                 "Cars",
                 0,
                 35,
-                100987,
+                1,
                 4,
                 1));
     }
@@ -100,6 +100,7 @@ public class InsertionTest
         assertEquals(300, list.getEntry(2).getIndividualReachRate(), 0.1);
         assertEquals(200, list.getEntry(3).getIndividualReachRate(), 0.1);
         assertEquals(100, list.getEntry(4).getIndividualReachRate(), 0.1);
+        assertEquals(5, list.getLength());
         list.add(
             new User(
                 "February",
@@ -109,7 +110,63 @@ public class InsertionTest
                 "Cars",
                 0,
                 35,
-                100987,
+                1,
+                7,
+                1));
+        assertEquals(6, list.getLength());
+        //assertEquals(600, list.getEntry(5).getIndividualReachRate(), 0.1);
+        list.add(
+            new User(
+                "February",
+                "jchen",
+                "6",
+                "China",
+                "Cars",
+                0,
+                35,
+                1,
+                6,
+                1));
+        assertEquals(7, list.getLength());
+        assertEquals(600, list.getEntry(5).getIndividualReachRate(), 0.1);
+        assertEquals(700, list.getEntry(4).getIndividualReachRate(), 0.1);
+        list.insertionSort(new SortReach());
+        
+        assertEquals(700, list.getEntry(0).getIndividualReachRate(), 0.1);
+        assertEquals(600, list.getEntry(1).getIndividualReachRate(), 0.1);
+        assertEquals(500, list.getEntry(2).getIndividualReachRate(), 0.1);
+        assertEquals(400, list.getEntry(3).getIndividualReachRate(), 0.1);
+        assertEquals(300, list.getEntry(4).getIndividualReachRate(), 0.1);
+        assertEquals(200, list.getEntry(5).getIndividualReachRate(), 0.1);
+        assertEquals(100, list.getEntry(6).getIndividualReachRate(), 0.1);
+    }
+    // ----------------------------------------------------------
+    /**
+     * tests sorting by reach rate for users 
+     */
+    public void testTraditional()
+    {
+        assertEquals(200, list.getEntry(0).getIndividualTradRate(), 0.1);
+        assertEquals(300, list.getEntry(1).getIndividualTradRate(), 0.1);
+        assertEquals(100, list.getEntry(2).getIndividualTradRate(), 0.1);
+        assertEquals(500, list.getEntry(3).getIndividualTradRate(), 0.1);
+        assertEquals(400, list.getEntry(4).getIndividualTradRate(), 0.1);
+        list.insertionSort(new SortReach());
+        assertEquals(500, list.getEntry(0).getIndividualTradRate(), 0.1);
+        assertEquals(400, list.getEntry(1).getIndividualTradRate(), 0.1);
+        assertEquals(300, list.getEntry(2).getIndividualTradRate(), 0.1);
+        assertEquals(200, list.getEntry(3).getIndividualTradRate(), 0.1);
+        assertEquals(100, list.getEntry(4).getIndividualTradRate(), 0.1);
+        list.add(
+            new User(
+                "February",
+                "jchen2",
+                "7",
+                "China",
+                "Cars",
+                0,
+                35,
+                1,
                 7,
                 1));
         list.add(
@@ -121,19 +178,19 @@ public class InsertionTest
                 "Cars",
                 0,
                 35,
-                100987,
+                1,
                 6,
                 1));
-        assertEquals(700, list.getEntry(5).getIndividualReachRate(), 0.1);
-        assertEquals(600, list.getEntry(6).getIndividualReachRate(), 0.1);
+        assertEquals(700, list.getEntry(5).getIndividualTradRate(), 0.1);
+        assertEquals(600, list.getEntry(6).getIndividualTradRate(), 0.1);
         list.insertionSort(new SortReach());
         
-        assertEquals(700, list.getEntry(0).getIndividualReachRate(), 0.1);
-        assertEquals(600, list.getEntry(1).getIndividualReachRate(), 0.1);
-        assertEquals(500, list.getEntry(2).getIndividualReachRate(), 0.1);
-        assertEquals(400, list.getEntry(3).getIndividualReachRate(), 0.1);
-        assertEquals(300, list.getEntry(4).getIndividualReachRate(), 0.1);
-        assertEquals(200, list.getEntry(5).getIndividualReachRate(), 0.1);
-        assertEquals(100, list.getEntry(6).getIndividualReachRate(), 0.1);
+        assertEquals(700, list.getEntry(0).getIndividualTradRate(), 0.1);
+        assertEquals(600, list.getEntry(1).getIndividualTradRate(), 0.1);
+        assertEquals(500, list.getEntry(2).getIndividualTradRate(), 0.1);
+        assertEquals(400, list.getEntry(3).getIndividualTradRate(), 0.1);
+        assertEquals(300, list.getEntry(4).getIndividualTradRate(), 0.1);
+        assertEquals(200, list.getEntry(5).getIndividualTradRate(), 0.1);
+        assertEquals(100, list.getEntry(6).getIndividualTradRate(), 0.1);
     }
 }
