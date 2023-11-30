@@ -234,7 +234,7 @@ public class SortingCalculator {
                 }
             }
         }
-        return testVals;
+        return testVals; //displays original user data and doesnt make a new chain with new data
     }
     
     // ----------------------------------------------------------

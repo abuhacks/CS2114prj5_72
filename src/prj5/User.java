@@ -321,12 +321,17 @@ public class User
     // ----------------------------------------------------------
     /**
      * Gets the users individual traditional rate.
-     * @return
+     * @return the trad rates
      */
     public double getIndividualTradRate() {
         return ((this.getComments() + this.getLikes()) / (double) this.getFollowers()) * 100;
     }
     
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @return the reach rate
+     */
     public double getIndividualReachRate() {
         return ((this.getComments() + this.getLikes()) / (double) this.getViews()) * 100;
     }
