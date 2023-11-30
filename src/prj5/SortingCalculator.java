@@ -217,7 +217,7 @@ public class SortingCalculator {
      * @param month
      * @return the new list without months
      */
-    public DoublyLinkedList<User> sortByMonth(String month) {
+    public DoublyLinkedList<User> sortByTradMonth(String month) {
         DoublyLinkedList<User> testVals = new DoublyLinkedList<User>();
         for (int i = 0; i < users.getLength(); i++) {
             if (users.getEntry(i).getMonth().equals(month)) {
@@ -226,15 +226,42 @@ public class SortingCalculator {
         }
         for (int i = 0; i < testVals.getLength(); i++) {
             for (int j = i + 1; j < testVals.getLength(); j++) {
-                if (getTraditionalRate(testVals.getEntry(
-                    i)) < getTraditionalRate(testVals.getEntry(j))) {
-                    User temp = testVals.getEntry(i);
-                    testVals.replace(i, testVals.getEntry(j));
-                    testVals.replace(j, temp);
+                if (testVals.getEntry(i).getIndividualTradRate() < testVals
+                    .getEntry(j).getIndividualTradRate()) {
+                    User temp = testVals.getEntry(j);
+                    testVals.replace(j, testVals.getEntry(i));
+                    testVals.replace(i, temp);
                 }
             }
-
         }
         return testVals;
     }
+    
+    // ----------------------------------------------------------
+    /**
+     * Sort by Reach Month.
+     * @param month
+     * @return the new list
+     */
+    public DoublyLinkedList<User> sortByReachMonth(String month) {
+        DoublyLinkedList<User> testVals = new DoublyLinkedList<User>();
+        for (int i = 0; i < users.getLength(); i++) {
+            if (users.getEntry(i).getMonth().equals(month)) {
+                testVals.add(users.getEntry(i));
+            }
+        }
+        for (int i = 0; i < testVals.getLength(); i++) {
+            for (int j = i + 1; j < testVals.getLength(); j++) {
+                if (testVals.getEntry(i).getIndividualReachRate() < testVals
+                    .getEntry(j).getIndividualReachRate()) {
+                    User temp = testVals.getEntry(j);
+                    testVals.replace(j, testVals.getEntry(i));
+                    testVals.replace(i, temp);
+                }
+            }
+        }
+        return testVals;
+    }
+    
+  
 }

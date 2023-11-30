@@ -317,4 +317,17 @@ public class User
                 + followers + ", " + comments + ", " + views);
         return s.toString();
     }
+    
+    // ----------------------------------------------------------
+    /**
+     * Gets the users individual traditional rate.
+     * @return
+     */
+    public double getIndividualTradRate() {
+        return ((this.getComments() + this.getLikes()) / (double) this.getFollowers()) * 100;
+    }
+    
+    public double getIndividualReachRate() {
+        return ((this.getComments() + this.getLikes()) / (double) this.getViews()) * 100;
+    }
 }
