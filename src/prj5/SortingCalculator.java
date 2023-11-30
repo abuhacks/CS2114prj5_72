@@ -278,4 +278,24 @@ public class SortingCalculator {
         }
         return testVals;
     }
+    
+    // ----------------------------------------------------------
+    /**
+     * Gets the individual reach rate.
+     * @param user
+     * @return reach rate for a user.
+     */
+    public double getIndividualReachRate(User user) {
+        return ((user.getComments() + user.getLikes()) / (double) user.getViews()) * 100;
+    }
+    
+    // ----------------------------------------------------------
+    /**
+     * Gets the individual rate.
+     * @param user
+     * @return the individual rate of a user.
+     */
+    public double getIndividualTradRate(User user) {
+        return ((user.getComments() + user.getLikes()) / (double) user.getFollowers()) * 100;
+    }
 }
