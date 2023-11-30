@@ -4,8 +4,8 @@ import java.util.Comparator;
 
 // -------------------------------------------------------------------------
 /**
- * Write a one-sentence summary of your class here. Follow it with additional
- * details about its purpose, what abstraction it represents, and how to use it.
+ * This is the class that is used to sort User objects by reach rate through
+ * using a comparator.
  * 
  * @author jchen
  * @version Nov 28, 2023

@@ -506,17 +506,20 @@ public class DoublyLinkedList<T>
                 insertion(insert, comp);
             }
         }
+        
     }
+
+
     private void insertion(Node<T> insert, Comparator<T> comp)
     {
         T insertNode = insert.getData();
         Node<T> curr = firstNode;
         Node<T> prev = null;
+
         if (curr.getNext() == null)
         {
             lastNode = curr;
         }
-
         while ((curr != null) && comp.compare(insertNode, curr.getData()) > 0)
         {
             prev = curr;
@@ -534,6 +537,7 @@ public class DoublyLinkedList<T>
             firstNode.setPrevious(insert);
             firstNode = insert;
         }
+
     }
 
 }
