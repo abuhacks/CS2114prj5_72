@@ -478,7 +478,7 @@ public class DoublyLinkedList<T>
     // data based off the compareTo() method for the object stored in each node.
     // ----------------------------------------------------------
     /**
-     * Place a description of your method here.
+     * REDACTED.
      * 
      * @param comp
      */
