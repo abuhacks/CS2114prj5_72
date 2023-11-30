@@ -37,8 +37,8 @@ public class DisplayWindow {
     private Button quit;
     private boolean bear;
     private boolean cap;
-    // private boolean dog;
-    // private boolean rat;
+    private boolean dog;
+    private boolean rat;
 
     private static final double DISPLAY_FACTOR = 1.5;
     private AList<Shape[]> songRectangles;
@@ -100,6 +100,8 @@ public class DisplayWindow {
 
         bear = false;
         cap = false;
+        dog = false;
+        rat = false;
 
         DoublyLinkedList<User> abu1 = new DoublyLinkedList<User>();
         abu1 = sortingCalculator.getList();
@@ -136,6 +138,7 @@ public class DisplayWindow {
             srtTradName();
 
         }
+
         else if (cap) {
             srtReachName();
 
@@ -146,31 +149,33 @@ public class DisplayWindow {
     public void clickedSortEngagRate(Button button) {
         if (bear) {
             srtTradEngage();
-
         }
-        else if (cap) {
+
+        if (cap) {
             srtReachEngage();
-
         }
+        if (dog) {
+            srtTradJanEngage();
+        }
+        if (rat) {
+            srtTradFebEngage();
+        }
+
     }
 
 
     public void clickedJanuary(Button button) {
+        tradJanRate();
 
-        if (bear) {
-            srtTradJan();
-
-        }
-        else if (cap) {
-            srtReachJan();
-
-        }
     }
 
 
     public void clickedFebruary(Button button) {
 
+        tradFebRate();
+
     }
+
 
     public void clickedMarch(Button button) {
 
@@ -276,30 +281,54 @@ public class DisplayWindow {
     }
 
 
+    public void tradJanRate() {
+        DoublyLinkedList<User> abu1 = new DoublyLinkedList<User>();
+        abu1 = sortingCalculator.getList();
+        tradMonth(abu1);
+        dog = true;
+
+    }
+
+
     /**
      * 
      */
-    public void srtTradJan() {
-        DoublyLinkedList<User> abu2 = sortingCalculator.sortByTraditionalRate();
+    public void srtTradJanEngage() {
+        DoublyLinkedList<User> abu2 = sortingCalculator.sortByTradMonth(
+            "January");
         for (int i = 0; i < abu2.getLength(); i++) {
-            abu2.getEntry(i).getIndividualTradRate();
             tradMonth(abu2);
+            dog = true;
 
         }
 
     }
 
 
-    public void srtReachJan() {
-        DoublyLinkedList<User> abu3 = sortingCalculator.sortByReachRate();
-        for (int i = 0; i < abu3.getLength(); i++) {
-            abu3.getEntry(i).getIndividualReachRate();
-            drawBarGraphReach(abu3);
+    public void tradFebRate() {
+        DoublyLinkedList<User> abu14 = new DoublyLinkedList<User>();
+        abu14 = sortingCalculator.getList();
+        tradMonth(abu14);
+        rat = true;
+
+    }
+
+
+    /**
+     * 
+     */
+    public void srtTradFebEngage() {
+        DoublyLinkedList<User> abu2 = sortingCalculator.sortByTradMonth(
+            "February");
+        for (int i = 0; i < abu2.getLength(); i++) {
+            tradMonth(abu2);
+            rat = true;
 
         }
 
     }
-    
+
+
     /**
      * @param abu
      * 
@@ -314,11 +343,12 @@ public class DisplayWindow {
 
         for (int i = 0; i < Math.min(abu.getLength(), 4); i++) {
             User user = abu.getEntry(i);
-            double traditionalRate = sortingCalculator.getList().getEntry(i).getIndividualTradRate();
+            double traditionalMRate = sortingCalculator.getIndividualTradRate(
+                user);
             String channelName = user.getChannelName();
 
             int barWidth = 30;
-            int barHeight = (int)(traditionalRate);
+            int barHeight = (int)(traditionalMRate);
 
             Shape bar = new Shape(initialX + i * (barWidth + barSpacing), 550
                 - barHeight, barWidth, barHeight, colors[i]);
@@ -329,7 +359,7 @@ public class DisplayWindow {
             window.addShape(textShape);
 
             TextShape textShapeRate = new TextShape(initialX + i * (barWidth
-                + barSpacing), 590, String.format("%.2f", traditionalRate),
+                + barSpacing), 590, String.format("%.2f", traditionalMRate),
                 Color.BLACK);
             window.addShape(textShapeRate);
         }
