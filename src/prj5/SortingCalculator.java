@@ -1,17 +1,20 @@
 package prj5;
-//Virginia Tech Honor Code Pledge:
+
+// Virginia Tech Honor Code Pledge:
 //
-//As a Hokie, I will conduct myself with honor and integrity at all times.
-//I will not lie, cheat, or steal, nor will I
-//accept the actions of those who do.
-//-- Naren Dawar(naren)(906615413), Joey Chen (PID), Abiel (PID), Adam (PID)
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I
+// accept the actions of those who do.
+// -- Naren Dawar(naren)(906615413), Joey Chen (PID), Abiel (PID), Adam (PID)
 import java.util.HashMap;
 import java.util.Map;
 
 // -------------------------------------------------------------------------
 /**
- * Used for sorting the information into desired new lists that can be used for display.
- * All sort or get methods remove duplicates but still have full functionality logistically and in actuality.
+ * Used for sorting the information into desired new lists that can be used for
+ * display.
+ * All sort or get methods remove duplicates but still have full functionality
+ * logistically and in actuality.
  * 
  * @author naren
  * @version Nov 12, 2023
@@ -33,7 +36,6 @@ public class SortingCalculator {
         users = users2;
     }
 
-
     // ~Public Methods ........................................................
 
 
@@ -46,10 +48,12 @@ public class SortingCalculator {
     public DoublyLinkedList<User> getList() {
         return users;
     }
-    
+
+
     // ----------------------------------------------------------
     /**
      * Returns the users (removes duplicates).
+     * 
      * @return the users.
      * 
      */
@@ -160,13 +164,14 @@ public class SortingCalculator {
 
     // ----------------------------------------------------------
     /**
-     * Returns a linked list of the users sorted by reach rate for the first quarter.
+     * Returns a linked list of the users sorted by reach rate for the first
+     * quarter.
      * 
      * @return a sorted linked list.
      */
     public DoublyLinkedList<User> sortByReachRate() {
         DoublyLinkedList<User> testVals = this.getUsers();
-        
+
         for (int i = 0; i < testVals.getLength(); i++) {
             for (int j = i + 1; j < testVals.getLength(); j++) {
                 if (getReachRate(testVals.getEntry(i)) < getReachRate(testVals
@@ -183,13 +188,14 @@ public class SortingCalculator {
 
     // ----------------------------------------------------------
     /**
-     * Returns a linked list of the users sorted by traditional rate for the first quarter.
+     * Returns a linked list of the users sorted by traditional rate for the
+     * first quarter.
      * 
      * @return the sorted list.
      */
     public DoublyLinkedList<User> sortByTraditionalRate() {
         DoublyLinkedList<User> testVals = this.getUsers();
-        
+
         for (int i = 0; i < testVals.getLength(); i++) {
             for (int j = i + 1; j < testVals.getLength(); j++) {
                 if (getTraditionalRate(testVals.getEntry(
@@ -203,11 +209,15 @@ public class SortingCalculator {
         }
         return testVals;
     }
-    
+
+
     // ----------------------------------------------------------
     /**
-     * Sorts the users based off a given  month (uses data ONLY within the given month).
-     * @param month to be calculated for.
+     * Sorts the users based off a given month (uses data ONLY within the given
+     * month).
+     * 
+     * @param month
+     *            to be calculated for.
      * @return the new list with users from specified month.
      */
     public DoublyLinkedList<User> sortByTradMonth(String month) {
@@ -219,21 +229,25 @@ public class SortingCalculator {
         }
         for (int i = 0; i < testVals.getLength(); i++) {
             for (int j = i + 1; j < testVals.getLength(); j++) {
-                if (getIndividualTradRate(testVals.getEntry(i)) < getIndividualTradRate(testVals
-                    .getEntry(j))) {
+                if (getIndividualTradRate(testVals.getEntry(
+                    i)) < getIndividualTradRate(testVals.getEntry(j))) {
                     User temp = testVals.getEntry(j);
                     testVals.replace(j, testVals.getEntry(i));
                     testVals.replace(i, temp);
                 }
             }
         }
-        return testVals; //displays original user data and doesnt make a new chain with new data
+        return testVals; // displays original user data and doesnt make a new
+                         // chain with new data
     }
-    
+
+
     // ----------------------------------------------------------
     /**
      * Sorts users based off reach rate for a given month by the user.
-     * @param month to be calculated for.
+     * 
+     * @param month
+     *            to be calculated for.
      * @return the new list with users from specified month.
      */
     public DoublyLinkedList<User> sortByReachMonth(String month) {
@@ -245,8 +259,8 @@ public class SortingCalculator {
         }
         for (int i = 0; i < testVals.getLength(); i++) {
             for (int j = i + 1; j < testVals.getLength(); j++) {
-                if (getIndividualReachRate(testVals.getEntry(i)) < getIndividualReachRate(testVals
-                    .getEntry(j))) {
+                if (getIndividualReachRate(testVals.getEntry(
+                    i)) < getIndividualReachRate(testVals.getEntry(j))) {
                     User temp = testVals.getEntry(j);
                     testVals.replace(j, testVals.getEntry(i));
                     testVals.replace(i, temp);
@@ -255,11 +269,14 @@ public class SortingCalculator {
         }
         return testVals;
     }
-    
+
+
     // ----------------------------------------------------------
     /**
      * Returns users based on input for month (NOT sorted).
-     * @param month to return users for.
+     * 
+     * @param month
+     *            to return users for.
      * @return the new list based on month.
      */
     public DoublyLinkedList<User> getByMonth(String month) {
@@ -271,11 +288,14 @@ public class SortingCalculator {
         }
         return testVals;
     }
-    
+
+
     // ----------------------------------------------------------
     /**
      * Sorts users in a given month by channel name.
-     * @param month to sort users by.
+     * 
+     * @param month
+     *            to sort users by.
      * @return the new sorted list.
      */
     public DoublyLinkedList<User> sortByMonth(String month) {
@@ -297,26 +317,34 @@ public class SortingCalculator {
         }
         return testVals;
     }
-    
+
+
     // ----------------------------------------------------------
     /**
      * Gets the individual reach rate for a specified user.
-     * @param user to get the rate for.
+     * 
+     * @param user
+     *            to get the rate for.
      * 
      * @return reach rate for specified user.
      */
     public double getIndividualReachRate(User user) {
-        return ((user.getComments() + user.getLikes()) / (double) user.getViews()) * 100;
+        return ((user.getComments() + user.getLikes()) / (double)user
+            .getViews()) * 100;
     }
-    
+
+
     // ----------------------------------------------------------
     /**
      * Gets the individual traditional rate for a specified user.
-     * @param user to get the rate for.
+     * 
+     * @param user
+     *            to get the rate for.
      * 
      * @return the individual traditional rate for a specified user.
      */
     public double getIndividualTradRate(User user) {
-        return ((user.getComments() + user.getLikes()) / (double) user.getFollowers()) * 100;
+        return ((user.getComments() + user.getLikes()) / (double)user
+            .getFollowers()) * 100;
     }
 }

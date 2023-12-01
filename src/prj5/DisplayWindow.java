@@ -1,3 +1,10 @@
+// Virginia Tech Honor Code Pledge:
+//
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I
+// accept the actions of those who do.
+// -- Naren Dawar(906615413), Joey Chen (906610199), Abiel (906540750), Adam
+// (906552490)
 /**
  * 
  */
@@ -17,7 +24,8 @@ import prj5.User;
 import list.AList;
 
 /**
- * 
+ * @version 11-30-2023
+ * @author Abiel Meaza (abielm)n
  */
 public class DisplayWindow {
 
@@ -40,11 +48,18 @@ public class DisplayWindow {
     private String recentDisplay;
     private String recentSort;
 
+    /**
+     * This sets the Display
+     * Facotr of the screen
+     * to 1.5
+     */
     private static final double DISPLAY_FACTOR = 1.5;
     private AList<Shape[]> songRectangles;
 
     /**
-     * 
+     * The DisplayWindow displays
+     * all the data that encapsulates
+     * all the information of our project
      */
     public DisplayWindow(SortingCalculator sortingCalculator) {
         window = new Window("Social Media Vis");
@@ -107,17 +122,12 @@ public class DisplayWindow {
 
 
     /**
-     * This method dequeues the pending song at the front of the
-     * queue, adding it to the playlist (possibly), and updates the window to
-     * represent the current status
-     *
-     * @param button
-     *            accept button (the one that was pressed)
-     */
-
-    /**
+     * This method ends the simulation when
+     * the quit is clicked
      * 
      * @param button
+     *            this is the
+     *            quit button
      */
     public void clickedQuit(Button button) {
 
@@ -127,7 +137,24 @@ public class DisplayWindow {
 
 
     /**
+     * When Sort channel name is
+     * clicked it checks if the recent
+     * sort that was clicked
+     * was channelName. Then it goes
+     * through continuous
+     * amounts of if else statements that
+     * check the months and if
+     * the user clicks get Traditional
+     * or get Reach before displaying
+     * the correct information on
+     * the top left as a String
+     * as well as sorting the data by
+     * the channel Name
      * 
+     * @param button
+     *            This is the button
+     *            that is being passed through so
+     *            clickedSortChanlName can be clicked
      */
     public void clickedSortChanlName(Button button) {
 
@@ -176,6 +203,26 @@ public class DisplayWindow {
     }
 
 
+    /**
+     * The clicked Sorting Engagement Rate
+     * Button is treated the same as the
+     * Sort Channel Name button but it goes
+     * through continuous
+     * amounts of if else statements that
+     * check the months and if
+     * the user clicks get Traditional
+     * or get Reach before displaying
+     * the correct information on
+     * the top left as a String
+     * as well as sorting the data by
+     * the Engagement Rate
+     * it
+     * 
+     * @param button
+     *            is the Sort Engagement
+     *            rate button that when clicked runs
+     *            the correct data
+     */
     public void clickedSortEngagRate(Button button) {
 
         recentSort = "Engage";
@@ -220,6 +267,18 @@ public class DisplayWindow {
     }
 
 
+    /**
+     * This is the clickedJanuary button
+     * that when clicked checks what else
+     * is clicked and makes sure that the right
+     * parameters are clicked before running
+     * the right sorters
+     * 
+     * @param button
+     *            this is the clickedJanuary
+     *            button that when clicked runs the
+     *            correct data specific for january.
+     */
     public void clickedJanuary(Button button) {
 
         recentMonth = "January";
@@ -247,6 +306,18 @@ public class DisplayWindow {
     }
 
 
+    /**
+     * This is the clickedFebruary button
+     * that when clicked checks what else
+     * is clicked and makes sure that the right
+     * parameters are clicked before running
+     * the right sorters
+     * 
+     * @param button
+     *            this is the clickedFebruary
+     *            button that when clicked runs the
+     *            correct data specific for February.
+     */
     public void clickedFebruary(Button button) {
 
         recentMonth = "February";
@@ -274,6 +345,18 @@ public class DisplayWindow {
     }
 
 
+    /**
+     * This is the clickedMarch button
+     * that when clicked checks what else
+     * is clicked and makes sure that the right
+     * parameters are clicked before running
+     * the right sorters
+     * 
+     * @param button
+     *            this is the clickedMarch
+     *            button that when clicked runs the
+     *            correct data specific for March.
+     */
     public void clickedMarch(Button button) {
 
         recentMonth = "March";
@@ -301,6 +384,18 @@ public class DisplayWindow {
     }
 
 
+    /**
+     * This is the clickedFirstQuarter button
+     * that when clicked checks what else
+     * is clicked and makes sure that the right
+     * parameters are clicked before running
+     * the right sorters
+     * 
+     * @param button
+     *            this is the clickedFirstQuarter
+     *            button that when clicked runs the
+     *            correct data specific for FirstQuarter.
+     */
     public void clickedFirstQuarter(Button button) {
 
         recentMonth = "FirstQuarter";
@@ -329,8 +424,21 @@ public class DisplayWindow {
 
 
     /**
+     * When clickedTradEngageRate
+     * is clicked it checks which month
+     * and which sorter is clicked with if
+     * else statements
+     * before sorting it with the right
+     * method call.
      * 
      * @param button
+     *            this is
+     *            the clickedTradEngageRate button
+     *            that is in the top left part
+     *            of the screen
+     *            that when clicked gets the traditional
+     *            EngagementRate per whichever month
+     *            is clicked
      */
     public void clickedTradEngageRate(Button button) {
 
@@ -372,8 +480,21 @@ public class DisplayWindow {
 
 
     /**
+     * When clickedReachEngageRate
+     * is clicked it checks which month
+     * and which sorter is clicked with if
+     * else statements
+     * before sorting it with the right
+     * method call.
      * 
      * @param button
+     *            this is
+     *            the clickedReachEngagRate button
+     *            that is in the top left part
+     *            of the screen
+     *            that when clicked gets the reach
+     *            EngagementRate per whichever month
+     *            is clicked
      */
     public void clickedReachEngagRate(Button button) {
 
@@ -417,8 +538,14 @@ public class DisplayWindow {
 
 
     /**
-     * @return
-     * 
+     * The traditional
+     * Rate method gets the traditional
+     * rate by creating a user within
+     * the doubly linked list
+     * and gets the list through our
+     * sortingCalculator class
+     * and then draws the correct
+     * bar graph for Traditional values.
      */
     public void tradRate() {
         DoublyLinkedList<User> abu1 = new DoublyLinkedList<User>();
@@ -429,7 +556,14 @@ public class DisplayWindow {
 
 
     /**
-     * 
+     * The reach
+     * Rate method gets the reac
+     * rate by creating a user within
+     * the doubly linked list
+     * and gets the list through our
+     * sortingCalculator class
+     * and then draws the correct
+     * bar graph for reach values.
      */
     public void reachRate() {
         DoublyLinkedList<User> abu2 = new DoublyLinkedList<User>();
@@ -440,7 +574,14 @@ public class DisplayWindow {
 
 
     /**
-     * 
+     * The sort Traditional Name method gets the
+     * traditional name by creating a user within
+     * the sortingCalculator class and calling
+     * the sort by name class. Then it gets
+     * the correct Channel Name by traversing
+     * through a for loop (the length) and
+     * then drawing the correct traditional
+     * graph
      */
     public void srtTradName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByName();
@@ -454,7 +595,14 @@ public class DisplayWindow {
 
 
     /**
-     * 
+     * The sort Reach Name method gets the
+     * reach name by creating a user within
+     * the sortingCalculator class and calling
+     * the sort by name class. Then it gets
+     * the correct Channel Name by traversing
+     * through a for loop (the length) and
+     * then drawing the correct reach
+     * graph
      */
     public void srtReachName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByName();
@@ -466,6 +614,14 @@ public class DisplayWindow {
     }
 
 
+    /**
+     * This does the same thing as
+     * the sort Traditional Name
+     * method but it sorts the
+     * traditional name method
+     * specifically for the month
+     * January.
+     */
     public void srtTradJanName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("January");
         for (int i = 0; i < abu.getLength(); i++) {
@@ -477,6 +633,14 @@ public class DisplayWindow {
     }
 
 
+    /**
+     * This does the same thing as
+     * the sort Reach Name
+     * method but it sorts the
+     * reach name method
+     * specifically for the month
+     * January.
+     */
     public void srtReachJanName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("January");
         for (int i = 0; i < abu.getLength(); i++) {
@@ -488,6 +652,14 @@ public class DisplayWindow {
     }
 
 
+    /**
+     * This does the same thing as
+     * the sort Traditional Name
+     * method but it sorts the
+     * traditional name method
+     * specifically for the month
+     * February.
+     */
     public void srtTradFebName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("February");
         for (int i = 0; i < abu.getLength(); i++) {
@@ -499,6 +671,14 @@ public class DisplayWindow {
     }
 
 
+    /**
+     * This does the same thing as
+     * the sort Traditional Name
+     * method but it sorts the
+     * traditional name method
+     * specifically for the month
+     * January.
+     */
     public void srtReachFebName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("February");
         for (int i = 0; i < abu.getLength(); i++) {
@@ -510,6 +690,14 @@ public class DisplayWindow {
     }
 
 
+    /**
+     * This does the same thing as
+     * the sort Traditional Name
+     * method but it sorts the
+     * traditional name method
+     * specifically for the month
+     * March.
+     */
     public void srtTradMarName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("March");
         for (int i = 0; i < abu.getLength(); i++) {
@@ -521,6 +709,14 @@ public class DisplayWindow {
     }
 
 
+    /**
+     * This does the same thing as
+     * the sort Reach Name
+     * method but it sorts the
+     * reach name method
+     * specifically for the month
+     * March.
+     */
     public void srtReachMarName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("March");
         for (int i = 0; i < abu.getLength(); i++) {
@@ -532,6 +728,14 @@ public class DisplayWindow {
     }
 
 
+    /**
+     * This does the same thing as
+     * the sort Traditional Name
+     * method but it sorts the
+     * traditional name method
+     * specifically for the month
+     * FirstQuarter.
+     */
     public void srtTradFirstQName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByName();
         for (int i = 0; i < abu.getLength(); i++) {
@@ -543,6 +747,14 @@ public class DisplayWindow {
     }
 
 
+    /**
+     * This does the same thing as
+     * the sort Reach Name
+     * method but it sorts the
+     * reach name method
+     * specifically for the month
+     * FirstQuarter.
+     */
     public void srtReachFirstQName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByName();
         for (int i = 0; i < abu.getLength(); i++) {
@@ -555,7 +767,14 @@ public class DisplayWindow {
 
 
     /**
-     * 
+     * This Sorts the Traditional
+     * rate data by calling
+     * sort by traditional rate
+     * through the sorting Calculator
+     * and then traversing through the
+     * length of the rates and then
+     * drawing them based on the the data
+     * in traditional.
      */
     public void srtTradEngage() {
 
@@ -568,6 +787,16 @@ public class DisplayWindow {
     }
 
 
+    /**
+     * This Sorts the Reach
+     * rate data by calling
+     * sort by reach rate
+     * through the sorting Calculator
+     * and then traversing through the
+     * length of the rates and then
+     * drawing them based on the the data
+     * in reach.
+     */
     public void srtReachEngage() {
         DoublyLinkedList<User> abu1 = sortingCalculator.sortByReachRate();
         for (int i = 0; i < abu1.getLength(); i++) {
@@ -578,7 +807,10 @@ public class DisplayWindow {
 
 
     /**
-     * 
+     * This does the same thing
+     * as the srtTradEngage
+     * class but it sorts it based
+     * on the month January.
      */
     public void srtTradJanEngage() {
         DoublyLinkedList<User> abu2 = sortingCalculator.sortByTradMonth(
@@ -591,6 +823,12 @@ public class DisplayWindow {
     }
 
 
+    /**
+     * This does the same thing
+     * as the srtReachEngage
+     * class but it sorts it based
+     * on the month January.
+     */
     public void srtReachJanEngage() {
         DoublyLinkedList<User> abu2 = sortingCalculator.sortByReachMonth(
             "January");
@@ -603,7 +841,10 @@ public class DisplayWindow {
 
 
     /**
-     * 
+     * This does the same thing
+     * as the srtTradEngage
+     * class but it sorts it based
+     * on the month February.
      */
     public void srtTradFebEngage() {
         DoublyLinkedList<User> abu2 = sortingCalculator.sortByTradMonth(
@@ -616,6 +857,12 @@ public class DisplayWindow {
     }
 
 
+    /**
+     * This does the same thing
+     * as the srtReachEngage
+     * class but it sorts it based
+     * on the month February.
+     */
     public void srtReachFebEngage() {
         DoublyLinkedList<User> abu2 = sortingCalculator.sortByReachMonth(
             "February");
@@ -627,6 +874,12 @@ public class DisplayWindow {
     }
 
 
+    /**
+     * This does the same thing
+     * as the srtTradEngage
+     * class but it sorts it based
+     * on the month March.
+     */
     public void srtTradMarEngage() {
         DoublyLinkedList<User> abu6 = sortingCalculator.sortByTradMonth(
             "March");
@@ -638,6 +891,12 @@ public class DisplayWindow {
     }
 
 
+    /**
+     * This does the same thing
+     * as the srtReachEngage
+     * class but it sorts it based
+     * on the month March.
+     */
     public void srtReachMarEngage() {
         DoublyLinkedList<User> abu2 = sortingCalculator.sortByReachMonth(
             "March");
@@ -649,6 +908,12 @@ public class DisplayWindow {
     }
 
 
+    /**
+     * This does the same thing
+     * as the srtTradEngage
+     * class but it sorts it based
+     * on the month FirstQuarter.
+     */
     public void tradFirstQuarterRate() {
         DoublyLinkedList<User> abu14 = new DoublyLinkedList<User>();
         abu14 = sortingCalculator.getUsers();
@@ -657,6 +922,20 @@ public class DisplayWindow {
     }
 
 
+    /**
+     * 
+     * @param abu
+     *            this is the user that
+     *            is used within the class
+     * @param button
+     *            this is the button
+     *            that is being clicked when the first
+     *            quarter method
+     *            is called above
+     *            When this class is called above,
+     *            it will draw the only the firstQuarter
+     *            data.
+     */
     public void tradFirstQMonth(DoublyLinkedList<User> abu, Button button) {
         window.removeAllShapes();
         clickedS(button);
@@ -695,6 +974,17 @@ public class DisplayWindow {
 
     /**
      * @param abu
+     *            this is the user
+     *            that is being used within the class
+     * 
+     * @param button
+     *            this is the button be clicked above
+     *            when tradMonth is called for all the months
+     *            in the project
+     *            When this class is called above,
+     *            it will draw all the months bars graphs
+     *            except FirstQuarter
+     *            data for traditional data.
      * 
      */
     public void tradMonth(DoublyLinkedList<User> abu, Button button) {
@@ -733,6 +1023,21 @@ public class DisplayWindow {
     }
 
 
+    /**
+     * 
+     * @param abu
+     *            this is the user
+     *            that is being used within the class.
+     * @param button
+     *            this is the button that
+     *            is being clicked when reachMonth is called
+     *            above
+     * 
+     *            When this class is called above,
+     *            it will draw all the months bars graphs
+     *            except FirstQuarter
+     *            data for reach data.
+     */
     public void reachMonth(DoublyLinkedList<User> abu, Button button) {
         window.removeAllShapes();
         clickedS(button);
@@ -769,6 +1074,14 @@ public class DisplayWindow {
 
     /**
      * @param abu
+     *            this is the user
+     *            that is being used within the class.
+     * @param button
+     *            this is being clicked above just
+     *            for the traditional data, ("NOT THE MONTH TRADITIONAL DATA")
+     *            When this class is called above,
+     *            it will draw all the bars graphs
+     *            data for traditional data.
      * 
      */
     public void drawBarGraphTrad(DoublyLinkedList<User> abu, Button button) {
@@ -806,7 +1119,15 @@ public class DisplayWindow {
 
 
     /**
+     * @param abu
+     *            this is the user
+     *            that is being used within the class.
      * @param button
+     *            this is being clicked above just
+     *            for the reach data, ("NOT THE MONTH REACH DATA")
+     *            When this class is called above,
+     *            it will draw all the bars graphs
+     *            data for reach data.
      * 
      */
     public void drawBarGraphReach(DoublyLinkedList<User> abu, Button button) {
@@ -846,6 +1167,16 @@ public class DisplayWindow {
     /**
      * 
      * @param button
+     *            these buttons are clicked
+     *            above to make the string values
+     *            on the top left of the screen change
+     *            in the correct way no matter what
+     *            This is the clickedS() class that
+     *            takes in a button parameter and
+     *            checks if the recentMonth, recentDisplay, and
+     *            recentSort are equal to the correct string values
+     *            before adding the shapes in the correct place
+     *            on the screen
      */
     public void clickedS(Button button) {
 
@@ -888,7 +1219,8 @@ public class DisplayWindow {
 
 
     /**
-     * This method disables the buttons and is called when the queue is empty
+     * This method disables the buttons and is
+     * called when the quit is called.
      */
     private void endSimulation() {
         january.disable();

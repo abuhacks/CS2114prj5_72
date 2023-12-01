@@ -1,6 +1,13 @@
 package prj5;
 
 import student.TestCase;
+// Virginia Tech Honor Code Pledge:
+//
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I
+// accept the actions of those who do.
+// -- Naren Dawar(906615413), Joey Chen (906610199), Abiel (906540750), Adam
+// (906552490)
 
 // -------------------------------------------------------------------------
 /**
@@ -9,9 +16,7 @@ import student.TestCase;
  * @author naren
  * @version Nov 16, 2023
  */
-public class UserTest
-    extends TestCase
-{
+public class UserTest extends TestCase {
     // ~ Fields ................................................................
     private User newUser;
     private User newUser2;
@@ -21,30 +26,11 @@ public class UserTest
     /**
      * Sets up the test values.
      */
-    public void setUp()
-    {
-        newUser = new User(
-            "February",
-            "narnarnoscoper",
-            "NarenDaBeast",
-            "India",
-            "Cars",
-            1011,
-            35,
-            100987,
-            53809,
-            29492);
-        newUser2 = new User(
-            "February",
-            "jchen",
-            "JoeyDAMonster",
-            "China",
-            "Cars",
-            1011,
-            35,
-            100987,
-            53809,
-            29492);
+    public void setUp() {
+        newUser = new User("February", "narnarnoscoper", "NarenDaBeast",
+            "India", "Cars", 1011, 35, 100987, 53809, 29492);
+        newUser2 = new User("February", "jchen", "JoeyDAMonster", "China",
+            "Cars", 1011, 35, 100987, 53809, 29492);
     }
 
 
@@ -52,8 +38,7 @@ public class UserTest
     /**
      * Tests the getMonth method.
      */
-    public void testGetMonth()
-    {
+    public void testGetMonth() {
         assertEquals(newUser.getMonth(), "February");
     }
 
@@ -62,8 +47,7 @@ public class UserTest
     /**
      * Tests the getUsername() method.
      */
-    public void testGetUsername()
-    {
+    public void testGetUsername() {
         assertEquals(newUser.getUsername(), "narnarnoscoper");
     }
 
@@ -72,8 +56,7 @@ public class UserTest
     /**
      * Tests the getChannelName() method.
      */
-    public void testGetChannelName()
-    {
+    public void testGetChannelName() {
         assertEquals(newUser.getChannelName(), "NarenDaBeast");
     }
 
@@ -82,8 +65,7 @@ public class UserTest
     /**
      * Tests the getCountry() method.
      */
-    public void testGetCountry()
-    {
+    public void testGetCountry() {
         assertEquals(newUser.getCountry(), "India");
     }
 
@@ -92,8 +74,7 @@ public class UserTest
     /**
      * Tests the getMainTopic() method.
      */
-    public void testGetMainTopic()
-    {
+    public void testGetMainTopic() {
         assertEquals(newUser.getMainTopic(), "Cars");
     }
 
@@ -102,8 +83,7 @@ public class UserTest
     /**
      * tests the getLikes() method.
      */
-    public void testGetLikes()
-    {
+    public void testGetLikes() {
         assertEquals(newUser.getLikes(), 1011);
     }
 
@@ -112,8 +92,7 @@ public class UserTest
     /**
      * Tests the getPosts() method.
      */
-    public void testGetPosts()
-    {
+    public void testGetPosts() {
         assertEquals(newUser.getPosts(), 35);
     }
 
@@ -122,8 +101,7 @@ public class UserTest
     /**
      * Tests the getFollowers() method.
      */
-    public void testGetFollowers()
-    {
+    public void testGetFollowers() {
         assertEquals(newUser.getFollowers(), 100987);
     }
 
@@ -132,8 +110,7 @@ public class UserTest
     /**
      * Tests the getComments() method.
      */
-    public void testGetComments()
-    {
+    public void testGetComments() {
         assertEquals(newUser.getComments(), 53809);
     }
 
@@ -142,8 +119,7 @@ public class UserTest
     /**
      * Tests the getViews() methods.
      */
-    public void testGetViews()
-    {
+    public void testGetViews() {
         assertEquals(newUser.getViews(), 29492);
     }
 
@@ -152,8 +128,7 @@ public class UserTest
     /**
      * Tests the setLikes() method.
      */
-    public void testSetLikes()
-    {
+    public void testSetLikes() {
         newUser.setLikes(1000);
         assertEquals(newUser.getLikes(), 1000);
     }
@@ -163,8 +138,7 @@ public class UserTest
     /**
      * Tests the setComments() method.
      */
-    public void testSetComments()
-    {
+    public void testSetComments() {
         newUser.setComments(9876);
         assertEquals(newUser.getComments(), 9876);
     }
@@ -174,8 +148,7 @@ public class UserTest
     /**
      * tests the setViews() method.
      */
-    public void testSetViews()
-    {
+    public void testSetViews() {
         newUser.setViews(100);
         assertEquals(newUser.getViews(), 100);
     }
@@ -185,8 +158,7 @@ public class UserTest
     /**
      * Tests the setFollowers() method.
      */
-    public void testSetFollowers()
-    {
+    public void testSetFollowers() {
         newUser.setFollowers(8732);
         assertEquals(newUser.getFollowers(), 8732);
     }
@@ -196,8 +168,7 @@ public class UserTest
     /**
      * tests the compareTo(0 method.
      */
-    public void testCompareTo()
-    {
+    public void testCompareTo() {
         assertTrue(newUser.compareTo(newUser2) > 0);
     }
 
@@ -206,10 +177,8 @@ public class UserTest
     /**
      * Tests the toString() method.
      */
-    public void testToString()
-    {
-        assertEquals(
-            newUser.toString(),
+    public void testToString() {
+        assertEquals(newUser.toString(),
             "February, narnarnoscoper, NarenDaBeast, India, Cars,"
                 + " 1011, 35, 100987, 53809, 29492");
     }

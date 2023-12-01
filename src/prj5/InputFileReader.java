@@ -1,11 +1,12 @@
 package prj5;
 
+// Virginia Tech Honor Code Pledge:
 //
 // As a Hokie, I will conduct myself with honor and integrity at all times.
 // I will not lie, cheat, or steal, nor will I
 // accept the actions of those who do.
-// -- Naren Dawar(naren)(906615413), Joey Chen (PID), Abiel (PID),
-// Adam Schantz(adamschantz) (906552490)
+// -- Naren Dawar(906615413), Joey Chen (906610199), Abiel (906540750), Adam
+// (906552490)
 import java.util.Scanner;
 
 import student.IOHelper;
@@ -18,8 +19,7 @@ import student.IOHelper;
  * @author 14342
  * @version Nov 16, 2023
  */
-public class InputFileReader
-{
+public class InputFileReader {
     // ~ Fields ................................................................
     private DoublyLinkedList<User> dLList;
 
@@ -30,8 +30,7 @@ public class InputFileReader
      * @param input
      *            the input file
      */
-    public InputFileReader(String input)
-    {
+    public InputFileReader(String input) {
         dLList = readUserFile(input);
         // SortingCalculator newCalc = new SortingCalculator(dLList);
         // this.output();
@@ -47,13 +46,11 @@ public class InputFileReader
      *            the given file to be read for data.
      * @return DoublyLinkedList<User> of users that can be manipulated.
      */
-    public DoublyLinkedList<User> readUserFile(String file)
-    {
+    public DoublyLinkedList<User> readUserFile(String file) {
         Scanner inStream = IOHelper.createScanner(file);
         inStream.nextLine();// skip header
         DoublyLinkedList<User> list = new DoublyLinkedList<User>();
-        while (inStream.hasNextLine())
-        {
+        while (inStream.hasNextLine()) {
             String line = inStream.nextLine().replaceAll(" ", "");
             String[] values = line.split(",");
             String month = values[0];
@@ -67,20 +64,10 @@ public class InputFileReader
             int comments = toInt(values[8]);
             int views = toInt(values[9]);
 
-            User newUser = new User(
-                month,
-                username,
-                channel,
-                country,
-                mainTopic,
-                likes,
-                posts,
-                followers,
-                comments,
-                views);
-            if (isFirstQuarter(month)
-                && validNumberValues(followers, likes, comments, posts, views))
-            {
+            User newUser = new User(month, username, channel, country,
+                mainTopic, likes, posts, followers, comments, views);
+            if (isFirstQuarter(month) && validNumberValues(followers, likes,
+                comments, posts, views)) {
                 list.add(newUser);
             }
         }
@@ -93,14 +80,11 @@ public class InputFileReader
      * 
      * @return the new integer from the string.
      */
-    private int toInt(String str)
-    {
-        try
-        {
+    private int toInt(String str) {
+        try {
             return Integer.parseInt(str);
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             return 0;
         }
     }
@@ -113,11 +97,9 @@ public class InputFileReader
      * @param month
      *            the string month to be checked.
      */
-    private boolean isFirstQuarter(String month)
-    {
-        if (month.equals("January") || month.equals("February")
-            || month.equals("March"))
-        {
+    private boolean isFirstQuarter(String month) {
+        if (month.equals("January") || month.equals("February") || month.equals(
+            "March")) {
             return true;
         }
         return false;
@@ -139,10 +121,8 @@ public class InputFileReader
      *            number of views
      * @return a boolean based on whether all values are valid or not.
      */
-    private boolean validNumberValues(int f, int l, int c, int p, int v)
-    {
-        if (f < 0 || l < 0 || c < 0 || p < 0 || v < 0)
-        {
+    private boolean validNumberValues(int f, int l, int c, int p, int v) {
+        if (f < 0 || l < 0 || c < 0 || p < 0 || v < 0) {
             return false;
         }
         return true;
@@ -155,8 +135,7 @@ public class InputFileReader
      * @return the DoublyLinkedList.
      */
 
-    public DoublyLinkedList<User> getList()
-    {
+    public DoublyLinkedList<User> getList() {
         return dLList;
     }
 
