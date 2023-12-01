@@ -494,11 +494,12 @@ public class DoublyLinkedList<T>
      */
     public void insertionSort(Comparator<T> comp)
     {
-        if (size > 1)
+        if (getLength() > 1)
         {
             Node<T> unsorted = firstNode.getNext();
             Node<T> sorted = firstNode;
             sorted.setNext(null);
+            unsorted.setPrevious(null);
             while (unsorted != null)
             {
                 Node<T> insert = unsorted;
@@ -530,6 +531,7 @@ public class DoublyLinkedList<T>
             prev.setNext(insert);
             insert.setPrevious(prev);
             insert.setNext(curr);
+            
         }
         else
         {

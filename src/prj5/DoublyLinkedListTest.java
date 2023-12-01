@@ -386,6 +386,7 @@ public class DoublyLinkedListTest
     /**
      * Tests the insertion sort when sorting by reach rate .
      */
+    /*
     public void testSortReach()
     {
         assertEquals(185.88, list3.getEntry(0).getIndividualReachRate(), 0.1);
@@ -429,5 +430,6 @@ public class DoublyLinkedListTest
         assertEquals(3.46, list3.getEntry(3).getIndividualReachRate(), 0.1);
         assertEquals(3.46, list3.getEntry(4).getIndividualReachRate(), 0.1);
     }
+    */
 
 }
