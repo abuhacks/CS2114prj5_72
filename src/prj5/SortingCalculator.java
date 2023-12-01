@@ -274,6 +274,32 @@ public class SortingCalculator {
     
     // ----------------------------------------------------------
     /**
+     * Sorts users in a given month by channel name.
+     * @param month to sort users by.
+     * @return the new sorted list.
+     */
+    public DoublyLinkedList<User> sortByMonth(String month) {
+        DoublyLinkedList<User> testVals = new DoublyLinkedList<User>();
+        for (int i = 0; i < users.getLength(); i++) {
+            if (users.getEntry(i).getMonth().equals(month)) {
+                testVals.add(users.getEntry(i));
+            }
+        }
+        for (int i = 0; i < testVals.getLength(); i++) {
+            for (int j = i + 1; j < testVals.getLength(); j++) {
+                if (testVals.getEntry(i).getChannelName().compareToIgnoreCase(
+                    testVals.getEntry(j).getChannelName()) > 0) {
+                    User temp = testVals.getEntry(i);
+                    testVals.replace(i, testVals.getEntry(j));
+                    testVals.replace(j, temp);
+                }
+            }
+        }
+        return testVals;
+    }
+    
+    // ----------------------------------------------------------
+    /**
      * Gets the individual reach rate for a specified user.
      * @param user to get the rate for.
      * 
