@@ -1,20 +1,21 @@
 package prj5;
-//Virginia Tech Honor Code Pledge:
+
+// Virginia Tech Honor Code Pledge:
 //
-//As a Hokie, I will conduct myself with honor and integrity at all times.
-//I will not lie, cheat, or steal, nor will I
-//accept the actions of those who do.
-//-- Naren Dawar(naren)(906615413), Joey Chen (PID), Abiel (PID), Adam (PID)
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I
+// accept the actions of those who do.
+// -- Naren Dawar(naren)(906615413), Joey Chen (PID),
+// --Abiel (PID), Adam (PID)
 // -------------------------------------------------------------------------
 /**
- * Represents a user that will be broken down into many parts that can be used in the Linked List.
+ * Represents a user that will be broken down into many parts that can be used
+ * in the Linked List.
  * 
  * @author naren
  * @version Nov 12, 2023
  */
-public class User
-    implements Comparable<User>
-{
+public class User implements Comparable<User> {
     // ~ Fields ................................................................
     private String username;
     private String country;
@@ -63,8 +64,7 @@ public class User
         int posts1,
         int followers1,
         int comments1,
-        int views1)
-    {
+        int views1) {
         month = month1;
         username = user;
         channelName = channel;
@@ -85,8 +85,7 @@ public class User
      * 
      * @return number of likes.
      */
-    public int getLikes()
-    {
+    public int getLikes() {
         return likes;
     }
 
@@ -97,8 +96,7 @@ public class User
      * 
      * @return the number of comments.
      */
-    public int getComments()
-    {
+    public int getComments() {
         return comments;
     }
 
@@ -109,8 +107,7 @@ public class User
      * 
      * @return number of followers.
      */
-    public int getFollowers()
-    {
+    public int getFollowers() {
         return followers;
     }
 
@@ -121,8 +118,7 @@ public class User
      * 
      * @return the number of posts.
      */
-    public int getPosts()
-    {
+    public int getPosts() {
         return posts;
     }
 
@@ -133,8 +129,7 @@ public class User
      * 
      * @return number of views.
      */
-    public int getViews()
-    {
+    public int getViews() {
         return views;
     }
 
@@ -145,8 +140,7 @@ public class User
      * 
      * @return the corresponding username.
      */
-    public String getUsername()
-    {
+    public String getUsername() {
         return username;
     }
 
@@ -157,8 +151,7 @@ public class User
      * 
      * @return the country the user is based in.
      */
-    public String getCountry()
-    {
+    public String getCountry() {
         return country;
     }
 
@@ -169,8 +162,7 @@ public class User
      * 
      * @return the main topic of the user.
      */
-    public String getMainTopic()
-    {
+    public String getMainTopic() {
         return mainTopic;
     }
 
@@ -181,8 +173,7 @@ public class User
      * 
      * @return the channel name.
      */
-    public String getChannelName()
-    {
+    public String getChannelName() {
         return channelName;
     }
 
@@ -193,8 +184,7 @@ public class User
      * 
      * @return the number of months.
      */
-    public String getMonth()
-    {
+    public String getMonth() {
         return month;
     }
 
@@ -205,8 +195,7 @@ public class User
      * @param likes3
      *            the new amount
      */
-    public void setLikes(int likes3)
-    {
+    public void setLikes(int likes3) {
         likes = likes3;
     }
 
@@ -217,8 +206,7 @@ public class User
      * @param followers3
      *            the new amount of followers.
      */
-    public void setFollowers(int followers3)
-    {
+    public void setFollowers(int followers3) {
         followers = followers3;
     }
 
@@ -229,8 +217,7 @@ public class User
      * @param comments3
      *            new amount of comments.
      */
-    public void setComments(int comments3)
-    {
+    public void setComments(int comments3) {
         comments = comments3;
     }
 
@@ -241,8 +228,7 @@ public class User
      * @param views3
      *            new amount of views.
      */
-    public void setViews(int views3)
-    {
+    public void setViews(int views3) {
         views = views3;
     }
 
@@ -255,42 +241,47 @@ public class User
      *            other user
      * @return the numerical representation of the string difference.
      */
-    public int compareTo(User o)
-    {
+    public int compareTo(User o) {
         return channelName.compareTo(o.channelName);
     }
 
 
     /**
-     * Returns a string representation of the 
+     * Returns a string representation of the
      * 
      * @return it in a form of a string.
      */
-    public String toString()
-    {
+    public String toString() {
         StringBuilder s = new StringBuilder();
-        s.append(
-            "" + month + ", " + username + ", " + channelName + ", " + country
-                + ", " + mainTopic + ", " + likes + ", " + posts + ", "
-                + followers + ", " + comments + ", " + views);
+        s.append("" + month + ", " + username + ", " + channelName + ", "
+            + country + ", " + mainTopic + ", " + likes + ", " + posts + ", "
+            + followers + ", " + comments + ", " + views);
         return s.toString();
     }
-    
+
+
     // ----------------------------------------------------------
     /**
      * Gets the users individual traditional rate.
+     * 
      * @return the traditional rate.
      */
     public double getIndividualTradRate() {
-        return ((this.getComments() + this.getLikes()) / (double) this.getFollowers()) * 100;
+        return ((this.getComments() + this.getLikes()) / 
+            (double)this
+            .getFollowers()) * 100;
     }
-    
+
+
     // ----------------------------------------------------------
     /**
      * Gets the users individual reach rate.
+     * 
      * @return the reach rate.
      */
     public double getIndividualReachRate() {
-        return ((this.getComments() + this.getLikes()) / (double) this.getViews()) * 100;
+        return ((this.getComments() + this.getLikes()) / 
+            (double)this
+            .getViews()) * 100;
     }
 }

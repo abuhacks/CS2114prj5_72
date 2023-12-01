@@ -11,16 +11,15 @@
 package prj5;
 
 import java.awt.Color;
-import javax.print.DocFlavor.STRING;
+
 import cs2.Button;
-import cs2.CircleShape;
+
 import cs2.Shape;
-import cs2.SquareShape;
+
 import cs2.TextShape;
 import cs2.Window;
 import cs2.WindowSide;
-import prj5.SortingCalculator;
-import prj5.User;
+
 import list.AList;
 
 /**
@@ -54,12 +53,15 @@ public class DisplayWindow {
      * to 1.5
      */
     private static final double DISPLAY_FACTOR = 1.5;
-    private AList<Shape[]> songRectangles;
 
     /**
      * The DisplayWindow displays
      * all the data that encapsulates
      * all the information of our project
+     * 
+     * @param sortingCalculator
+     *            this is the sortingCalculator
+     *            that is passed through from the sorting Calculator class
      */
     public DisplayWindow(SortingCalculator sortingCalculator) {
         window = new Window("Social Media Vis");
@@ -103,8 +105,6 @@ public class DisplayWindow {
         reachEngagRate = new Button("Reach Engagement Rate");
         window.addButton(reachEngagRate, WindowSide.WEST);
         reachEngagRate.onClick(this, "clickedReachEngagRate");
-
-        this.songRectangles = new AList<Shape[]>();
 
         top = new TextShape(10, 10, "");
         middle = new TextShape(10, 30, "");

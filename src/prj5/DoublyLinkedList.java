@@ -3,7 +3,8 @@
 // As a Hokie, I will conduct myself with honor and integrity at all times.
 // I will not lie, cheat, or steal, nor will I
 // accept the actions of those who do.
-// -- Naren Dawar(906615413), Joey Chen (906610199), Abiel (906540750), Adam (906552490)
+// -- Naren Dawar(906615413), Joey Chen (906610199),
+// -- Abiel (906540750), Adam (906552490)
 package prj5;
 
 import java.util.Comparator;
@@ -19,11 +20,8 @@ import list.ListInterface;
  * @param <T>
  *            genric object for the data of each node in DoublyLinkedList object
  */
-public class DoublyLinkedList<T>
-    implements ListInterface<T>
-{
-    private static class Node<T>
-    {
+public class DoublyLinkedList<T> implements ListInterface<T> {
+    private static class Node<T> {
         // ~ Fields ............................................................
         private T data;
         private Node<T> next;
@@ -37,8 +35,7 @@ public class DoublyLinkedList<T>
          * @param data
          *            the data a Node object will hold
          */
-        public Node(T data)
-        {
+        public Node(T data) {
             this.data = data;
         }
 
@@ -51,8 +48,7 @@ public class DoublyLinkedList<T>
          * @param nextNode
          *            the node the next Node will be set to
          */
-        public void setNext(Node<T> nextNode)
-        {
+        public void setNext(Node<T> nextNode) {
             next = nextNode;
         }
 
@@ -63,8 +59,7 @@ public class DoublyLinkedList<T>
          * 
          * @return next, the next Node of the current Node
          */
-        public Node<T> getNext()
-        {
+        public Node<T> getNext() {
             return next;
         }
 
@@ -76,8 +71,7 @@ public class DoublyLinkedList<T>
          * @param prevNode
          *            the node the previous node will be set to
          */
-        public void setPrevious(Node<T> prevNode)
-        {
+        public void setPrevious(Node<T> prevNode) {
             prev = prevNode;
         }
 
@@ -88,8 +82,7 @@ public class DoublyLinkedList<T>
          * 
          * @return prev, the previous Node of the current Node
          */
-        public Node<T> getPrevious()
-        {
+        public Node<T> getPrevious() {
             return prev;
         }
 
@@ -100,8 +93,7 @@ public class DoublyLinkedList<T>
          * 
          * @return data the information contained by the current Node
          */
-        public T getData()
-        {
+        public T getData() {
             return data;
         }
     }
@@ -117,8 +109,7 @@ public class DoublyLinkedList<T>
      * Create a new DoublyLinkedList object.
      */
 
-    public DoublyLinkedList()
-    {
+    public DoublyLinkedList() {
         firstNode = new Node<T>(null);
         lastNode = new Node<T>(null);
         firstNode.next = lastNode;
@@ -136,16 +127,13 @@ public class DoublyLinkedList<T>
      *            the index in a DoublyLinkedList where a Node will be located
      * @return Node at specified index
      * @throw IndexOutOfBoundsException if size is greater than 0, index is
-     *            greater than size, or index is less than 0.
+     *        greater than size, or index is less than 0.
      */
-    private Node<T> getNode(int index)
-    {
+    private Node<T> getNode(int index) {
         int current = 0;
         Node<T> entry = firstNode;
-        if (size > 0 && index < size && index >= 0)
-        {
-            while (current < index)
-            {
+        if (size > 0 && index < size && index >= 0) {
+            while (current < index) {
                 entry = entry.getNext();
                 current++;
             }
@@ -164,16 +152,13 @@ public class DoublyLinkedList<T>
      *            the data of the node being added to the end of the list
      */
     @Override
-    public void add(T entry)
-    {
+    public void add(T entry) {
         Node<T> toAdd = new Node<T>(entry);
-        if (isEmpty())
-        {
+        if (isEmpty()) {
             firstNode = toAdd;
             lastNode = toAdd;
         }
-        else
-        {
+        else {
             lastNode.setNext(toAdd);
             toAdd.setPrevious(lastNode);
             lastNode = toAdd;
@@ -195,25 +180,21 @@ public class DoublyLinkedList<T>
      *             DoublyLinkedList
      */
     @Override
-    public void add(int index, T entry)
-    {
+    public void add(int index, T entry) {
         Node<T> added = new Node<T>(entry);
-        if (index == 0)
-        {
+        if (index == 0) {
             added.setNext(firstNode);
             firstNode.setPrevious(added);
             firstNode = added;
             size++;
         }
-        else if (index == size)
-        {
+        else if (index == size) {
             added.setPrevious(lastNode);
             lastNode.setNext(added);
             lastNode = added;
             size++;
         }
-        else if (index > 0 && index < size)
-        {
+        else if (index > 0 && index < size) {
             Node<T> nextTo = getNode(index);
             Node<T> prevTo = getNode(index - 1);
             prevTo.setNext(added);
@@ -222,8 +203,7 @@ public class DoublyLinkedList<T>
             nextTo.setPrevious(added);
             size++;
         }
-        else
-        {
+        else {
             throw new IndexOutOfBoundsException();
         }
     }
@@ -234,8 +214,7 @@ public class DoublyLinkedList<T>
      * This method clears a DoublyLinkedList object and removes all entries.
      */
     @Override
-    public void clear()
-    {
+    public void clear() {
         firstNode = new Node<T>(null);
         lastNode = new Node<T>(null);
         firstNode.next = lastNode;
@@ -251,17 +230,13 @@ public class DoublyLinkedList<T>
      * @return true if the list contains the entry/object, false otherwise.
      */
     @Override
-    public boolean contains(T entry)
-    {
-        if (getLength() == 0)
-        {
+    public boolean contains(T entry) {
+        if (getLength() == 0) {
             return false;
         }
         Node<T> current = firstNode;
-        while (current != null)
-        {
-            if (current.getData().equals(entry))
-            {
+        while (current != null) {
+            if (current.getData().equals(entry)) {
                 return true;
             }
             current = current.getNext();
@@ -275,11 +250,10 @@ public class DoublyLinkedList<T>
      * This method gets the Node's data for a specificed index.
      * 
      * @return Object stored in a specific Node, which is determined through the
-     *             index parameter.
+     *         index parameter.
      */
     @Override
-    public T getEntry(int index)
-    {
+    public T getEntry(int index) {
         return getNode(index).getData();
     }
 
@@ -289,8 +263,7 @@ public class DoublyLinkedList<T>
      * This method returns the length of a DoublyLinkedList.
      */
     @Override
-    public int getLength()
-    {
+    public int getLength() {
         return size;
     }
 
@@ -302,8 +275,7 @@ public class DoublyLinkedList<T>
      * @return true if empty, false otherwise
      */
     @Override
-    public boolean isEmpty()
-    {
+    public boolean isEmpty() {
         return size == 0;
     }
 
@@ -320,23 +292,18 @@ public class DoublyLinkedList<T>
      *             list.
      */
     @Override
-    public T remove(int index)
-    {
-        if (index < 0 || index >= getLength())
-        {
+    public T remove(int index) {
+        if (index < 0 || index >= getLength()) {
             throw new IndexOutOfBoundsException();
         }
         Node<T> placeholder = getNode(index);
-        if (index == 0)
-        {
+        if (index == 0) {
             firstNode = firstNode.getNext();
         }
-        else if (index == getLength() - 1)
-        {
+        else if (index == getLength() - 1) {
             lastNode = lastNode.getPrevious();
         }
-        else
-        {
+        else {
             placeholder.getPrevious().setNext(placeholder.getNext());
             placeholder.getNext().setPrevious(placeholder.getPrevious());
         }
@@ -358,28 +325,23 @@ public class DoublyLinkedList<T>
      *            the entry will replace the entry at index
      */
     @Override
-    public T replace(int index, T entry)
-    {
-        if (index < 0 || index >= getLength())
-        {
+    public T replace(int index, T entry) {
+        if (index < 0 || index >= getLength()) {
             throw new IndexOutOfBoundsException();
         }
         Node<T> placeholder = getNode(index);
         Node<T> replacement = new Node<T>(entry);
-        if (firstNode.equals(placeholder))
-        {
+        if (firstNode.equals(placeholder)) {
             replacement.setNext(firstNode.getNext());
             firstNode.getNext().setPrevious(replacement);
             firstNode = replacement;
         }
-        else if (lastNode.equals(placeholder))
-        {
+        else if (lastNode.equals(placeholder)) {
             replacement.setPrevious(lastNode.getPrevious());
             lastNode.getPrevious().setNext(replacement);
             lastNode = replacement;
         }
-        else
-        {
+        else {
             placeholder.getPrevious().setNext(replacement);
             placeholder.getNext().setPrevious(replacement);
             replacement.setPrevious(placeholder.getPrevious());
@@ -396,12 +358,10 @@ public class DoublyLinkedList<T>
      * @return an array that holds all entries in a DoublyLinked List
      */
     @Override
-    public Object[] toArray()
-    {
+    public Object[] toArray() {
         Object[] entries = new Object[getLength()];
         Node<T> current = firstNode;
-        for (int i = 0; i < getLength(); i++)
-        {
+        for (int i = 0; i < getLength(); i++) {
             entries[i] = current.getData();
             current = current.getNext();
         }
@@ -415,26 +375,21 @@ public class DoublyLinkedList<T>
      * 
      * @return String representation of DoublyLinkedList
      */
-    public String toString()
-    {
+    public String toString() {
         StringBuilder entries = new StringBuilder();
         entries.append("{");
-        if (getLength() > 0)
-        {
+        if (getLength() > 0) {
             Node<T> current = firstNode;
-            while (current != null)
-            {
+            while (current != null) {
                 entries.append(current.getData());
-                if (current != lastNode)
-                {
+                if (current != lastNode) {
                     entries.append(", ");
                 }
                 current = current.getNext();
             }
             entries.append("}");
         }
-        else
-        {
+        else {
             entries.append("}");
         }
         return entries.toString();
@@ -451,23 +406,18 @@ public class DoublyLinkedList<T>
      *            the object the current DoublyLinkedList is being compared to
      */
     @SuppressWarnings("unchecked")
-    public boolean equals(Object object)
-    {
-        if (object == null)
-        {
+    public boolean equals(Object object) {
+        if (object == null) {
             return false;
         }
-        if (this.getClass() == object.getClass())
-        {
+        if (this.getClass() == object.getClass()) {
             DoublyLinkedList<T> obj = (DoublyLinkedList<T>)object;
-            if (this.getLength() == obj.getLength())
-            {
+            if (this.getLength() == obj.getLength()) {
                 Node<T> thisCurrent = this.firstNode;
                 Node<T> objectCurrent = obj.firstNode;
-                while (thisCurrent != null)
-                {
-                    if (!thisCurrent.getData().equals(objectCurrent.getData()))
-                    {
+                while (thisCurrent != null) {
+                    if (!thisCurrent.getData().equals(objectCurrent
+                        .getData())) {
                         return false;
                     }
                     thisCurrent = thisCurrent.getNext();
@@ -491,16 +441,13 @@ public class DoublyLinkedList<T>
      * @param comp
      *            the comparator being used to compare objects
      */
-    public void insertionSort(Comparator<T> comp)
-    {
-        if (getLength() > 1)
-        {
+    public void insertionSort(Comparator<T> comp) {
+        if (getLength() > 1) {
             Node<T> unsorted = firstNode.getNext();
             Node<T> sorted = firstNode;
             sorted.setNext(null);
             unsorted.setPrevious(null);
-            while (unsorted != null)
-            {
+            while (unsorted != null) {
                 Node<T> insert = unsorted;
                 unsorted = unsorted.getNext();
                 insertion(insert, comp);
@@ -523,30 +470,25 @@ public class DoublyLinkedList<T>
      *            the comparator object that will be used for the compare()
      *            method that compares two objects
      */
-    private void insertion(Node<T> insert, Comparator<T> comp)
-    {
+    private void insertion(Node<T> insert, Comparator<T> comp) {
         T insertNode = insert.getData();
         Node<T> curr = firstNode;
         Node<T> prev = null;
 
-        if (curr.getNext() == null)
-        {
+        if (curr.getNext() == null) {
             lastNode = curr;
         }
-        while ((curr != null) && comp.compare(insertNode, curr.getData()) > 0)
-        {
+        while ((curr != null) && comp.compare(insertNode, curr.getData()) > 0) {
             prev = curr;
             curr = curr.getNext();
         }
-        if (prev != null)
-        {
+        if (prev != null) {
             prev.setNext(insert);
             insert.setPrevious(prev);
             insert.setNext(curr);
 
         }
-        else
-        {
+        else {
             insert.setNext(firstNode);
             firstNode.setPrevious(insert);
             firstNode = insert;

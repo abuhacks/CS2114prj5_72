@@ -3,7 +3,8 @@
 // As a Hokie, I will conduct myself with honor and integrity at all times.
 // I will not lie, cheat, or steal, nor will I
 // accept the actions of those who do.
-// -- Naren Dawar(906615413), Joey Chen (906610199), Abiel (906540750), Adam (906552490)
+// -- Naren Dawar(906615413), Joey Chen (906610199),
+// -- Abiel (906540750), Adam (906552490)
 package prj5;
 
 import java.util.Comparator;
@@ -16,9 +17,7 @@ import java.util.Comparator;
  * @author jchen
  * @version Nov 28, 2023
  */
-public class SortAlphabetically
-    implements Comparator<User>
-{
+public class SortAlphabetically implements Comparator<User> {
     // ----------------------------------------------------------
     /**
      * This method takes two User objects as a parameter, and it takes the
@@ -29,12 +28,11 @@ public class SortAlphabetically
      * @param two
      *            the second User object used to compare
      * @return 1 if one has a higher lexicographical order, -1 if two has a
-     *             higher lexicographical order, 0 if same lexicographical
-     *             rating
+     *         higher lexicographical order, 0 if same lexicographical
+     *         rating
      */
     @Override
-    public int compare(User one, User two)
-    {
+    public int compare(User one, User two) {
         return one.getChannelName().compareTo(two.getChannelName());
     }
 }

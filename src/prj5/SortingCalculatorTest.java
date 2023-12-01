@@ -3,7 +3,8 @@
 // As a Hokie, I will conduct myself with honor and integrity at all times.
 // I will not lie, cheat, or steal, nor will I
 // accept the actions of those who do.
-// -- Naren Dawar(906615413), Joey Chen (906610199), Abiel (906540750), Adam (906552490)
+// -- Naren Dawar(906615413), Joey Chen (906610199),
+// -- Abiel (906540750), Adam (906552490)
 package prj5;
 
 import student.TestCase;
@@ -15,9 +16,7 @@ import student.TestCase;
  * @author naren
  * @version Nov 16, 2023
  */
-public class SortingCalculatorTest
-    extends TestCase
-{
+public class SortingCalculatorTest extends TestCase {
     // ~ Fields ................................................................
     private User user1;
     private User user2;
@@ -33,74 +32,19 @@ public class SortingCalculatorTest
     /**
      * Tests the setUp() method.
      */
-    public void setUp()
-    {
-        user1 = new User(
-            "February",
-            "narnarnoscoper",
-            "NarenDaBeast",
-            "India",
-            "Cars",
-            1,
-            1,
-            1,
-            1,
-            1);
-        user2 = new User(
-            "February",
-            "jchen",
-            "JoeyCHEN",
-            "China",
-            "Cars",
-            10,
-            10,
-            1,
-            10,
-            10);
-        user3 = new User(
-            "February",
-            "Miggy",
-            "MiggyMagtoto",
-            "Taiwan",
-            "Cars",
-            20,
-            20,
-            1,
-            20,
-            20);
-        user4 = new User(
-            "March",
-            "narnarnoscoper",
-            "NarenDaBeast",
-            "India",
-            "Cars",
-            1,
-            1,
-            1,
-            1,
-            1);
-        user5 = new User(
-            "March",
-            "jchen",
-            "JoeyCHEN",
-            "China",
-            "Cars",
-            10,
-            10,
-            1,
-            10,
-            10);
-        user6 = new User(
-            "March",
-            "Miggy",
-            "MiggyMagtoto",
-            "Taiwan",
-            "Cars",
-            17,
-            20,
-            1,
-            20,
-            20);
+    public void setUp() {
+        user1 = new User("February", "narnarnoscoper", "NarenDaBeast", "India",
+            "Cars", 1, 1, 1, 1, 1);
+        user2 = new User("February", "jchen", "JoeyCHEN", "China", "Cars", 10,
+            10, 1, 10, 10);
+        user3 = new User("February", "Miggy", "MiggyMagtoto", "Taiwan", "Cars",
+            20, 20, 1, 20, 20);
+        user4 = new User("March", "narnarnoscoper", "NarenDaBeast", "India",
+            "Cars", 1, 1, 1, 1, 1);
+        user5 = new User("March", "jchen", "JoeyCHEN", "China", "Cars", 10, 10,
+            1, 10, 10);
+        user6 = new User("March", "Miggy", "MiggyMagtoto", "Taiwan", "Cars", 17,
+            20, 1, 20, 20);
         theList = new DoublyLinkedList<User>();
         theList.add(user1);
         theList.add(user2);
@@ -118,8 +62,7 @@ public class SortingCalculatorTest
     /**
      * Tests getting the list.
      */
-    public void testGetList()
-    {
+    public void testGetList() {
         assertEquals(calculator.getList(), theList);
         theList.add(user4);
         theList.add(user5);
@@ -133,8 +76,7 @@ public class SortingCalculatorTest
      * Tests the sortByName() method.
      */
 
-    public void testSortByName()
-    {
+    public void testSortByName() {
         DoublyLinkedList<User> testing = new DoublyLinkedList<User>();
         testing.add(user2);
         testing.add(user3);
@@ -146,20 +88,16 @@ public class SortingCalculatorTest
     /**
      * Tests the sortByReach() method.
      */
-    public void testSortByReachRate()
-    {
+    public void testSortByReachRate() {
         DoublyLinkedList<User> newList2 = new DoublyLinkedList<User>();
         newList2.add(user3);
         newList2.add(user2);
         newList2.add(user1);
-        assertEquals(
-            calculator.sortByReachRate().getEntry(0).getChannelName(),
+        assertEquals(calculator.sortByReachRate().getEntry(0).getChannelName(),
             "NarenDaBeast");
-        assertEquals(
-            calculator.sortByReachRate().getEntry(1).getChannelName(),
+        assertEquals(calculator.sortByReachRate().getEntry(1).getChannelName(),
             "JoeyCHEN");
-        assertEquals(
-            calculator.sortByReachRate().getEntry(2).getChannelName(),
+        assertEquals(calculator.sortByReachRate().getEntry(2).getChannelName(),
             "MiggyMagtoto");
 
     }
@@ -169,21 +107,17 @@ public class SortingCalculatorTest
     /**
      * Tests the traditional rate.
      */
-    public void testSortByTraditionalRate()
-    {
+    public void testSortByTraditionalRate() {
         DoublyLinkedList<User> newList2 = new DoublyLinkedList<User>();
         newList2.add(user3);
         newList2.add(user2);
         newList2.add(user1);
-        assertEquals(
-            calculator.sortByTraditionalRate().getEntry(0).getChannelName(),
-            "MiggyMagtoto");
-        assertEquals(
-            calculator.sortByTraditionalRate().getEntry(1).getChannelName(),
-            "JoeyCHEN");
-        assertEquals(
-            calculator.sortByTraditionalRate().getEntry(2).getChannelName(),
-            "NarenDaBeast");
+        assertEquals(calculator.sortByTraditionalRate().getEntry(0)
+            .getChannelName(), "MiggyMagtoto");
+        assertEquals(calculator.sortByTraditionalRate().getEntry(1)
+            .getChannelName(), "JoeyCHEN");
+        assertEquals(calculator.sortByTraditionalRate().getEntry(2)
+            .getChannelName(), "NarenDaBeast");
         newList2.add(user4);
         newList2.add(user5);
         newList2.add(user6);
@@ -194,8 +128,7 @@ public class SortingCalculatorTest
     /**
      * Tests the getUsers() method.
      */
-    public void testGetUsers()
-    {
+    public void testGetUsers() {
         DoublyLinkedList<User> newList = new DoublyLinkedList<User>();
         newList.add(user1);
         newList.add(user2);
@@ -208,8 +141,7 @@ public class SortingCalculatorTest
     /**
      * Tests the getTraditionalRate() method.
      */
-    public void testgetTraditionalRate()
-    {
+    public void testgetTraditionalRate() {
         assertEquals(calculator.getTraditionalRate(user1), 400.00, 0.1);
         assertEquals(calculator.getTraditionalRate(user2), 4000.00, 0.1);
     }
@@ -219,8 +151,7 @@ public class SortingCalculatorTest
     /**
      * Tests the getReachRate() method.
      */
-    public void testgetReachRate()
-    {
+    public void testgetReachRate() {
         assertEquals(calculator.getReachRate(user1), 200.00, 0.1);
         assertEquals(calculator.getReachRate(user2), 200.00, 0.1);
     }
@@ -230,8 +161,7 @@ public class SortingCalculatorTest
     /**
      * Tests the sortByTradMonth() method.
      */
-    public void testSortByTradMonth()
-    {
+    public void testSortByTradMonth() {
         DoublyLinkedList<User> list2 = new DoublyLinkedList<User>();
         list2.add(user3);
         list2.add(user2);
@@ -244,8 +174,7 @@ public class SortingCalculatorTest
     /**
      * Tests the sortByReachMonth() method.
      */
-    public void testSortByReachMonth()
-    {
+    public void testSortByReachMonth() {
         DoublyLinkedList<User> list2 = new DoublyLinkedList<User>();
         list2.add(user1);
         list2.add(user2);
@@ -258,8 +187,7 @@ public class SortingCalculatorTest
     /**
      * Tests the getByMonth() method.
      */
-    public void testgetByMonth()
-    {
+    public void testgetByMonth() {
         DoublyLinkedList<User> list2 = new DoublyLinkedList<User>();
         list2.add(user1);
         list2.add(user2);
@@ -272,8 +200,7 @@ public class SortingCalculatorTest
     /**
      * Tests the sortByMonth() method.
      */
-    public void testsortByMonth()
-    {
+    public void testsortByMonth() {
         DoublyLinkedList<User> list2 = new DoublyLinkedList<User>();
         list2.add(user2);
         list2.add(user3);
@@ -286,8 +213,7 @@ public class SortingCalculatorTest
     /**
      * Tests the getIndividualReachRate() method.
      */
-    public void testGetIndividualReachRate()
-    {
+    public void testGetIndividualReachRate() {
         assertEquals(calculator.getIndividualReachRate(user1), 200.0, 0.1);
         assertEquals(calculator.getIndividualReachRate(user2), 200.0, 0.1);
         assertEquals(calculator.getIndividualReachRate(user3), 200.0, 0.1);
@@ -301,8 +227,7 @@ public class SortingCalculatorTest
     /**
      * Tests the getIndividualTradRate() method.
      */
-    public void testGetIndividualTradRate()
-    {
+    public void testGetIndividualTradRate() {
         assertEquals(calculator.getIndividualTradRate(user1), 200.0, 0.1);
         assertEquals(calculator.getIndividualTradRate(user2), 2000.0, 0.1);
         assertEquals(calculator.getIndividualTradRate(user3), 4000.0, 0.1);
