@@ -160,42 +160,42 @@ public class GUIWindow {
 
         if (recentDisplay.equals("Traditional") && recentMonth.equals(
             "January")) {
-            srtTradJanName();
+            srtTradJanMonthName();
 
         }
 
         else if (recentDisplay.equals("Reach") && recentMonth.equals(
             "January")) {
-            srtReachJanName();
+            srtReachJanMonthName();
 
         }
         else if (recentDisplay.equals("Traditional") && recentMonth.equals(
             "February")) {
-            srtTradFebName();
+            srtTradFebMonthName();
 
         }
         else if (recentDisplay.equals("Reach") && recentMonth.equals(
             "February")) {
-            srtReachFebName();
+            srtReachFebMonthName();
 
         }
         else if (recentDisplay.equals("Traditional") && recentMonth.equals(
             "March")) {
-            srtTradMarName();
+            srtTradMarMonthName();
 
         }
         else if (recentDisplay.equals("Reach") && recentMonth.equals("March")) {
-            srtReachMarName();
+            srtReachMarMonthName();
 
         }
         else if (recentDisplay.equals("Traditional") && recentMonth.equals(
             "FirstQuarter")) {
-            srtTradFirstQName();
+            srtTradName();
 
         }
         else if (recentDisplay.equals("Reach") && recentMonth.equals(
             "FirstQuarter")) {
-            srtReachFirstQName();
+            srtReachName();
 
         }
     }
@@ -290,14 +290,14 @@ public class GUIWindow {
 
             srtReachJanEngage();
         }
-        else if (recentSort.equals("ChannelName") && recentDisplay.equals(
+        if (recentSort.equals("ChannelName") && recentDisplay.equals(
             "Traditional")) {
 
-            srtTradJanName();
+            srtTradJanMonthName();
         }
         else if (recentSort.equals("ChannelName") && recentDisplay.equals(
             "Reach")) {
-            srtReachJanName();
+            srtReachJanMonthName();
 
         }
 
@@ -329,14 +329,14 @@ public class GUIWindow {
 
             srtReachFebEngage();
         }
-        else if (recentSort.equals("ChannelName") && recentDisplay.equals(
+        if (recentSort.equals("ChannelName") && recentDisplay.equals(
             "Traditional")) {
 
-            srtTradFebName();
+            srtTradFebMonthName();
         }
         else if (recentSort.equals("ChannelName") && recentDisplay.equals(
             "Reach")) {
-            srtReachFebName();
+            srtReachFebMonthName();
 
         }
 
@@ -368,14 +368,14 @@ public class GUIWindow {
 
             srtReachMarEngage();
         }
-        else if (recentSort.equals("ChannelName") && recentDisplay.equals(
+        if (recentSort.equals("ChannelName") && recentDisplay.equals(
             "Traditional")) {
 
-            srtTradMarName();
+            srtTradMarMonthName();
         }
         else if (recentSort.equals("ChannelName") && recentDisplay.equals(
             "Reach")) {
-            srtReachMarName();
+            srtReachMarMonthName();
 
         }
 
@@ -407,14 +407,14 @@ public class GUIWindow {
 
             srtReachEngage();
         }
-        else if (recentSort.equals("ChannelName") && recentDisplay.equals(
+        if (recentSort.equals("ChannelName") && recentDisplay.equals(
             "Traditional")) {
 
-            srtTradFirstQName();
+            srtTradName();
         }
         else if (recentSort.equals("ChannelName") && recentDisplay.equals(
             "Reach")) {
-            srtReachFirstQName();
+            srtReachName();
 
         }
 
@@ -457,21 +457,20 @@ public class GUIWindow {
             "FirstQuarter")) {
             srtTradEngage();
         }
-        else if (recentSort.equals("ChannelName") && recentMonth.equals(
-            "January")) {
-            srtTradJanName();
+        if (recentSort.equals("ChannelName") && recentMonth.equals("January")) {
+            srtTradJanMonthName();
         }
         else if (recentSort.equals("ChannelName") && recentMonth.equals(
             "February")) {
-            srtTradFebName();
+            srtTradFebMonthName();
         }
         else if (recentSort.equals("ChannelName") && recentMonth.equals(
             "March")) {
-            srtTradMarName();
+            srtTradMarMonthName();
         }
         else if (recentSort.equals("ChannelName") && recentMonth.equals(
             "FirstQuarter")) {
-            srtTradFirstQName();
+            srtTradName();
         }
 
     }
@@ -515,21 +514,20 @@ public class GUIWindow {
             "FirstQuarter")) {
             srtReachEngage();
         }
-        else if (recentSort.equals("ChannelName") && recentMonth.equals(
-            "January")) {
-            srtReachJanName();
+        if (recentSort.equals("ChannelName") && recentMonth.equals("January")) {
+            srtReachJanMonthName();
         }
         else if (recentSort.equals("ChannelName") && recentMonth.equals(
             "February")) {
-            srtReachFebName();
+            srtReachFebMonthName();
         }
         else if (recentSort.equals("ChannelName") && recentMonth.equals(
             "March")) {
-            srtReachMarName();
+            srtReachMarMonthName();
         }
         else if (recentSort.equals("ChannelName") && recentMonth.equals(
             "FirstQuarter")) {
-            srtReachFirstQName();
+            srtReachName();
         }
 
     }
@@ -621,14 +619,12 @@ public class GUIWindow {
      * specifically for the month
      * January.
      */
-    private void srtTradJanName() {
+    public void srtTradJanMonthName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("January");
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
             tradMonth(abu, sortChanlName);
-
         }
-
     }
 
 
@@ -640,14 +636,12 @@ public class GUIWindow {
      * specifically for the month
      * January.
      */
-    private void srtReachJanName() {
+    public void srtReachJanMonthName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("January");
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
             reachMonth(abu, sortChanlName);
-
         }
-
     }
 
 
@@ -659,12 +653,11 @@ public class GUIWindow {
      * specifically for the month
      * February.
      */
-    private void srtTradFebName() {
+    public void srtTradFebMonthName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("February");
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
             tradMonth(abu, sortChanlName);
-
         }
 
     }
@@ -678,14 +671,12 @@ public class GUIWindow {
      * specifically for the month
      * January.
      */
-    private void srtReachFebName() {
+    public void srtReachFebMonthName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("February");
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
             reachMonth(abu, sortChanlName);
-
         }
-
     }
 
 
@@ -697,14 +688,12 @@ public class GUIWindow {
      * specifically for the month
      * March.
      */
-    private void srtTradMarName() {
+    public void srtTradMarMonthName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("March");
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
             tradMonth(abu, sortChanlName);
-
         }
-
     }
 
 
@@ -716,53 +705,50 @@ public class GUIWindow {
      * specifically for the month
      * March.
      */
-    private void srtReachMarName() {
+    public void srtReachMarMonthName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("March");
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
             reachMonth(abu, sortChanlName);
-
         }
-
     }
 
-
-    /**
-     * This does the same thing as
-     * the sort Traditional Name
-     * method but it sorts the
-     * traditional name method
-     * specifically for the month
-     * FirstQuarter.
-     */
-    public void srtTradFirstQName() {
-        DoublyLinkedList<User> abu = sortingCalculator.sortByName();
-        for (int i = 0; i < abu.getLength(); i++) {
-            abu.getEntry(i).getChannelName();
-            drawBarGraphTrad(abu, sortChanlName);
-
-        }
-
-    }
-
-
-    /**
-     * This does the same thing as
-     * the sort Reach Name
-     * method but it sorts the
-     * reach name method
-     * specifically for the month
-     * FirstQuarter.
-     */
-    public void srtReachFirstQName() {
-        DoublyLinkedList<User> abu = sortingCalculator.sortByName();
-        for (int i = 0; i < abu.getLength(); i++) {
-            abu.getEntry(i).getChannelName();
-            drawBarGraphReach(abu, sortChanlName);
-
-        }
-
-    }
+// /**
+// * This does the same thing as
+// * the sort Traditional Name
+// * method but it sorts the
+// * traditional name method
+// * specifically for the month
+// * FirstQuarter.
+// */
+// public void srtTradFirstQName() {
+// DoublyLinkedList<User> abu = sortingCalculator.sortByName();
+// for (int i = 0; i < abu.getLength(); i++) {
+// abu.getEntry(i).getChannelName();
+// drawBarGraphTrad(abu, sortChanlName);
+//
+// }
+//
+// }
+//
+//
+// /**
+// * This does the same thing as
+// * the sort Reach Name
+// * method but it sorts the
+// * reach name method
+// * specifically for the month
+// * FirstQuarter.
+// */
+// public void srtReachFirstQName() {
+// DoublyLinkedList<User> abu = sortingCalculator.sortByName();
+// for (int i = 0; i < abu.getLength(); i++) {
+// abu.getEntry(i).getChannelName();
+// drawBarGraphReach(abu, sortChanlName);
+//
+// }
+//
+// }
 
 
     /**
