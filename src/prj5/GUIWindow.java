@@ -190,12 +190,12 @@ public class GUIWindow {
         }
         else if (recentDisplay.equals("Traditional") && recentMonth.equals(
             "FirstQuarter")) {
-            srtTradName();
+            srtTradFirstQName();
 
         }
         else if (recentDisplay.equals("Reach") && recentMonth.equals(
             "FirstQuarter")) {
-            srtReachName();
+            srtReachFirstQName();
 
         }
     }
@@ -410,11 +410,11 @@ public class GUIWindow {
         else if (recentSort.equals("ChannelName") && recentDisplay.equals(
             "Traditional")) {
 
-            srtTradName();
+            srtTradFirstQName();
         }
         else if (recentSort.equals("ChannelName") && recentDisplay.equals(
             "Reach")) {
-            srtReachName();
+            srtReachFirstQName();
 
         }
 
@@ -471,7 +471,7 @@ public class GUIWindow {
         }
         else if (recentSort.equals("ChannelName") && recentMonth.equals(
             "FirstQuarter")) {
-            srtTradName();
+            srtTradFirstQName();
         }
 
     }
@@ -529,7 +529,7 @@ public class GUIWindow {
         }
         else if (recentSort.equals("ChannelName") && recentMonth.equals(
             "FirstQuarter")) {
-            srtReachName();
+            srtReachFirstQName();
         }
 
     }
@@ -739,7 +739,7 @@ public class GUIWindow {
         DoublyLinkedList<User> abu = sortingCalculator.sortByName();
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
-            tradMonth(abu, sortChanlName);
+            drawBarGraphTrad(abu, sortChanlName);
 
         }
 
@@ -758,7 +758,7 @@ public class GUIWindow {
         DoublyLinkedList<User> abu = sortingCalculator.sortByName();
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
-            reachMonth(abu, sortChanlName);
+            drawBarGraphReach(abu, sortChanlName);
 
         }
 
