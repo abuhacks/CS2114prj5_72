@@ -108,7 +108,7 @@ public class SortingCalculator {
      * Gets the traditional rate of a user for the first quarter.
      * 
      * @param user3
-     *            user to be checked
+     *            user to be checked.
      * @return the sorted list.
      */
     @SuppressWarnings("cast")
