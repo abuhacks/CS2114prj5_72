@@ -1,10 +1,11 @@
 package prj5;
-//Virginia Tech Honor Code Pledge:
+
 //
-//As a Hokie, I will conduct myself with honor and integrity at all times.
-//I will not lie, cheat, or steal, nor will I
-//accept the actions of those who do.
-//-- Naren Dawar(naren)(906615413), Joey Chen (PID), Abiel (PID), Adam (PID)
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I
+// accept the actions of those who do.
+// -- Naren Dawar(naren)(906615413), Joey Chen (PID), Abiel (PID),
+// Adam Schantz(adamschantz) (906552490)
 import java.util.Scanner;
 
 import student.IOHelper;
@@ -20,7 +21,6 @@ import student.IOHelper;
 public class InputFileReader
 {
     // ~ Fields ................................................................
-    @SuppressWarnings("unused")
     private DoublyLinkedList<User> dLList;
 
     // ~ Constructors ..........................................................
@@ -40,10 +40,10 @@ public class InputFileReader
 
     // ~Public Methods ........................................................
     /**
-     * Reads all necessary information within a csv on each line and creates
-     * a new user with this information.
+     * Reads all necessary information within a csv on each line and creates a
+     * new user with this information.
      * 
-     * @param file 
+     * @param file
      *            the given file to be read for data.
      * @return DoublyLinkedList<User> of users that can be manipulated.
      */
@@ -90,6 +90,7 @@ public class InputFileReader
 
     /**
      * Converts strings to ints when needed (e.g. "1" to 1).
+     * 
      * @return the new integer from the string.
      */
     private int toInt(String str)
@@ -106,8 +107,8 @@ public class InputFileReader
 
 
     /**
-     * Checks if months are within the allowed months
-     * for the first quarter, if not they are disregarded.
+     * Checks if months are within the allowed months for the first quarter, if
+     * not they are disregarded.
      * 
      * @param month
      *            the string month to be checked.
