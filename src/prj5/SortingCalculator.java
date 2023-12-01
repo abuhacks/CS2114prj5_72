@@ -82,7 +82,7 @@ public class SortingCalculator {
 
         DoublyLinkedList<User> testVals = this.getUsers();
 
-       testVals.insertionSort(new SortAlphabetically());
+        testVals.insertionSort(new SortAlphabetically());
         return testVals;
 
     }
