@@ -16,6 +16,6 @@ public class SortAlphabetically
     @Override
     public int compare(User one, User two)
     {
-        return one.getChannelName().compareTo(two.getChannelName());
+        return one.getChannelName().compareToIgnoreCase(two.getChannelName());
     }
 }
