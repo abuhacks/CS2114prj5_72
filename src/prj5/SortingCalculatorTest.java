@@ -38,7 +38,7 @@ public class SortingCalculatorTest
             1,
             1,
             1,
-            2,
+            1,
             1);
         user2 = new User(
             "February",
@@ -108,6 +108,35 @@ public class SortingCalculatorTest
 
     // ----------------------------------------------------------
     /**
+     * Tests the addToList() method.
+     */
+    public void testAddToList()
+    {
+        User user7 = new User(
+            "March",
+            "EdwardY",
+            "TheEdward",
+            "Taiwan",
+            "Cars",
+            1011,
+            432,
+            3434,
+            43,
+            20);
+        calculator.addToList(user7);
+        assertTrue(theList.contains(user7));
+        DoublyLinkedList<User> testCase = new DoublyLinkedList<User>();
+        testCase.add(user4);
+        testCase.add(user5);
+        testCase.add(user6);
+        assertTrue(testCase.contains(user4));
+        assertTrue(testCase.contains(user5));
+        assertTrue(testCase.contains(user6));
+    }
+
+
+    // ----------------------------------------------------------
+    /**
      * Tests getting the list.
      */
     public void testGetList()
@@ -145,14 +174,16 @@ public class SortingCalculatorTest
         newList2.add(user2);
         newList2.add(user1);
         assertEquals(
-            calculator.sortByReachRate().getEntry(0).getIndividualReachRate(),
-            300, 0.1);
+            calculator.sortByReachRate().getEntry(0).getChannelName(),
+            "NarenDaBeast");
         assertEquals(
-            calculator.sortByReachRate().getEntry(1).getIndividualReachRate(),
-            200, 0.1);
+            calculator.sortByReachRate().getEntry(1).getChannelName(),
+            "JoeyCHEN");
         assertEquals(
-            calculator.sortByReachRate().getEntry(2).getIndividualReachRate(),
-            200, 0.1);
+            calculator.sortByReachRate().getEntry(2).getChannelName(),
+            "MiggyMagtoto");
+        
+
     }
 
 
