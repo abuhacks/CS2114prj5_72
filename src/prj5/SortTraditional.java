@@ -16,18 +16,6 @@ public class SortTraditional
     @Override
     public int compare(User one, User two)
     {
-        if (one.getViews() == 0 && two.getViews() > 0)
-        {
-            return -1;
-        }
-        if (one.getViews() > 0 && two.getViews() == 0)
-        {
-            return 1;
-        }
-        if (one.getViews() == 0 && two.getViews() == 0)
-        {
-            return 0;
-        }
         return Double
             .compare(two.getIndividualTradRate(), one.getIndividualTradRate());
     }

@@ -474,23 +474,13 @@ public class DoublyLinkedList<T>
     }
 
 
-    // This method compares each node in a DoublyLinkedList, and it sorts the
-    // data based off the compareTo() method for the object stored in each node.
     // ----------------------------------------------------------
     /**
-     * REDACTED.
+     * This method compares each node in a DoublyLinkedList, and it sorts the
+     * data based off the compareTo() method for the object stored in each node.
      * 
      * @param comp
-     */
-    /*
-     * public void insertionSort(Comparator<T> comp) { Node<T> sort = firstNode;
-     * if (getLength() >= 2) { Node<T> unsort = firstNode.getNext(); while
-     * (unsort != null) { Node<T> insert = unsort; unsort = unsort.getNext();
-     * Node<T> current = firstNode; Node<T> previous = firstNode; while (current
-     * != null && comp.compare(insert.getData(), current.getData()) > 0) {
-     * previous = current; current = current.getNext();
-     * current.setPrevious(previous); } if (previous == null) {
-     * insert.setNext(sort); sort.setPrevious(insert); sort = insert; } } } }
+     *            the comparator being used to compare objects
      */
     public void insertionSort(Comparator<T> comp)
     {
@@ -506,8 +496,9 @@ public class DoublyLinkedList<T>
                 unsorted = unsorted.getNext();
                 insertion(insert, comp);
             }
+            lastNode = lastNode.getNext();
         }
-        
+
     }
 
 
@@ -531,7 +522,7 @@ public class DoublyLinkedList<T>
             prev.setNext(insert);
             insert.setPrevious(prev);
             insert.setNext(curr);
-            
+
         }
         else
         {
@@ -541,5 +532,4 @@ public class DoublyLinkedList<T>
         }
 
     }
-
 }

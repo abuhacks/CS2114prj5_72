@@ -29,16 +29,6 @@ public class SortingCalculator {
 
 
     // ~Public Methods ........................................................
-    // ----------------------------------------------------------
-    /**
-     * Adds a user to the list.
-     * 
-     * @param user
-     *            to be added
-     */
-    public void addToList(User user) {
-        users.add(user);
-    }
 
 
     // ----------------------------------------------------------
