@@ -33,6 +33,6 @@ public class SortAlphabetically implements Comparator<User> {
      */
     @Override
     public int compare(User one, User two) {
-        return one.getChannelName().compareTo(two.getChannelName());
+        return one.getChannelName().compareToIgnoreCase(two.getChannelName());
     }
 }

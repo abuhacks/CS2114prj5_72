@@ -82,16 +82,7 @@ public class SortingCalculator {
 
         DoublyLinkedList<User> testVals = this.getUsers();
 
-        for (int i = 0; i < testVals.getLength(); i++) {
-            for (int j = i + 1; j < testVals.getLength(); j++) {
-                if (testVals.getEntry(i).getChannelName().compareToIgnoreCase(
-                    testVals.getEntry(j).getChannelName()) > 0) {
-                    User temp = testVals.getEntry(i);
-                    testVals.replace(i, testVals.getEntry(j));
-                    testVals.replace(j, temp);
-                }
-            }
-        }
+       testVals.insertionSort(new SortAlphabetically());
         return testVals;
 
     }
@@ -227,16 +218,7 @@ public class SortingCalculator {
                 testVals.add(users.getEntry(i));
             }
         }
-        for (int i = 0; i < testVals.getLength(); i++) {
-            for (int j = i + 1; j < testVals.getLength(); j++) {
-                if (getIndividualTradRate(testVals.getEntry(
-                    i)) < getIndividualTradRate(testVals.getEntry(j))) {
-                    User temp = testVals.getEntry(j);
-                    testVals.replace(j, testVals.getEntry(i));
-                    testVals.replace(i, temp);
-                }
-            }
-        }
+        testVals.insertionSort(new SortTraditional());
         return testVals; // displays original user data and doesnt make a new
                          // chain with new data
     }
@@ -257,16 +239,7 @@ public class SortingCalculator {
                 testVals.add(users.getEntry(i));
             }
         }
-        for (int i = 0; i < testVals.getLength(); i++) {
-            for (int j = i + 1; j < testVals.getLength(); j++) {
-                if (getIndividualReachRate(testVals.getEntry(
-                    i)) < getIndividualReachRate(testVals.getEntry(j))) {
-                    User temp = testVals.getEntry(j);
-                    testVals.replace(j, testVals.getEntry(i));
-                    testVals.replace(i, temp);
-                }
-            }
-        }
+        testVals.insertionSort(new SortReach());
         return testVals;
     }
 
@@ -305,16 +278,7 @@ public class SortingCalculator {
                 testVals.add(users.getEntry(i));
             }
         }
-        for (int i = 0; i < testVals.getLength(); i++) {
-            for (int j = i + 1; j < testVals.getLength(); j++) {
-                if (testVals.getEntry(i).getChannelName().compareToIgnoreCase(
-                    testVals.getEntry(j).getChannelName()) > 0) {
-                    User temp = testVals.getEntry(i);
-                    testVals.replace(i, testVals.getEntry(j));
-                    testVals.replace(j, temp);
-                }
-            }
-        }
+        testVals.insertionSort(new SortAlphabetically());
         return testVals;
     }
 
