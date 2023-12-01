@@ -173,6 +173,12 @@ public class SortingCalculator {
                 }
             }
         }
+        for(int i = 0; i < testVals.getLength(); i++) {
+            if(this.getReachRate(testVals.getEntry(i)) < 0) {
+                User removed = testVals.remove(i);
+                testVals.add(i, removed);
+            }
+        }
         return testVals;
     }
 
@@ -218,6 +224,11 @@ public class SortingCalculator {
                 testVals.add(users.getEntry(i));
             }
         }
+        for(int i = 0; i < testVals.getLength(); i++) {
+            if(testVals.getEntry(i).getFollowers() == 0 ) {
+                testVals.getEntry(i).setFollowers(Integer.MAX_VALUE);
+            }
+        }
         testVals.insertionSort(new SortTraditional());
         return testVals; // displays original user data and doesnt make a new
                          // chain with new data
@@ -237,6 +248,11 @@ public class SortingCalculator {
         for (int i = 0; i < users.getLength(); i++) {
             if (users.getEntry(i).getMonth().equals(month)) {
                 testVals.add(users.getEntry(i));
+            }
+        }
+        for(int i = 0; i < testVals.getLength(); i++) {
+            if(testVals.getEntry(i).getViews() == 0 ) {
+                testVals.getEntry(i).setViews(Integer.MAX_VALUE);
             }
         }
         testVals.insertionSort(new SortReach());

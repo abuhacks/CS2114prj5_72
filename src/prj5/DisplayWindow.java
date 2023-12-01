@@ -545,7 +545,7 @@ public class DisplayWindow {
      * and then draws the correct
      * bar graph for Traditional values.
      */
-    public void tradRate() {
+    private void tradRate() {
         DoublyLinkedList<User> abu1 = new DoublyLinkedList<User>();
         abu1 = sortingCalculator.getList();
         drawBarGraphTrad(abu1, tradEngagRate);
@@ -563,7 +563,8 @@ public class DisplayWindow {
      * and then draws the correct
      * bar graph for reach values.
      */
-    public void reachRate() {
+    @SuppressWarnings("unused")
+    private void reachRate() {
         DoublyLinkedList<User> abu2 = new DoublyLinkedList<User>();
         abu2 = sortingCalculator.getList();
         drawBarGraphReach(abu2, reachEngagRate);
@@ -581,7 +582,7 @@ public class DisplayWindow {
      * then drawing the correct traditional
      * graph
      */
-    public void srtTradName() {
+    private void srtTradName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByName();
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
@@ -602,7 +603,7 @@ public class DisplayWindow {
      * then drawing the correct reach
      * graph
      */
-    public void srtReachName() {
+    private void srtReachName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByName();
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
@@ -620,7 +621,7 @@ public class DisplayWindow {
      * specifically for the month
      * January.
      */
-    public void srtTradJanName() {
+    private void srtTradJanName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("January");
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
@@ -639,7 +640,7 @@ public class DisplayWindow {
      * specifically for the month
      * January.
      */
-    public void srtReachJanName() {
+    private void srtReachJanName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("January");
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
@@ -658,7 +659,7 @@ public class DisplayWindow {
      * specifically for the month
      * February.
      */
-    public void srtTradFebName() {
+    private void srtTradFebName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("February");
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
@@ -677,7 +678,7 @@ public class DisplayWindow {
      * specifically for the month
      * January.
      */
-    public void srtReachFebName() {
+    private void srtReachFebName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("February");
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
@@ -696,7 +697,7 @@ public class DisplayWindow {
      * specifically for the month
      * March.
      */
-    public void srtTradMarName() {
+    private void srtTradMarName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("March");
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
@@ -715,7 +716,7 @@ public class DisplayWindow {
      * specifically for the month
      * March.
      */
-    public void srtReachMarName() {
+    private void srtReachMarName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("March");
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
@@ -734,7 +735,7 @@ public class DisplayWindow {
      * specifically for the month
      * FirstQuarter.
      */
-    public void srtTradFirstQName() {
+    private void srtTradFirstQName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByName();
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
@@ -753,7 +754,7 @@ public class DisplayWindow {
      * specifically for the month
      * FirstQuarter.
      */
-    public void srtReachFirstQName() {
+    private void srtReachFirstQName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByName();
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
@@ -774,7 +775,7 @@ public class DisplayWindow {
      * drawing them based on the the data
      * in traditional.
      */
-    public void srtTradEngage() {
+    private void srtTradEngage() {
 
         DoublyLinkedList<User> abu = sortingCalculator.sortByTraditionalRate();
         for (int i = 0; i < abu.getLength(); i++) {
@@ -795,7 +796,7 @@ public class DisplayWindow {
      * drawing them based on the the data
      * in reach.
      */
-    public void srtReachEngage() {
+    private void srtReachEngage() {
         DoublyLinkedList<User> abu1 = sortingCalculator.sortByReachRate();
         for (int i = 0; i < abu1.getLength(); i++) {
             drawBarGraphReach(abu1, sortEngagRate);
@@ -810,7 +811,7 @@ public class DisplayWindow {
      * class but it sorts it based
      * on the month January.
      */
-    public void srtTradJanEngage() {
+    private void srtTradJanEngage() {
         DoublyLinkedList<User> abu2 = sortingCalculator.sortByTradMonth(
             "January");
         for (int i = 0; i < abu2.getLength(); i++) {
@@ -827,7 +828,7 @@ public class DisplayWindow {
      * class but it sorts it based
      * on the month January.
      */
-    public void srtReachJanEngage() {
+    private void srtReachJanEngage() {
         DoublyLinkedList<User> abu2 = sortingCalculator.sortByReachMonth(
             "January");
         for (int i = 0; i < abu2.getLength(); i++) {
@@ -844,7 +845,7 @@ public class DisplayWindow {
      * class but it sorts it based
      * on the month February.
      */
-    public void srtTradFebEngage() {
+    private void srtTradFebEngage() {
         DoublyLinkedList<User> abu2 = sortingCalculator.sortByTradMonth(
             "February");
         for (int i = 0; i < abu2.getLength(); i++) {
@@ -861,7 +862,7 @@ public class DisplayWindow {
      * class but it sorts it based
      * on the month February.
      */
-    public void srtReachFebEngage() {
+    private void srtReachFebEngage() {
         DoublyLinkedList<User> abu2 = sortingCalculator.sortByReachMonth(
             "February");
         for (int i = 0; i < abu2.getLength(); i++) {
@@ -878,7 +879,7 @@ public class DisplayWindow {
      * class but it sorts it based
      * on the month March.
      */
-    public void srtTradMarEngage() {
+    private void srtTradMarEngage() {
         DoublyLinkedList<User> abu6 = sortingCalculator.sortByTradMonth(
             "March");
         for (int i = 0; i < abu6.getLength(); i++) {
@@ -895,7 +896,7 @@ public class DisplayWindow {
      * class but it sorts it based
      * on the month March.
      */
-    public void srtReachMarEngage() {
+    private void srtReachMarEngage() {
         DoublyLinkedList<User> abu2 = sortingCalculator.sortByReachMonth(
             "March");
         for (int i = 0; i < abu2.getLength(); i++) {
@@ -912,7 +913,7 @@ public class DisplayWindow {
      * class but it sorts it based
      * on the month FirstQuarter.
      */
-    public void tradFirstQuarterRate() {
+    private void tradFirstQuarterRate() {
         DoublyLinkedList<User> abu14 = new DoublyLinkedList<User>();
         abu14 = sortingCalculator.getUsers();
         tradFirstQMonth(abu14, firstQuarter);
@@ -934,7 +935,7 @@ public class DisplayWindow {
      *            it will draw the only the firstQuarter
      *            data.
      */
-    public void tradFirstQMonth(DoublyLinkedList<User> abu, Button button) {
+    private void tradFirstQMonth(DoublyLinkedList<User> abu, Button button) {
         window.removeAllShapes();
         clickedS(button);
 
@@ -985,7 +986,7 @@ public class DisplayWindow {
      *            data for traditional data.
      * 
      */
-    public void tradMonth(DoublyLinkedList<User> abu, Button button) {
+    private void tradMonth(DoublyLinkedList<User> abu, Button button) {
         window.removeAllShapes();
         clickedS(button);
 
@@ -1036,7 +1037,7 @@ public class DisplayWindow {
      *            except FirstQuarter
      *            data for reach data.
      */
-    public void reachMonth(DoublyLinkedList<User> abu, Button button) {
+    private void reachMonth(DoublyLinkedList<User> abu, Button button) {
         window.removeAllShapes();
         clickedS(button);
         int barSpacing = 100;
@@ -1082,7 +1083,7 @@ public class DisplayWindow {
      *            data for traditional data.
      * 
      */
-    public void drawBarGraphTrad(DoublyLinkedList<User> abu, Button button) {
+    private void drawBarGraphTrad(DoublyLinkedList<User> abu, Button button) {
         window.removeAllShapes();
         clickedS(button);
         int barSpacing = 100;
@@ -1128,7 +1129,7 @@ public class DisplayWindow {
      *            data for reach data.
      * 
      */
-    public void drawBarGraphReach(DoublyLinkedList<User> abu, Button button) {
+    private void drawBarGraphReach(DoublyLinkedList<User> abu, Button button) {
         window.removeAllShapes();
         clickedS(button);
         int barSpacing = 100;
@@ -1176,7 +1177,7 @@ public class DisplayWindow {
      *            before adding the shapes in the correct place
      *            on the screen
      */
-    public void clickedS(Button button) {
+    private void clickedS(Button button) {
 
         if (recentMonth.equals("January")) {
             top.setText("January");
