@@ -467,7 +467,7 @@ public class DisplayWindow {
 
 
     public void srtTradJanName() {
-        DoublyLinkedList<User> abu = sortingCalculator.sortByName();
+        DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("January");
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
             tradMonth(abu, sortChanlName);
@@ -478,7 +478,7 @@ public class DisplayWindow {
 
 
     public void srtReachJanName() {
-        DoublyLinkedList<User> abu = sortingCalculator.sortByName();
+        DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("January");
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
             reachMonth(abu, sortChanlName);
@@ -489,7 +489,7 @@ public class DisplayWindow {
 
 
     public void srtTradFebName() {
-        DoublyLinkedList<User> abu = sortingCalculator.sortByName();
+        DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("February");
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
             tradMonth(abu, sortChanlName);
@@ -500,7 +500,7 @@ public class DisplayWindow {
 
 
     public void srtReachFebName() {
-        DoublyLinkedList<User> abu = sortingCalculator.sortByName();
+        DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("February");
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
             reachMonth(abu, sortChanlName);
@@ -511,7 +511,7 @@ public class DisplayWindow {
 
 
     public void srtTradMarName() {
-        DoublyLinkedList<User> abu = sortingCalculator.sortByName();
+        DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("March");
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
             tradMonth(abu, sortChanlName);
@@ -522,7 +522,7 @@ public class DisplayWindow {
 
 
     public void srtReachMarName() {
-        DoublyLinkedList<User> abu = sortingCalculator.sortByName();
+        DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("March");
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
             reachMonth(abu, sortChanlName);
