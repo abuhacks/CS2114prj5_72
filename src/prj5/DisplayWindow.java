@@ -545,7 +545,7 @@ public class DisplayWindow {
      * and then draws the correct
      * bar graph for Traditional values.
      */
-    private void tradRate() {
+    public void tradRate() {
         DoublyLinkedList<User> abu1 = new DoublyLinkedList<User>();
         abu1 = sortingCalculator.getList();
         drawBarGraphTrad(abu1, tradEngagRate);
@@ -735,7 +735,7 @@ public class DisplayWindow {
      * specifically for the month
      * FirstQuarter.
      */
-    private void srtTradFirstQName() {
+    public void srtTradFirstQName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByName();
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
@@ -754,7 +754,7 @@ public class DisplayWindow {
      * specifically for the month
      * FirstQuarter.
      */
-    private void srtReachFirstQName() {
+    public void srtReachFirstQName() {
         DoublyLinkedList<User> abu = sortingCalculator.sortByName();
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
@@ -913,7 +913,7 @@ public class DisplayWindow {
      * class but it sorts it based
      * on the month FirstQuarter.
      */
-    private void tradFirstQuarterRate() {
+    public void tradFirstQuarterRate() {
         DoublyLinkedList<User> abu14 = new DoublyLinkedList<User>();
         abu14 = sortingCalculator.getUsers();
         tradFirstQMonth(abu14, firstQuarter);

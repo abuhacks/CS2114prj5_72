@@ -176,9 +176,9 @@ public class SortingCalculatorTest extends TestCase {
      */
     public void testSortByReachMonth() {
         DoublyLinkedList<User> list2 = new DoublyLinkedList<User>();
-        list2.add(user1);
-        list2.add(user2);
         list2.add(user3);
+        list2.add(user2);
+        list2.add(user1);
         assertEquals(calculator.sortByReachMonth("February"), list2);
     }
 
