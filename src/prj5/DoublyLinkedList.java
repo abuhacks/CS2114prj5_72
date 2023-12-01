@@ -1,3 +1,9 @@
+// Virginia Tech Honor Code Pledge:
+//
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I
+// accept the actions of those who do.
+// -- Naren Dawar(906615413), Joey Chen (906610199), Abiel (906540750), Adam (906552490)
 package prj5;
 
 import java.util.Comparator;
@@ -476,8 +482,11 @@ public class DoublyLinkedList<T>
 
     // ----------------------------------------------------------
     /**
-     * This method compares each node in a DoublyLinkedList, and it sorts the
-     * data based off the compareTo() method for the object stored in each node.
+     * This method sorts a DoublyLinkedList through the insertion sort
+     * implementation. The method breaks up the code into a sorted and unsorted
+     * list, and the method will iterate through the unsorted list and use a
+     * helper method to insert the unsorted data into the correct position in
+     * the sorted list.
      * 
      * @param comp
      *            the comparator being used to compare objects
@@ -502,6 +511,18 @@ public class DoublyLinkedList<T>
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * This is a private helper method for insertion sort, which takes in a Node
+     * that will be the Node thats' data gets inserted into the sorted list from
+     * the unsorted list.
+     * 
+     * @param insert
+     *            the Node being used to get the data that will be sorted
+     * @param comp
+     *            the comparator object that will be used for the compare()
+     *            method that compares two objects
+     */
     private void insertion(Node<T> insert, Comparator<T> comp)
     {
         T insertNode = insert.getData();

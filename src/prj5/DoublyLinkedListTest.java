@@ -1,3 +1,9 @@
+// Virginia Tech Honor Code Pledge:
+//
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I
+// accept the actions of those who do.
+// -- Naren Dawar(906615413), Joey Chen (906610199), Abiel (906540750), Adam (906552490)
 package prj5;
 
 import student.TestCase;
@@ -346,16 +352,16 @@ public class DoublyLinkedListTest
     @SuppressWarnings("unlikely-arg-type")
     public void testEquals()
     {
-        DoublyLinkedList<String> list2 = new DoublyLinkedList<String>();
+        DoublyLinkedList<String> list3 = new DoublyLinkedList<String>();
         list.add("chicken");
-        list2.add("chicken");
-        assertTrue(list.equals(list2));
+        list3.add("chicken");
+        assertTrue(list.equals(list3));
         assertTrue(list.equals(list));
         assertFalse(list.equals(null));
-        list2.add("chicken");
-        assertFalse(list.equals(list2));
+        list3.add("chicken");
+        assertFalse(list.equals(list3));
         list.add("beef");
-        assertFalse(list.equals(list2));
+        assertFalse(list.equals(list3));
         assertFalse(list.equals(1));
     }
 
