@@ -133,43 +133,46 @@ public class DisplayWindow {
 
         recentSort = "ChannelName";
 
-        if (recentMonth.equals("January") && recentDisplay.equals(
-            "Traditional")) {
-            srtTradJanMonthName();
-        }
-        else if (recentMonth.equals("January") && recentDisplay.equals(
-            "Reach")) {
-            srtReachJanMonthName();
-        }
-        if (recentMonth.equals("February") && recentDisplay.equals(
-            "Traditional")) {
-            srtTradFebMonthName();
-        }
-        else if (recentMonth.equals("February") && recentDisplay.equals(
-            "Reach")) {
-            srtReachFebMonthName();
-        }
-        if (recentMonth.equals("March") && recentDisplay.equals(
-            "Traditional")) {
+        if (recentDisplay.equals("Traditional") && recentMonth.equals(
+            "January")) {
+            srtTradJanName();
 
-            srtTradMarMonthName();
-        }
-        else if (recentMonth.equals("March") && recentDisplay.equals("Reach")) {
-            srtReachMarMonthName();
         }
 
-        if (recentMonth.equals("FirstQuarter") && recentDisplay.equals(
-            "Traditional")) {
+        else if (recentDisplay.equals("Reach") && recentMonth.equals(
+            "January")) {
+            srtReachJanName();
 
-            srtTradName();
         }
+        else if (recentDisplay.equals("Traditional") && recentMonth.equals(
+            "February")) {
+            srtTradFebName();
 
-        else if (recentMonth.equals("FirstQuarter") && recentDisplay.equals(
-            "Reach")) {
-
-            srtReachName();
         }
+        else if (recentDisplay.equals("Reach") && recentMonth.equals(
+            "February")) {
+            srtReachFebName();
 
+        }
+        else if (recentDisplay.equals("Traditional") && recentMonth.equals(
+            "March")) {
+            srtTradMarName();
+
+        }
+        else if (recentDisplay.equals("Reach") && recentMonth.equals("March")) {
+            srtReachMarName();
+
+        }
+        else if (recentDisplay.equals("Traditional") && recentMonth.equals(
+            "FirstQuarter")) {
+            srtTradFirstQName();
+
+        }
+        else if (recentDisplay.equals("Reach") && recentMonth.equals(
+            "FirstQuarter")) {
+            srtReachFirstQName();
+
+        }
     }
 
 
@@ -230,14 +233,14 @@ public class DisplayWindow {
 
             srtReachJanEngage();
         }
-        if (recentSort.equals("ChannelName") && recentDisplay.equals(
+        else if (recentSort.equals("ChannelName") && recentDisplay.equals(
             "Traditional")) {
 
-            srtTradJanMonthName();
+            srtTradJanName();
         }
         else if (recentSort.equals("ChannelName") && recentDisplay.equals(
             "Reach")) {
-            srtReachJanMonthName();
+            srtReachJanName();
 
         }
 
@@ -257,14 +260,14 @@ public class DisplayWindow {
 
             srtReachFebEngage();
         }
-        if (recentSort.equals("ChannelName") && recentDisplay.equals(
+        else if (recentSort.equals("ChannelName") && recentDisplay.equals(
             "Traditional")) {
 
-            srtTradFebMonthName();
+            srtTradFebName();
         }
         else if (recentSort.equals("ChannelName") && recentDisplay.equals(
             "Reach")) {
-            srtReachFebMonthName();
+            srtReachFebName();
 
         }
 
@@ -284,14 +287,14 @@ public class DisplayWindow {
 
             srtReachMarEngage();
         }
-        if (recentSort.equals("ChannelName") && recentDisplay.equals(
+        else if (recentSort.equals("ChannelName") && recentDisplay.equals(
             "Traditional")) {
 
-            srtTradMarMonthName();
+            srtTradMarName();
         }
         else if (recentSort.equals("ChannelName") && recentDisplay.equals(
             "Reach")) {
-            srtReachFebMonthName();
+            srtReachMarName();
 
         }
 
@@ -311,14 +314,14 @@ public class DisplayWindow {
 
             srtReachEngage();
         }
-        if (recentSort.equals("ChannelName") && recentDisplay.equals(
+        else if (recentSort.equals("ChannelName") && recentDisplay.equals(
             "Traditional")) {
 
-            srtTradName();
+            srtTradFirstQName();
         }
         else if (recentSort.equals("ChannelName") && recentDisplay.equals(
             "Reach")) {
-            srtReachName();
+            srtReachFirstQName();
 
         }
 
@@ -348,21 +351,21 @@ public class DisplayWindow {
             "FirstQuarter")) {
             srtTradEngage();
         }
-
-        if (recentSort.equals("ChannelName") && recentMonth.equals("January")) {
-            srtTradJanMonthName();
+        else if (recentSort.equals("ChannelName") && recentMonth.equals(
+            "January")) {
+            srtTradJanName();
         }
         else if (recentSort.equals("ChannelName") && recentMonth.equals(
             "February")) {
-            srtTradFebMonthName();
+            srtTradFebName();
         }
         else if (recentSort.equals("ChannelName") && recentMonth.equals(
             "March")) {
-            srtTradMarMonthName();
+            srtTradMarName();
         }
         else if (recentSort.equals("ChannelName") && recentMonth.equals(
             "FirstQuarter")) {
-            srtTradName();
+            srtTradFirstQName();
         }
 
     }
@@ -393,20 +396,21 @@ public class DisplayWindow {
             "FirstQuarter")) {
             srtReachEngage();
         }
-        if (recentSort.equals("ChannelName") && recentMonth.equals("January")) {
-            srtReachJanMonthName();
+        else if (recentSort.equals("ChannelName") && recentMonth.equals(
+            "January")) {
+            srtReachJanName();
         }
         else if (recentSort.equals("ChannelName") && recentMonth.equals(
             "February")) {
-            srtReachFebMonthName();
+            srtReachFebName();
         }
         else if (recentSort.equals("ChannelName") && recentMonth.equals(
             "March")) {
-            srtReachMarMonthName();
+            srtReachMarName();
         }
         else if (recentSort.equals("ChannelName") && recentMonth.equals(
             "FirstQuarter")) {
-            srtReachName();
+            srtReachFirstQName();
         }
 
     }
@@ -462,8 +466,8 @@ public class DisplayWindow {
     }
 
 
-    public void srtTradJanMonthName() {
-        DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("January");
+    public void srtTradJanName() {
+        DoublyLinkedList<User> abu = sortingCalculator.sortByName();
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
             tradMonth(abu, sortChanlName);
@@ -473,8 +477,8 @@ public class DisplayWindow {
     }
 
 
-    public void srtReachJanMonthName() {
-        DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("January");
+    public void srtReachJanName() {
+        DoublyLinkedList<User> abu = sortingCalculator.sortByName();
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
             reachMonth(abu, sortChanlName);
@@ -484,8 +488,8 @@ public class DisplayWindow {
     }
 
 
-    public void srtTradFebMonthName() {
-        DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("February");
+    public void srtTradFebName() {
+        DoublyLinkedList<User> abu = sortingCalculator.sortByName();
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
             tradMonth(abu, sortChanlName);
@@ -495,8 +499,8 @@ public class DisplayWindow {
     }
 
 
-    public void srtReachFebMonthName() {
-        DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("February");
+    public void srtReachFebName() {
+        DoublyLinkedList<User> abu = sortingCalculator.sortByName();
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
             reachMonth(abu, sortChanlName);
@@ -506,8 +510,8 @@ public class DisplayWindow {
     }
 
 
-    public void srtTradMarMonthName() {
-        DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("March");
+    public void srtTradMarName() {
+        DoublyLinkedList<User> abu = sortingCalculator.sortByName();
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
             tradMonth(abu, sortChanlName);
@@ -517,8 +521,30 @@ public class DisplayWindow {
     }
 
 
-    public void srtReachMarMonthName() {
-        DoublyLinkedList<User> abu = sortingCalculator.sortByMonth("March");
+    public void srtReachMarName() {
+        DoublyLinkedList<User> abu = sortingCalculator.sortByName();
+        for (int i = 0; i < abu.getLength(); i++) {
+            abu.getEntry(i).getChannelName();
+            reachMonth(abu, sortChanlName);
+
+        }
+
+    }
+
+
+    public void srtTradFirstQName() {
+        DoublyLinkedList<User> abu = sortingCalculator.sortByName();
+        for (int i = 0; i < abu.getLength(); i++) {
+            abu.getEntry(i).getChannelName();
+            tradMonth(abu, sortChanlName);
+
+        }
+
+    }
+
+
+    public void srtReachFirstQName() {
+        DoublyLinkedList<User> abu = sortingCalculator.sortByName();
         for (int i = 0; i < abu.getLength(); i++) {
             abu.getEntry(i).getChannelName();
             reachMonth(abu, sortChanlName);
