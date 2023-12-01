@@ -1,8 +1,13 @@
 package prj5;
-
+//Virginia Tech Honor Code Pledge:
+//
+//As a Hokie, I will conduct myself with honor and integrity at all times.
+//I will not lie, cheat, or steal, nor will I
+//accept the actions of those who do.
+//-- Naren Dawar(naren)(906615413), Joey Chen (PID), Abiel (PID), Adam (PID)
 // -------------------------------------------------------------------------
 /**
- * Represents a user that will be broken down into many parts.
+ * Represents a user that will be broken down into many parts that can be used in the Linked List.
  * 
  * @author naren
  * @version Nov 12, 2023
@@ -136,9 +141,9 @@ public class User
 
     // ----------------------------------------------------------
     /**
-     * Gets the username.
+     * Gets the username of the user.
      * 
-     * @return the username.
+     * @return the corresponding username.
      */
     public String getUsername()
     {
@@ -148,9 +153,9 @@ public class User
 
     // ----------------------------------------------------------
     /**
-     * Gets the country.
+     * Gets the country of the user.
      * 
-     * @return the country.
+     * @return the country the user is based in.
      */
     public String getCountry()
     {
@@ -160,9 +165,9 @@ public class User
 
     // ----------------------------------------------------------
     /**
-     * Gets the main topic.
+     * Gets the main topic of the user.
      * 
-     * @return the main topic.
+     * @return the main topic of the user.
      */
     public String getMainTopic()
     {
@@ -172,7 +177,7 @@ public class User
 
     // ----------------------------------------------------------
     /**
-     * Gets the channel name.
+     * Gets the user's channel name.
      * 
      * @return the channel name.
      */
@@ -184,7 +189,7 @@ public class User
 
     // ----------------------------------------------------------
     /**
-     * Returns the month.
+     * Returns the month of the specific user.
      * 
      * @return the number of months.
      */
@@ -195,7 +200,7 @@ public class User
 
 
     /**
-     * Changes the amount of likes.
+     * Changes the amount of likes for the user.
      * 
      * @param likes3
      *            the new amount
@@ -207,7 +212,7 @@ public class User
 
 
     /**
-     * Changes the amount of followers.
+     * Changes the amount of followers for the user.
      * 
      * @param followers3
      *            the new amount of followers.
@@ -219,7 +224,7 @@ public class User
 
 
     /**
-     * Changes the amount of comments.
+     * Changes the amount of comments for the user.
      * 
      * @param comments3
      *            new amount of comments.
@@ -231,7 +236,7 @@ public class User
 
 
     /**
-     * Changes the amount of views.
+     * Changes the amount of views for the user.
      * 
      * @param views3
      *            new amount of views.
@@ -257,54 +262,7 @@ public class User
 
 
     /**
-     * This method compares the months for each users, which return an int
-     * value, which determines if a month is later than another month. For
-     * example, March is ranked higher than Janurary.
-     * 
-    public int compareByMonth(User month1)
-    {
-        String[] months = new String[12];
-        months[0] = "Janurary";
-        months[1] = "February";
-        months[2] = "March";
-        months[3] = "April";
-        months[4] = "May";
-        months[5] = "June";
-        months[6] = "July";
-        months[7] = "August";
-        months[8] = "September";
-        months[9] = "October";
-        months[10] = "November";
-        months[11] = "December";
-        int current = 0;
-        int other = 0;
-        for (int i = 0; i < months.length; i++)
-        {
-            if (this.equals(months[i]))
-            {
-                current = i;
-            }
-            if (month.equals(months[i]))
-            {
-                other = i;
-            }
-        }
-        if (current > other)
-        {
-            return 1;
-        }
-        else if (current < other)
-        {
-            return -1;
-        }
-        else
-        {
-            return 0;
-        }
-    }
-    */
-    /**
-     * Returns a string.
+     * Returns a string representation of the 
      * 
      * @return it in a form of a string.
      */
@@ -321,7 +279,7 @@ public class User
     // ----------------------------------------------------------
     /**
      * Gets the users individual traditional rate.
-     * @return the trad rates
+     * @return the traditional rate.
      */
     public double getIndividualTradRate() {
         return ((this.getComments() + this.getLikes()) / (double) this.getFollowers()) * 100;
@@ -329,8 +287,8 @@ public class User
     
     // ----------------------------------------------------------
     /**
-     * Place a description of your method here.
-     * @return the reach rate
+     * Gets the users individual reach rate.
+     * @return the reach rate.
      */
     public double getIndividualReachRate() {
         return ((this.getComments() + this.getLikes()) / (double) this.getViews()) * 100;

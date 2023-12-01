@@ -1,12 +1,18 @@
 package prj5;
-
+//Virginia Tech Honor Code Pledge:
+//
+//As a Hokie, I will conduct myself with honor and integrity at all times.
+//I will not lie, cheat, or steal, nor will I
+//accept the actions of those who do.
+//-- Naren Dawar(naren)(906615413), Joey Chen (PID), Abiel (PID), Adam (PID)
 import java.util.Scanner;
 
 import student.IOHelper;
 
 /**
  * // -------------------------------------------------------------------------
- * /** parses the input data from given files
+ * /** Parses through a file and retrieves information that is then put inside
+ * the code and is displayed in the GUI.
  * 
  * @author 14342
  * @version Nov 16, 2023
@@ -19,7 +25,7 @@ public class InputFileReader
 
     // ~ Constructors ..........................................................
     /**
-     * creates a new InputFileReader object
+     * Creates a new InputFileReader object to read.
      * 
      * @param input
      *            the input file
@@ -34,11 +40,12 @@ public class InputFileReader
 
     // ~Public Methods ........................................................
     /**
-     * helper method that will be used in the constructor
+     * Reads all necessary information within a csv on each line and creates
+     * a new user with this information.
      * 
-     * @param file
-     *            the given file
-     * @return DoublyLinkedList<User> which
+     * @param file 
+     *            the given file to be read for data.
+     * @return DoublyLinkedList<User> of users that can be manipulated.
      */
     public DoublyLinkedList<User> readUserFile(String file)
     {
@@ -82,7 +89,8 @@ public class InputFileReader
 
 
     /**
-     * helper method for the readUserFile method
+     * Converts strings to ints when needed (e.g. "1" to 1).
+     * @return the new integer from the string.
      */
     private int toInt(String str)
     {
@@ -98,10 +106,11 @@ public class InputFileReader
 
 
     /**
-     * helper method for readUserFile
+     * Checks if months are within the allowed months
+     * for the first quarter, if not they are disregarded.
      * 
      * @param month
-     *            the string we are checking for a month
+     *            the string month to be checked.
      */
     private boolean isFirstQuarter(String month)
     {
@@ -115,19 +124,19 @@ public class InputFileReader
 
 
     /**
-     * helper method for readUserFile method
+     * Verifies that all numbers/counts are valid and mathematically possible.
      * 
      * @param f
-     *            follower count
+     *            the follower count
      * @param l
-     *            like count
+     *            the like count
      * @param c
-     *            comments
+     *            the number of comments
      * @param p
-     *            posts
+     *            number of posts
      * @param v
-     *            views
-     * @return whether they are valid values
+     *            number of views
+     * @return a boolean based on whether all values are valid or not.
      */
     private boolean validNumberValues(int f, int l, int c, int p, int v)
     {
@@ -140,9 +149,9 @@ public class InputFileReader
 
 
     /**
-     * Outputs the value.
+     * Outputs the current list.
      * 
-     * @return the list.
+     * @return the DoublyLinkedList.
      */
 
     public DoublyLinkedList<User> getList()
