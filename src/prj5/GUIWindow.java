@@ -24,7 +24,7 @@ import cs2.WindowSide;
  * @version 11-30-2023
  * @author Abiel Meaza (abielm)n
  */
-public class DisplayWindow {
+public class GUIWindow {
 
     private Window window;
     private TextShape top;
@@ -61,7 +61,7 @@ public class DisplayWindow {
      *            this is the sortingCalculator
      *            that is passed through from the sorting Calculator class
      */
-    public DisplayWindow(SortingCalculator sortingCalculator) {
+    public GUIWindow(SortingCalculator sortingCalculator) {
         window = new Window("Social Media Vis");
         window.setSize((int)(500 * DISPLAY_FACTOR), (int)(500
             * DISPLAY_FACTOR));

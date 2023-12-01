@@ -74,7 +74,7 @@ public class ProjectRunner {
         if (showGUI) {
 
             SortingCalculator mid = new SortingCalculator(filer.getList());
-            DisplayWindow bron = new DisplayWindow(mid);
+            GUIWindow bron = new GUIWindow(mid);
 
         }
 
