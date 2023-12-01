@@ -661,7 +661,6 @@ public class DisplayWindow {
                 + barSpacing), 590, String.format("%.2f", traditionalMRate),
                 Color.BLACK);
             window.addShape(textShapeRate);
-
         }
 
         window.repaint();
@@ -688,7 +687,7 @@ public class DisplayWindow {
             String channelName = user.getChannelName();
 
             int barWidth = 30;
-            int barHeight = (int)(traditionalMRate / 5);
+            int barHeight = (int)(traditionalMRate);
 
             Shape bar = new Shape(initialX + i * (barWidth + barSpacing), 550
                 - barHeight, barWidth, barHeight, colors[i]);
@@ -722,7 +721,7 @@ public class DisplayWindow {
             String channelName = user.getChannelName();
 
             int barWidth = 30;
-            int barHeight = (int)(reachMRate / 5);
+            int barHeight = (int)(reachMRate);
 
             Shape bar = new Shape(initialX + i * (barWidth + barSpacing), 550
                 - barHeight, barWidth, barHeight, colors[i]);
@@ -760,7 +759,7 @@ public class DisplayWindow {
             String channelName = user.getChannelName();
 
             int barWidth = 30;
-            int barHeight = (int)(traditionalRate / 10);
+            int barHeight = (int)(traditionalRate);
 
             Shape bar = new Shape(initialX + i * (barWidth + barSpacing), 550
                 - barHeight, barWidth, barHeight, colors[i]);
