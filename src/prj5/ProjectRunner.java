@@ -65,10 +65,6 @@ public class ProjectRunner {
                 }
             }
         }
-        /*
-         * TODO: For final Submission - Should have the GUI display for the
-         * input data
-         */
         if (showGUI) {
 
             SortingCalculator mid = new SortingCalculator(filer.getList());

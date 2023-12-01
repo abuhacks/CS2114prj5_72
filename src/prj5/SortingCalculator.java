@@ -1,11 +1,17 @@
 package prj5;
-
+//Virginia Tech Honor Code Pledge:
+//
+//As a Hokie, I will conduct myself with honor and integrity at all times.
+//I will not lie, cheat, or steal, nor will I
+//accept the actions of those who do.
+//-- Naren Dawar(naren)(906615413), Joey Chen (PID), Abiel (PID), Adam (PID)
 import java.util.HashMap;
 import java.util.Map;
 
 // -------------------------------------------------------------------------
 /**
- * Used for sorting the information based off certain values.
+ * Used for sorting the information into desired new lists that can be used for display.
+ * All sort or get methods remove duplicates but still have full functionality logistically and in actuality.
  * 
  * @author naren
  * @version Nov 12, 2023
@@ -33,7 +39,7 @@ public class SortingCalculator {
 
     // ----------------------------------------------------------
     /**
-     * gets the list.
+     * Gets the doubly linked list.
      * 
      * @return the full list.
      */
@@ -89,7 +95,7 @@ public class SortingCalculator {
 
     // ----------------------------------------------------------
     /**
-     * Sorts the list by traditional rate.
+     * Gets the traditional rate of a user for the first quarter.
      * 
      * @param user3
      *            user to be checked
@@ -126,7 +132,7 @@ public class SortingCalculator {
 
     // ----------------------------------------------------------
     /**
-     * Gets the reach rate of a user.
+     * Gets the reach rate of a user for the first quarter.
      * 
      * @param user3
      *            the user to input
@@ -154,7 +160,7 @@ public class SortingCalculator {
 
     // ----------------------------------------------------------
     /**
-     * Returns a sorted linked list of the users.
+     * Returns a linked list of the users sorted by reach rate for the first quarter.
      * 
      * @return a sorted linked list.
      */
@@ -177,7 +183,7 @@ public class SortingCalculator {
 
     // ----------------------------------------------------------
     /**
-     * Sorts the data based on traditional rate.
+     * Returns a linked list of the users sorted by traditional rate for the first quarter.
      * 
      * @return the sorted list.
      */
@@ -200,9 +206,9 @@ public class SortingCalculator {
     
     // ----------------------------------------------------------
     /**
-     * Sorts based off months.
-     * @param month
-     * @return the new list without months
+     * Sorts the users based off a given  month (uses data ONLY within the given month).
+     * @param month to be calculated for.
+     * @return the new list with users from specified month.
      */
     public DoublyLinkedList<User> sortByTradMonth(String month) {
         DoublyLinkedList<User> testVals = new DoublyLinkedList<User>();
@@ -226,9 +232,9 @@ public class SortingCalculator {
     
     // ----------------------------------------------------------
     /**
-     * Sort by Reach Month.
-     * @param month
-     * @return the new list
+     * Sorts users based off reach rate for a given month by the user.
+     * @param month to be calculated for.
+     * @return the new list with users from specified month.
      */
     public DoublyLinkedList<User> sortByReachMonth(String month) {
         DoublyLinkedList<User> testVals = new DoublyLinkedList<User>();
@@ -252,8 +258,8 @@ public class SortingCalculator {
     
     // ----------------------------------------------------------
     /**
-     * Returns users based on input for month.
-     * @param month
+     * Returns users based on input for month (NOT sorted).
+     * @param month to return users for.
      * @return the new list based on month.
      */
     public DoublyLinkedList<User> getByMonth(String month) {
@@ -268,10 +274,10 @@ public class SortingCalculator {
     
     // ----------------------------------------------------------
     /**
-     * Gets the individual reach rate.
-     * @param user
+     * Gets the individual reach rate for a specified user.
+     * @param user to get the rate for.
      * 
-     * @return reach rate for a user.
+     * @return reach rate for specified user.
      */
     public double getIndividualReachRate(User user) {
         return ((user.getComments() + user.getLikes()) / (double) user.getViews()) * 100;
@@ -279,9 +285,10 @@ public class SortingCalculator {
     
     // ----------------------------------------------------------
     /**
-     * Gets the individual rate.
-     * @param user
-     * @return the individual rate of a user.
+     * Gets the individual traditional rate for a specified user.
+     * @param user to get the rate for.
+     * 
+     * @return the individual traditional rate for a specified user.
      */
     public double getIndividualTradRate(User user) {
         return ((user.getComments() + user.getLikes()) / (double) user.getFollowers()) * 100;
