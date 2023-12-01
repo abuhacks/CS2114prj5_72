@@ -190,12 +190,12 @@ public class DisplayWindow {
         }
         else if (recentDisplay.equals("Traditional") && recentMonth.equals(
             "FirstQuarter")) {
-            srtTradFirstQName();
+            srtTradName();
 
         }
         else if (recentDisplay.equals("Reach") && recentMonth.equals(
             "FirstQuarter")) {
-            srtReachFirstQName();
+            srtReachName();
 
         }
     }
@@ -410,11 +410,11 @@ public class DisplayWindow {
         else if (recentSort.equals("ChannelName") && recentDisplay.equals(
             "Traditional")) {
 
-            srtTradFirstQName();
+            srtTradName();
         }
         else if (recentSort.equals("ChannelName") && recentDisplay.equals(
             "Reach")) {
-            srtReachFirstQName();
+            srtReachName();
 
         }
 
@@ -471,7 +471,7 @@ public class DisplayWindow {
         }
         else if (recentSort.equals("ChannelName") && recentMonth.equals(
             "FirstQuarter")) {
-            srtTradFirstQName();
+            srtTradName();
         }
 
     }
@@ -529,7 +529,7 @@ public class DisplayWindow {
         }
         else if (recentSort.equals("ChannelName") && recentMonth.equals(
             "FirstQuarter")) {
-            srtReachFirstQName();
+            srtReachName();
         }
 
     }
