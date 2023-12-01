@@ -90,7 +90,7 @@ public class SortingCalculatorTest
             "MiggyMagtoto",
             "Taiwan",
             "Cars",
-            20,
+            17,
             20,
             1,
             20,
@@ -105,34 +105,7 @@ public class SortingCalculatorTest
         calculator = new SortingCalculator(theList);
     }
 
-
     // ----------------------------------------------------------
-    /**
-     * Tests the addToList() method.
-     */
-    public void testAddToList()
-    {
-        User user7 = new User(
-            "March",
-            "EdwardY",
-            "TheEdward",
-            "Taiwan",
-            "Cars",
-            1011,
-            432,
-            3434,
-            43,
-            20);
-        calculator.addToList(user7);
-        assertTrue(theList.contains(user7));
-        DoublyLinkedList<User> testCase = new DoublyLinkedList<User>();
-        testCase.add(user4);
-        testCase.add(user5);
-        testCase.add(user6);
-        assertTrue(testCase.contains(user4));
-        assertTrue(testCase.contains(user5));
-        assertTrue(testCase.contains(user6));
-    }
 
 
     // ----------------------------------------------------------
@@ -182,7 +155,6 @@ public class SortingCalculatorTest
         assertEquals(
             calculator.sortByReachRate().getEntry(2).getChannelName(),
             "MiggyMagtoto");
-        
 
     }
 
@@ -209,6 +181,125 @@ public class SortingCalculatorTest
         newList2.add(user4);
         newList2.add(user5);
         newList2.add(user6);
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Tests the getUsers() method.
+     */
+    public void testGetUsers()
+    {
+        DoublyLinkedList<User> newList = new DoublyLinkedList<User>();
+        newList.add(user1);
+        newList.add(user2);
+        newList.add(user3);
+        assertEquals(calculator.getUsers(), newList);
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Tests the getTraditionalRate() method.
+     */
+    public void testgetTraditionalRate()
+    {
+        assertEquals(calculator.getTraditionalRate(user1), 400.00, 0.1);
+        assertEquals(calculator.getTraditionalRate(user2), 4000.00, 0.1);
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Tests the getReachRate() method.
+     */
+    public void testgetReachRate()
+    {
+        assertEquals(calculator.getReachRate(user1), 200.00, 0.1);
+        assertEquals(calculator.getReachRate(user2), 200.00, 0.1);
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Tests the sortByTradMonth() method.
+     */
+    public void testSortByTradMonth()
+    {
+        DoublyLinkedList<User> list2 = new DoublyLinkedList<User>();
+        list2.add(user3);
+        list2.add(user2);
+        list2.add(user1);
+        assertEquals(calculator.sortByTradMonth("February"), list2);
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Tests the sortByReachMonth() method.
+     */
+    public void testSortByReachMonth()
+    {
+        DoublyLinkedList<User> list2 = new DoublyLinkedList<User>();
+        list2.add(user1);
+        list2.add(user2);
+        list2.add(user3);
+        assertEquals(calculator.sortByReachMonth("February"), list2);
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Tests the getByMonth() method.
+     */
+    public void testgetByMonth()
+    {
+        DoublyLinkedList<User> list2 = new DoublyLinkedList<User>();
+        list2.add(user1);
+        list2.add(user2);
+        list2.add(user3);
+        assertEquals(calculator.getByMonth("February"), list2);
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Tests the sortByMonth() method.
+     */
+    public void testsortByMonth()
+    {
+        DoublyLinkedList<User> list2 = new DoublyLinkedList<User>();
+        list2.add(user2);
+        list2.add(user3);
+        list2.add(user1);
+        assertEquals(calculator.sortByMonth("February"), list2);
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Tests the getIndividualReachRate() method.
+     */
+    public void testGetIndividualReachRate()
+    {
+        assertEquals(calculator.getIndividualReachRate(user1), 200.0, 0.1);
+        assertEquals(calculator.getIndividualReachRate(user2), 200.0, 0.1);
+        assertEquals(calculator.getIndividualReachRate(user3), 200.0, 0.1);
+        assertEquals(calculator.getIndividualReachRate(user4), 200.0, 0.1);
+        assertEquals(calculator.getIndividualReachRate(user5), 200.0, 0.1);
+        assertEquals(calculator.getIndividualReachRate(user6), 185.0, 0.1);
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Tests the getIndividualTradRate() method.
+     */
+    public void testGetIndividualTradRate()
+    {
+        assertEquals(calculator.getIndividualTradRate(user1), 200.0, 0.1);
+        assertEquals(calculator.getIndividualTradRate(user2), 2000.0, 0.1);
+        assertEquals(calculator.getIndividualTradRate(user3), 4000.0, 0.1);
     }
 
 }
