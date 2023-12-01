@@ -20,8 +20,6 @@ import cs2.TextShape;
 import cs2.Window;
 import cs2.WindowSide;
 
-import list.AList;
-
 /**
  * @version 11-30-2023
  * @author Abiel Meaza (abielm)n
