@@ -16,7 +16,7 @@ public class ProjectRunner {
 
     // ----------------------------------------------------------
     /**
-     * This runs the entire program to see.
+     * This runs the entire program.
      * 
      * @param args
      * @throws IOException
@@ -28,7 +28,7 @@ public class ProjectRunner {
             filer = new InputFileReader(args[0]);
         }
         else {
-            filer = new InputFileReader("SampleInput2_2023.csv");
+            filer = new InputFileReader("SampleInput1_2023.csv");
         }
         boolean showConsole = true;
         boolean showGUI = true;
