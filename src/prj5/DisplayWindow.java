@@ -130,13 +130,13 @@ public class DisplayWindow {
      * 
      */
     public void clickedSortChanlName(Button button) {
-        
+
         recentSort = "ChannelName";
-        
+
         if (recentDisplay.equals("Traditional") && recentMonth.equals(
             "January")) {
             srtTradJanName();
-            srtTradJanEngage();
+
         }
 
         else if (recentDisplay.equals("Reach") && recentMonth.equals(
