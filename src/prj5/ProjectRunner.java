@@ -34,7 +34,7 @@ public class ProjectRunner {
             filer = new InputFileReader(args[0]);
         }
         else {
-            filer = new InputFileReader("SampleInput3_2023.csv");
+            filer = new InputFileReader("SampleInput1_2023.csv");
         }
         boolean showConsole = true;
         boolean showGUI = true;
@@ -75,8 +75,6 @@ public class ProjectRunner {
 
             SortingCalculator mid = new SortingCalculator(filer.getList());
             GUIWindow bron = new GUIWindow(mid);
-            
-            
 
         }
 
