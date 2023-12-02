@@ -260,7 +260,7 @@ public class SortingCalculator
         }
         testVals.insertionSort(new SortTraditional());
         return testVals; // displays original user data and doesnt make a new
-                         // chain with new data
+                         // chain with new data.
     }
 
 
