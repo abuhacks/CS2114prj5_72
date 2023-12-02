@@ -51,6 +51,8 @@ public class GUIWindow {
      * to 1.5
      */
     private static final double DISPLAY_FACTOR = 1.5;
+    private static final String PATTERN = "#.#";
+    DecimalFormat dc = new DecimalFormat(PATTERN);
 
     /**
      * The DisplayWindow displays
@@ -998,7 +1000,7 @@ public class GUIWindow {
             window.addShape(textShape);
 
             TextShape textShapeRate = new TextShape(initialX + i * (barWidth
-                + barSpacing), 590, String.format("%.2f", traditionalMRate),
+                + barSpacing), 590, dc.format(traditionalMRate),
                 Color.BLACK);
 
             window.addShape(textShapeRate);
@@ -1055,7 +1057,7 @@ public class GUIWindow {
             }
             else {
                 textShapeRate = new TextShape(initialX + i * (barWidth
-                    + barSpacing), 590, String.format("%.2f", reachMRate),
+                    + barSpacing), 590, dc.format(reachMRate),
                     Color.BLACK);
             }
 
@@ -1110,7 +1112,7 @@ public class GUIWindow {
             }
             else {
                 textShapeRate = new TextShape(initialX + i * (barWidth
-                    + barSpacing), 590, String.format("%.2f", traditionalRate),
+                    + barSpacing), 590, dc.format(traditionalRate),
                     Color.BLACK);
                 window.addShape(textShapeRate);
             }
@@ -1165,7 +1167,7 @@ public class GUIWindow {
             }
             else {
                 textShapeRate = new TextShape(initialX + i * (barWidth
-                    + barSpacing), 590, String.format("%.2f", reachRate),
+                    + barSpacing), 590, dc.format(reachRate),
                     Color.BLACK);
                 window.addShape(textShapeRate);
             }
