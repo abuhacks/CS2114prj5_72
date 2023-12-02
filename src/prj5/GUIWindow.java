@@ -11,7 +11,7 @@
 package prj5;
 
 import java.awt.Color;
-
+import java.text.DecimalFormat;
 import cs2.Button;
 
 import cs2.Shape;
@@ -62,7 +62,7 @@ public class GUIWindow {
      *            that is passed through from the sorting Calculator class
      */
     public GUIWindow(SortingCalculator sortingCalculator) {
-        window = new Window("Social Media Vis");
+        window = new Window("abielm, jchen9896, narend, adamschantz");
         window.setSize((int)(500 * DISPLAY_FACTOR), (int)(500
             * DISPLAY_FACTOR));
 
@@ -164,8 +164,7 @@ public class GUIWindow {
 
         }
 
-         if (recentDisplay.equals("Reach") && recentMonth.equals(
-            "January")) {
+        if (recentDisplay.equals("Reach") && recentMonth.equals("January")) {
             srtReachJanMonthName();
 
         }
@@ -997,12 +996,11 @@ public class GUIWindow {
             TextShape textShape = new TextShape(initialX + i * (barWidth
                 + barSpacing), 570, channelName, Color.BLACK);
             window.addShape(textShape);
-            
+
             TextShape textShapeRate = new TextShape(initialX + i * (barWidth
                 + barSpacing), 590, String.format("%.2f", traditionalMRate),
                 Color.BLACK);
-            
-            
+
             window.addShape(textShapeRate);
         }
 
@@ -1048,22 +1046,19 @@ public class GUIWindow {
             TextShape textShape = new TextShape(initialX + i * (barWidth
                 + barSpacing), 570, channelName, Color.BLACK);
             window.addShape(textShape);
-            
+
             TextShape textShapeRate;
 
-            if(reachMRate < 0.1) {
-                 textShapeRate = new TextShape(initialX + i * (barWidth
-                    + barSpacing), 590, "N/A",
-                    Color.BLACK);
+            if (reachMRate < 0.1) {
+                textShapeRate = new TextShape(initialX + i * (barWidth
+                    + barSpacing), 590, "N/A", Color.BLACK);
             }
             else {
-                 textShapeRate = new TextShape(initialX + i * (barWidth
+                textShapeRate = new TextShape(initialX + i * (barWidth
                     + barSpacing), 590, String.format("%.2f", reachMRate),
                     Color.BLACK);
             }
-        
-            
-            
+
             window.addShape(textShapeRate);
         }
 
@@ -1108,10 +1103,9 @@ public class GUIWindow {
             window.addShape(textShape);
 
             TextShape textShapeRate;
-            if(traditionalRate < 0.1) {
+            if (traditionalRate < 0.1) {
                 textShapeRate = new TextShape(initialX + i * (barWidth
-                    + barSpacing), 590, "N/A",
-                    Color.BLACK);
+                    + barSpacing), 590, "N/A", Color.BLACK);
                 window.addShape(textShapeRate);
             }
             else {
@@ -1120,7 +1114,7 @@ public class GUIWindow {
                     Color.BLACK);
                 window.addShape(textShapeRate);
             }
-            
+
         }
 
         window.repaint();
@@ -1164,10 +1158,9 @@ public class GUIWindow {
             window.addShape(textShape);
 
             TextShape textShapeRate;
-            if(reachRate < 0.1) {
+            if (reachRate < 0.1) {
                 textShapeRate = new TextShape(initialX + i * (barWidth
-                    + barSpacing), 590, "N/A",
-                    Color.BLACK);
+                    + barSpacing), 590, "N/A", Color.BLACK);
                 window.addShape(textShapeRate);
             }
             else {
